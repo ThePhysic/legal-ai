@@ -1,0 +1,47 @@
+name: legal-ai-offline
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: legalai
+      POSTGRES_DB: legalai
+      POSTGRES_PASSWORD: ${LEGAL_AI_DATABASE_PASSWORD:?Run uv run python scripts/bootstrap.py --compose first}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U legalai -d legalai"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      dockerfile: infrastructure/Dockerfile.api
+    environment:
+      LEGAL_AI_OFFLINE_ONLY: "true"
+      LEGAL_AI_RUNTIME_DIR: /app/.runtime
+      LEGAL_AI_ENCRYPTION_KEY: ${LEGAL_AI_ENCRYPTION_KEY:?Run bootstrap before compose}
+      LEGAL_AI_DATABASE_URL: postgresql+psycopg://legalai:${LEGAL_AI_DATABASE_PASSWORD}@postgres:5432/legalai
+      LEGAL_AI_ALLOWED_ORIGINS: '["http://localhost:${LEGAL_AI_FRONTEND_PORT:-3000}","http://127.0.0.1:${LEGAL_AI_FRONTEND_PORT:-3000}"]'
+    ports:
+      - 127.0.0.1:${LEGAL_AI_API_PORT:-8000}:8000
+    volumes:
+      - encrypted_objects:/app/.runtime
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+  frontend:
+    build:
+      context: .
+      dockerfile: infrastructure/Dockerfile.frontend
+    ports:
+      - 127.0.0.1:${LEGAL_AI_FRONTEND_PORT:-3000}:3000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  encrypted_objects:

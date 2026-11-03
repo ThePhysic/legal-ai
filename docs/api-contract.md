@@ -21,7 +21,7 @@ Base backend `http://127.0.0.1:8000`; browser uses same-origin `/api/v1/...` pro
 
 `ResearchResponse`: `{run_id,status:'answered'|'insufficient_evidence'|'unavailable',question,answer:string,claims:Claim[],passages:Passage[],coverage_gaps:string[],limitations:string[],method:string,configuration:string,usage:object}`.
 
-`Claim`: `{claim_id,text,passage_ids:string[],source_ids:string[],support_status:'verbatim_quote'|'not_assessed',identity_validated:boolean}`. Identity validation is not semantic certification.
+`Claim`: `{claim_id,text,passage_ids:string[],source_ids:string[],support_status:'verbatim_quote'|'not_assessed',identity_validated:boolean}`. Passage IDs bind exact source versions; identity validation is not semantic certification. `Finding.verified`, if present for compatibility, means literal text/locator identity only and never a verified legal conclusion.
 
 - `POST /v1/search` ResearchRequest -> SearchResponse.
 - `POST /v1/research` ResearchRequest -> ResearchResponse.
