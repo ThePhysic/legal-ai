@@ -77,6 +77,47 @@ def test_scanned_encrypted_and_page_caps():
         parse_document("many.pdf", out.getvalue())
 
 
+def test_pdf_active_actions_and_embedded_annotations_rejected():
+    writer = PdfWriter()
+    page = writer.add_blank_page(width=612, height=792)
+    annotation = DictionaryObject({NameObject("/Subtype"): NameObject("/FileAttachment"),
+                                   NameObject("/Type"): NameObject("/Annot")})
+    from pypdf.generic import ArrayObject
+
+    page[NameObject("/Annots")] = ArrayObject([writer._add_object(annotation)])
+    output = io.BytesIO()
+    writer.write(output)
+    with pytest.raises(ParseError, match="embedded PDF content"):
+        parse_document("attachment.pdf", output.getvalue())
+    writer = PdfWriter()
+    writer.add_blank_page(width=612, height=792)
+    writer.add_js("app.alert('untrusted')")
+    output = io.BytesIO()
+    writer.write(output)
+    with pytest.raises(ParseError, match="embedded PDF content"):
+        parse_document("active.pdf", output.getvalue())
+
+
+def test_text_pdf_annotation_javascript_and_nested_next_launch_rejected():
+    from pypdf.generic import ArrayObject, TextStringObject
+
+    for nested in (False, True):
+        writer = PdfWriter(io.BytesIO(text_pdf()))
+        action = DictionaryObject({NameObject("/S"): NameObject("/JavaScript"),
+                                   NameObject("/JS"): TextStringObject("app.alert('untrusted')")})
+        if nested:
+            action = DictionaryObject({NameObject("/Next"): ArrayObject([DictionaryObject({
+                NameObject("/S"): NameObject("/Launch"), NameObject("/F"): TextStringObject("untrusted.exe")})])})
+            writer._root_object[NameObject("/CustomActionContainer")] = writer._add_object(action)
+        else:
+            annotation = DictionaryObject({NameObject("/Subtype"): NameObject("/Link"), NameObject("/A"): action})
+            writer.pages[0][NameObject("/Annots")] = ArrayObject([writer._add_object(annotation)])
+        output = io.BytesIO()
+        writer.write(output)
+        with pytest.raises(ParseError, match="Active or embedded"):
+            parse_document("active-text.pdf", output.getvalue())
+
+
 def test_zip_bomb_traversal_external_relationship_and_text_caps():
     for filename, payload, compression in [
         ("word/document.xml", b"x" * 300_000, zipfile.ZIP_DEFLATED),
@@ -191,3 +232,23 @@ def test_multipart_never_spools_private_plaintext_to_disk(client, monkeypatch):
 def test_chunked_request_cap_applies_before_json_parser(client):
     response = client.post("/v1/search", content=iter([b"x" * 20_000, b"y" * 20_000]), headers={"Content-Type": "application/json"})
     assert response.status_code == 413
+
+
+def test_failed_replacement_retry_cannot_resurrect_superseded_lineage(app, client):
+    original = upload(client, b"Tenant security deposit version A is $1500.")
+    original_id = original["document_id"]
+    def fail(stage):
+        if stage == "verifying":
+            raise OSError("synthetic version B verification failure")
+    app.state.service.failure_hook = fail
+    failed_b = upload(client, b"Tenant security deposit version B is $1000.", replace_document_id=original_id)
+    assert failed_b["status"] == "failed"
+    app.state.service.failure_hook = None
+    successful_c = upload(client, b"Tenant security deposit version C is $900.", replace_document_id=original_id)
+    assert successful_c["status"] == "ready"
+    stale_retry = client.post(f"/v1/documents/{failed_b['document_id']}/retry")
+    assert stale_retry.status_code == 409
+    assert "stale" in stale_retry.json()["detail"]
+    assert client.get(f"/v1/sources/{failed_b['document_id']}").status_code == 404
+    searched = client.post("/v1/search", json={"question": "tenant security deposit", "source_scope": "private"}).json()
+    assert {item["source_id"] for item in searched["passages"]} == {successful_c["document_id"]}

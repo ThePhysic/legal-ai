@@ -74,3 +74,16 @@ class EncryptedStorage:
 
     def delete(self, workspace_id, document_id):
         self.path(workspace_id, document_id).unlink(missing_ok=True)
+
+    def probe(self):
+        descriptor, path = tempfile.mkstemp(dir=self.root, prefix=".health-", suffix=".enc")
+        try:
+            value = self.fernet.encrypt(b"legal-ai-health-probe")
+            with os.fdopen(descriptor, "wb") as handle:
+                handle.write(value)
+                handle.flush()
+                os.fsync(handle.fileno())
+            if self.fernet.decrypt(Path(path).read_bytes()) != b"legal-ai-health-probe":
+                raise RuntimeError("Encrypted storage probe failed")
+        finally:
+            Path(path).unlink(missing_ok=True)

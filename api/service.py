@@ -19,6 +19,8 @@ from api.parsing import ParseError, chunk_sections, parse_document, validate_sig
 from api.retrieval import (
     bounded_context,
     evidence_relevance,
+    explicit_evidence_conflicts,
+    public_topic_gap,
     retrieve,
     tokenize,
     unsafe_question,
@@ -127,13 +129,13 @@ class BackendService:
                 "provider": "local", "namespace": "public-v1", "bm25_k1": 1.5, "bm25_b": 0.75,
                 "fusion_k": 60, "reranker": "term-identifier-coverage-v1", "rerank_candidate_limit": 30,
                 "context_token_budget": self.settings.context_tokens, "top_k": top_k,
-                "corpus_revision": self.corpus_revision}
+                "corpus_revision": self.corpus_revision, "question_guard": "captured-ca-topics-personal-verdict-v1"}
 
     def readiness(self):
         with self.engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        # Prove the configured key can still read an authenticated object.
-        self.storage.open(self.storage.seal({"ok": True}))
+        # Prove object storage is writable/readable and encryption round-trips.
+        self.storage.probe()
         return {"status": "ready", "mode": "offline", "database": "ok", "encrypted_storage": "ok",
                 "corpus_sources": len(self.sources), "providers": self.provider_status()}
 
@@ -207,13 +209,22 @@ class BackendService:
             if len(selected) < len(candidates):
                 gaps.append("Sources with unknown or nonmatching effective-date bounds were excluded; capture date is not applicability evidence.")
             candidates = selected
-        unsafe = unsafe_question(request.question)
+        unsafe = unsafe_question(request.question, source_scope=request.source_scope)
         if unsafe:
             gaps.append(unsafe)
             candidates = []
+        if request.source_scope == "public":
+            topic_gap = public_topic_gap(request.question, list(self.sources.values()))
+            if topic_gap:
+                gaps.append(topic_gap)
+                candidates = []
         # Source instructions are never instructions to tools or authentication.
         candidates = [item for item in candidates if not re.search(r"ignore\b.{0,45}\b(instructions|previous)|system prompt|reveal.{0,20}(secret|token)", item["text"], re.I)]
-        ranked = retrieve(request.question, candidates, request.configuration, request.top_k)
+        ranked_candidates = retrieve(request.question, candidates, request.configuration, 30)
+        conflicts = explicit_evidence_conflicts(ranked_candidates)
+        ranked = ranked_candidates[:request.top_k]
+        if conflicts:
+            gaps.append("A bounded mechanical check found otherwise-matching passages with explicit opposite/negated wording. The system abstains rather than resolving them; broader legal contradictions are not assessed.")
         if not evidence_relevance(request.question, ranked):
             ranked = []
             gaps.append("The available passages do not provide enough relevant evidence for this question.")
@@ -221,6 +232,7 @@ class BackendService:
         usage = {"search_ms": elapsed, "input_tokens": 0, "output_tokens": 0, "provider_calls": 0,
                  "provider_cost_usd": 0, "cost_basis": "No provider calls; local CPU cost is not estimated."}
         trace = {"mode": "offline", "corpus_revision": self.corpus_revision, "candidate_count": len(candidates),
+                 "evidence_conflicts": conflicts,
                  "returned_passage_ids": [item["passage_id"] for item in ranked],
                  "filters": {"scope": request.source_scope, "jurisdiction": request.jurisdiction,
                              "jurisdiction_authority_filter_applied": request.source_scope == "public",
@@ -248,6 +260,8 @@ class BackendService:
             gaps.append("Relevant passages exceeded the bounded context budget; no unsupported answer was generated.")
         terms = set(tokenize(request.question))
         for passage in context:
+            if searched["trace"]["evidence_conflicts"]:
+                break
             sentences = re.split(r"(?<=[.!?;])\s+|\n+", passage["text"])
             sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
             if not sentences:
@@ -377,9 +391,13 @@ class BackendService:
                 document = self.owned(db, workspace_id, document_id)
                 if document.status == "ready":
                     return self.document_json(document)
-                document.attempts += 1
                 payload = self.storage.open(document.payload)
                 filename, version, replaced_id = payload["filename"], document.version, document.replaced_id
+                if replaced_id and replaced_id != document_id:
+                    parent = self.owned(db, workspace_id, replaced_id, allow_deleted=True)
+                    if parent.status != "ready" or not parent.is_current:
+                        raise HTTPException(409, "This replacement is stale because its original version was deleted or superseded. Upload again against the current document.")
+                document.attempts += 1
             try:
                 self._stage(workspace_id, document_id, "extracting")
                 raw = self.storage.get(workspace_id, document_id)
@@ -394,6 +412,12 @@ class BackendService:
                 self._stage(workspace_id, document_id, "verifying")
                 with self.db.begin() as db:
                     document = self.owned(db, workspace_id, document_id)
+                    previous = None
+                    if replaced_id and replaced_id != document_id:
+                        previous = db.scalar(select(Document).where(Document.id == replaced_id,
+                            Document.workspace_id == workspace_id).with_for_update())
+                        if not previous or previous.status != "ready" or not previous.is_current:
+                            raise RuntimeError("Replacement parent was superseded during indexing")
                     stored = list(db.scalars(select(Chunk).where(Chunk.document_id == document_id, Chunk.workspace_id == workspace_id)))
                     if len(stored) != len(chunks) or any(self.storage.open(item.payload)["version"] != version for item in stored):
                         raise RuntimeError("Index verification failed")
@@ -402,8 +426,7 @@ class BackendService:
                     payload["history"].append("ready")
                     document.status, document.is_current = "ready", True
                     document.payload = self.storage.seal(payload)
-                    if replaced_id and replaced_id != document_id:
-                        previous = self.owned(db, workspace_id, replaced_id, allow_deleted=True)
+                    if previous:
                         previous.is_current, previous.status = False, "deletion_pending"
                         self._revoke_content(db, workspace_id, previous)
                 if replaced_id and replaced_id != document_id:

@@ -55,6 +55,43 @@ def _checked_sections(sections):
     return result
 
 
+def _reject_unsafe_pdf_graph(root):
+    """Inspect bounded reachable dictionaries, including annotation/action chains.
+
+    No action is executed. /Next can be an action dictionary/array or an outline
+    sibling, so follow it within the same graph budget rather than treating its
+    presence alone as active content. Streams remain compressed during traversal.
+    """
+    from pypdf.generic import IndirectObject
+
+    pending, seen, examined = [(root, 0)], set(), 0
+    forbidden_keys = {"/A", "/AA", "/OpenAction", "/JS", "/JavaScript", "/EmbeddedFiles", "/AF",
+                      "/AcroForm", "/XFA", "/RichMediaContent", "/RichMediaSettings", "/Collection"}
+    forbidden_actions = {"/JavaScript", "/Launch", "/SubmitForm", "/ImportData", "/GoToR", "/GoToE",
+                         "/Rendition", "/RichMediaExecute", "/URI"}
+    while pending:
+        value, depth = pending.pop()
+        if not isinstance(value, (dict, list, tuple, IndirectObject)):
+            continue
+        identity = ("ref", value.idnum, value.generation) if isinstance(value, IndirectObject) else ("object", id(value))
+        if identity in seen:
+            continue
+        seen.add(identity)
+        examined += 1
+        if examined > 20_000 or depth > 60:
+            raise ParseError("PDF object graph exceeds the safety traversal cap.")
+        if isinstance(value, IndirectObject):
+            pending.append((value.get_object(), depth))
+        elif isinstance(value, dict):
+            if (forbidden_keys.intersection(value) or value.get("/S") in forbidden_actions
+                    or value.get("/Type") in ("/EmbeddedFile", "/Filespec")
+                    or value.get("/Subtype") == "/FileAttachment"):
+                raise ParseError("Active or embedded PDF content is not supported.")
+            pending.extend((child, depth + 1) for child in value.values())
+        else:
+            pending.extend((child, depth + 1) for child in value)
+
+
 def _parse(raw: bytes, extension: str):
     if extension == ".pdf":
         from pypdf import PdfReader
@@ -71,7 +108,8 @@ def _parse(raw: bytes, extension: str):
         if reader.is_encrypted:
             raise ParseError("Encrypted PDFs are not supported.")
         root = reader.trailer["/Root"]
-        if any(key in root for key in ("/OpenAction", "/AA", "/AcroForm", "/Collection")):
+        _reject_unsafe_pdf_graph(root)
+        if any(key in root for key in ("/OpenAction", "/AA", "/AcroForm", "/Collection", "/AF")):
             raise ParseError("Active PDF content is not supported.")
         names = root.get("/Names", {})
         if hasattr(names, "get_object"):
@@ -83,8 +121,12 @@ def _parse(raw: bytes, extension: str):
         sections = []
         total = 0
         for number, page in enumerate(reader.pages, 1):
-            if "/AA" in page:
+            if "/AA" in page or "/AF" in page:
                 raise ParseError("Active PDF content is not supported.")
+            for reference in page.get("/Annots", []):
+                annotation = reference.get_object()
+                if any(key in annotation for key in ("/A", "/AA", "/FS", "/RichMediaContent")) or annotation.get("/Subtype") == "/FileAttachment":
+                    raise ParseError("Active or embedded PDF annotations are not supported.")
             content = page.get_contents()
             if content and len(content.get_data()) > MAX_EXPANDED:
                 raise ParseError("PDF page stream exceeds the extraction cap.")

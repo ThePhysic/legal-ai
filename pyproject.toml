@@ -23,7 +23,7 @@ dependencies = [
 dev = ["pytest==9.0.2", "ruff==0.15.7", "pip-audit>=2.10,<3"]
 
 [tool.pytest.ini_options]
-testpaths = ["api/tests", "tests/evaluation"]
+testpaths = ["api/tests", "tests/evaluation", "tests/operations"]
 pythonpath = ["."]
 
 [tool.ruff]

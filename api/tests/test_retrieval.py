@@ -113,3 +113,30 @@ def test_private_literal_dates_do_not_claim_california_applicability(client):
     assert result["status"] == "answered"
     assert result["passages"][0]["source"]["jurisdiction"] == "unverified"
     assert any("unverified" in gap for gap in result["coverage_gaps"])
+
+
+@pytest.mark.parametrize("configuration", ["lexical", "dense", "hybrid", "rerank"])
+def test_ordinary_question_abstains_on_explicit_opposite_evidence(app, client, configuration):
+    source = app.state.service.public_passages[0]
+    app.state.service.public_passages = [
+        {**source, "passage_id": "affirmative:v1:1", "text": "The tenant security deposit must be returned within 21 days."},
+        {**source, "passage_id": "negative:v1:1", "text": "The tenant security deposit must not be returned within 21 days."},
+    ]
+    result = client.post("/v1/research", json={"question": "When must the tenant security deposit be returned?",
+                                              "configuration": configuration, "top_k": 1}).json()
+    assert result["status"] == "insufficient_evidence"
+    assert not result["claims"]
+    assert any("opposite/negated" in gap for gap in result["coverage_gaps"])
+    trace = client.get(f"/v1/runs/{result['run_id']}").json()["trace"]
+    assert trace["evidence_conflicts"][0]["passage_ids"] == ["affirmative:v1:1", "negative:v1:1"]
+
+
+def test_opposite_detection_preserves_distinct_conditions_and_is_bounded():
+    from api.retrieval import explicit_evidence_conflicts
+
+    different = [{"passage_id": "one", "text": "The tenant security deposit must be returned within 21 days."},
+                 {"passage_id": "two", "text": "The tenant security deposit must not be returned if unpaid rent remains."}]
+    assert explicit_evidence_conflicts(different) == []
+    permitted = [{"passage_id": "one", "text": "Return of the tenant security deposit is permitted."},
+                 {"passage_id": "two", "text": "Return of the tenant security deposit is prohibited."}]
+    assert explicit_evidence_conflicts(permitted)
