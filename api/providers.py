@@ -49,6 +49,8 @@ class PineconeProfile:
 class ExistingPineconeAdapter:
     def __init__(self, profile: PineconeProfile, *, enabled: bool = False, call_budget: int = 0):
         profile.validate()
+        if type(enabled) is not bool or type(call_budget) is not int or call_budget < 0:
+            raise ValueError("Pinecone requires a boolean enabled flag and a nonnegative integer call budget.")
         self.profile = profile
         self.enabled = enabled
         self._index = None
@@ -56,25 +58,36 @@ class ExistingPineconeAdapter:
         self._budget_lock = threading.Lock()
 
     def _connection(self):
-        if not self.enabled:
+        if self.enabled is not True:
             raise ProviderUnavailable("Live Pinecone execution is disabled.")
         with self._budget_lock:
-            if self._remaining_calls <= 0:
+            if type(self._remaining_calls) is not int or self._remaining_calls <= 0:
                 raise ProviderUnavailable("Pinecone execution requires an explicit positive call budget.")
             self._remaining_calls -= 1
         if self._index is None:
             from pinecone import Pinecone, RetryConfig
 
             pc = Pinecone(api_key=self.profile.api_key, timeout=self.profile.timeout, retry_config=RetryConfig(max_retries=0))
-            self._index = pc.index(host=self.profile.host)
-            pc.close()
+            try:
+                index = pc.index(host=self.profile.host)
+            finally:
+                pc.close()
             # SDK 10.3.0 does not propagate the public control-plane retry_config
             # to pc.index(). Enforce zero data-plane retries in this pinned
             # compatibility seam, and fail closed if a future SDK changes it.
-            transport = self._index._http._client._transport
-            if not hasattr(transport, "_config"):
-                raise ProviderUnavailable("Pinned Pinecone transport retry contract changed.")
-            transport._config = RetryConfig(max_retries=0)
+            try:
+                transport = index._http._client._transport
+                if not hasattr(transport, "_config"):
+                    raise ProviderUnavailable("Pinned Pinecone transport retry contract changed.")
+                transport._config = RetryConfig(max_retries=0)
+            except Exception:
+                close = getattr(index, "close", None)
+                if close is not None:
+                    close()
+                raise
+            # Failed initialization must never leave an unchecked connection
+            # available to a later attempt.
+            self._index = index
         return self._index
 
     @staticmethod
@@ -174,7 +187,7 @@ class GroundedLLMAdapter:
         self.transport, self.enabled = transport, enabled
 
     def generate(self, question, passages):
-        if not self.enabled:
+        if self.enabled is not True:
             raise ProviderUnavailable("Live generation is disabled.")
         if len(question) > 2000 or sum(len(item["text"].encode()) for item in passages) > 4000:
             raise ValueError("Generation context exceeds the provider budget.")

@@ -52,6 +52,72 @@ def test_embedding_disabled_missing_authorization_and_wrong_model_never_silently
         OpenAIEmbeddingAdapter(BoundedOpenAIHTTP("synthetic", enabled=True, budget=budget(), transport=httpx.MockTransport(bad))).embed(["text"])
 
 
+@pytest.mark.parametrize("field", ["max_calls", "max_input_tokens", "max_output_tokens",
+                                   "reserved_calls", "reserved_input_tokens", "reserved_output_tokens",
+                                   "observed_input_tokens", "observed_output_tokens"])
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), -1, 1.5, True])
+def test_invalid_budget_counts_fail_before_http(field, value):
+    calls = []
+    limits = budget()
+    setattr(limits, field, value)
+    http = BoundedOpenAIHTTP("synthetic", enabled=True, budget=limits,
+                            transport=httpx.MockTransport(lambda request: calls.append(request)))
+    with pytest.raises(ProviderUnavailable, match="integer token/call counts"):
+        OpenAIEmbeddingAdapter(http).embed(["text"])
+    assert calls == []
+
+
+@pytest.mark.parametrize("field", ["max_cost_usd", "input_usd_per_million",
+                                   "output_usd_per_million", "reserved_cost_usd"])
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), -1, True])
+def test_invalid_budget_amounts_fail_before_http(field, value):
+    calls = []
+    limits = budget()
+    setattr(limits, field, value)
+    http = BoundedOpenAIHTTP("synthetic", enabled=True, budget=limits,
+                            transport=httpx.MockTransport(lambda request: calls.append(request)))
+    with pytest.raises(ProviderUnavailable, match="finite nonnegative amounts"):
+        OpenAIEmbeddingAdapter(http).embed(["text"])
+    assert calls == []
+
+
+@pytest.mark.parametrize("value", [1, "true"])
+def test_provider_authorization_and_enable_flags_require_booleans(value):
+    with pytest.raises(ValueError, match="boolean"):
+        BoundedOpenAIHTTP(enabled=value)
+    with pytest.raises(ProviderUnavailable, match="integer token/call counts"):
+        budget(authorized=value).reserve(4, 0)
+
+
+@pytest.mark.parametrize("value", [1, "false"])
+def test_mutated_invalid_enable_flag_stays_disabled_before_http(value):
+    calls = []
+    limits = budget()
+    http = BoundedOpenAIHTTP("synthetic", budget=limits,
+                            transport=httpx.MockTransport(lambda request: calls.append(request)))
+    http.enabled = value
+    with pytest.raises(ProviderUnavailable, match="disabled"):
+        OpenAIEmbeddingAdapter(http).embed(["text"])
+    assert calls == []
+    assert limits.reserved_calls == 0
+
+
+@pytest.mark.parametrize("input_bound,output_bound", [(-1, 0), (1.5, 0), (True, 0), (4, float("nan"))])
+def test_invalid_reservation_bounds_do_not_consume_budget(input_bound, output_bound):
+    limits = budget()
+    with pytest.raises(ProviderUnavailable, match="integer token/call counts"):
+        limits.reserve(input_bound, output_bound)
+    assert limits.reserved_calls == limits.reserved_input_tokens == limits.reserved_output_tokens == 0
+
+
+def test_boolean_observed_usage_is_rejected():
+    limits = budget()
+    limits.reserve(4, 0)
+    with pytest.raises(ProviderUnavailable, match="token bounds"):
+        limits.observe(True, 0, 4, 0)
+    assert limits.observed_input_tokens == 0
+
+
 def test_responses_structured_schema_source_identity_and_no_tool_store_calls():
     seen = []
     def transport(request):

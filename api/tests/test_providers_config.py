@@ -1,4 +1,5 @@
 import json
+from types import SimpleNamespace
 
 import httpx
 import pytest
@@ -73,6 +74,61 @@ def test_actual_pinecone_transient_http_error_uses_one_budgeted_attempt(monkeypa
     with pytest.raises(ProviderUnavailable, match="no offline substitution"):
         adapter.query([1, 0, 0], workspace_id=None, jurisdiction="US-CA", allowed_passages={})
     assert len(requests) == 1
+
+
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), -1, 1.5, True])
+def test_pinecone_rejects_invalid_initial_and_runtime_call_budgets(value):
+    with pytest.raises(ValueError, match="nonnegative integer call budget"):
+        ExistingPineconeAdapter(profile(), enabled=True, call_budget=value)
+    adapter = ExistingPineconeAdapter(profile(), enabled=True, call_budget=1)
+    adapter._remaining_calls = value
+    calls = []
+    adapter._index = SimpleNamespace(query=lambda **kwargs: calls.append(kwargs))
+    with pytest.raises(ProviderUnavailable, match="positive call budget"):
+        adapter.query([1, 0, 0], workspace_id=None, jurisdiction="US-CA", allowed_passages={})
+    assert calls == []
+
+
+@pytest.mark.parametrize("value", [1, "true"])
+def test_pinecone_enabled_flag_requires_boolean(value):
+    with pytest.raises(ValueError, match="boolean enabled flag"):
+        ExistingPineconeAdapter(profile(), enabled=value, call_budget=1)
+
+
+@pytest.mark.parametrize("value", [1, "false"])
+def test_mutated_invalid_provider_enable_flags_stay_disabled(value):
+    calls = []
+    adapter = ExistingPineconeAdapter(profile(), call_budget=1)
+    adapter.enabled = value
+    adapter._index = SimpleNamespace(query=lambda **kwargs: calls.append(kwargs))
+    with pytest.raises(ProviderUnavailable, match="disabled"):
+        adapter.query([1, 0, 0], workspace_id=None, jurisdiction="US-CA", allowed_passages={})
+    generator = GroundedLLMAdapter(lambda **kwargs: calls.append(kwargs))
+    generator.enabled = value
+    with pytest.raises(ProviderUnavailable, match="disabled"):
+        generator.generate("question", [])
+    assert calls == []
+    assert adapter._remaining_calls == 1
+
+
+def test_pinecone_retry_contract_failure_never_caches_unchecked_index(monkeypatch):
+    import pinecone
+
+    indices, closed, queries = [], [], []
+    def make_index(**kwargs):
+        index = SimpleNamespace(_http=SimpleNamespace(_client=SimpleNamespace(_transport=object())),
+                                query=lambda **request: queries.append(request),
+                                close=lambda: closed.append(True))
+        indices.append(index)
+        return index
+    monkeypatch.setattr(pinecone, "Pinecone", lambda **kwargs: SimpleNamespace(index=make_index, close=lambda: None))
+    adapter = ExistingPineconeAdapter(profile(), enabled=True, call_budget=2)
+    for _ in range(2):
+        with pytest.raises(ProviderUnavailable, match="retry contract changed"):
+            adapter.query([1, 0, 0], workspace_id=None, jurisdiction="US-CA", allowed_passages={})
+        assert adapter._index is None
+    assert len(indices) == len(closed) == 2
+    assert queries == []
 
 
 def test_disabled_adapters_never_touch_transports_and_generation_validates_references():

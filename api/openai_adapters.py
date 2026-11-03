@@ -46,7 +46,24 @@ class ProviderBudget:
 
     def reserve(self, input_bound, output_bound):
         with self._lock:
-            cost = (input_bound * self.input_usd_per_million + output_bound * self.output_usd_per_million) / 1_000_000
+            # Dataclass annotations do not validate operator-supplied values.
+            # Recheck mutable state on every reservation so NaN comparisons or
+            # negative counters cannot turn an invalid limit into permission.
+            counts = (self.max_calls, self.max_input_tokens, self.max_output_tokens,
+                      self.reserved_calls, self.reserved_input_tokens, self.reserved_output_tokens,
+                      self.observed_input_tokens, self.observed_output_tokens, input_bound, output_bound)
+            amounts = (self.max_cost_usd, self.input_usd_per_million,
+                       self.output_usd_per_million, self.reserved_cost_usd)
+            if (type(self.authorized) is not bool
+                    or any(type(value) is not int or value < 0 for value in counts)
+                    or any(not self._finite_nonnegative(value) for value in amounts)):
+                raise ProviderUnavailable("Provider authorization requires finite nonnegative amounts and integer token/call counts.")
+            try:
+                cost = (input_bound * self.input_usd_per_million + output_bound * self.output_usd_per_million) / 1_000_000
+            except OverflowError as exc:
+                raise ProviderUnavailable("Provider cost reservation is invalid.") from exc
+            if not self._finite_nonnegative(cost):
+                raise ProviderUnavailable("Provider cost reservation is invalid.")
             if not self.authorized or self.max_calls <= 0 or self.max_cost_usd <= 0 or self.input_usd_per_million <= 0:
                 raise ProviderUnavailable("Live provider execution has no explicit positive authorization budget.")
             if output_bound and self.output_usd_per_million <= 0:
@@ -61,8 +78,17 @@ class ProviderBudget:
             self.reserved_output_tokens += output_bound
             self.reserved_cost_usd += cost
 
+    @staticmethod
+    def _finite_nonnegative(value):
+        if type(value) not in (int, float) or value < 0:
+            return False
+        try:
+            return math.isfinite(value)
+        except OverflowError:
+            return False
+
     def observe(self, input_tokens, output_tokens, input_bound, output_bound):
-        if (not isinstance(input_tokens, int) or not isinstance(output_tokens, int)
+        if (type(input_tokens) is not int or type(output_tokens) is not int
                 or not 0 <= input_tokens <= input_bound or not 0 <= output_tokens <= output_bound):
             raise ProviderUnavailable("Provider usage exceeded the reserved token bounds.")
         with self._lock:
@@ -73,13 +99,15 @@ class ProviderBudget:
 class BoundedOpenAIHTTP:
     def __init__(self, api_key="", *, enabled=False, budget: ProviderBudget | None = None,
                  transport: httpx.BaseTransport | None = None, timeout=10):
+        if type(enabled) is not bool:
+            raise ValueError("Provider enabled flag must be a boolean.")
         if not 0 < timeout <= 10:
             raise ValueError("Provider timeout must be at most 10 seconds.")
         self.api_key, self.enabled, self.budget = api_key, enabled, budget
         self.transport, self.timeout = transport, timeout
 
     def post(self, path, payload, input_bound, output_bound=0):
-        if not self.enabled:
+        if self.enabled is not True:
             raise ProviderUnavailable("Live OpenAI execution is disabled.")
         if not self.api_key or not self.budget:
             raise ProviderUnavailable("An explicit key and authorization budget are required.")
