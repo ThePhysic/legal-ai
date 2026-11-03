@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api, errorMessage } from "@/lib/api";
 import type { Source } from "@/lib/types";
 import { Badge, Busy, dateLabel, ErrorNotice } from "./ui";
@@ -13,19 +13,25 @@ export function Reference() {
   } | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const activeRequest = useRef<AbortController | null>(null);
   async function load() {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
     setBusy(true);
     setError("");
     try {
-      setCorpus(await api.corpus());
+      const data = await api.corpus(controller.signal);
+      if (!controller.signal.aborted) setCorpus(data);
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setBusy(false);
+      if (!controller.signal.aborted) setBusy(false);
     }
   }
   useEffect(() => {
     void load();
+    return () => activeRequest.current?.abort();
   }, []);
   return (
     <div>

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Research } from "@/components/research";
@@ -8,7 +8,7 @@ import type { ResearchResponse } from "@/lib/types";
 
 vi.mock("@/lib/api", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@/lib/api")>();
-  return { ...actual, api: { ...actual.api, research: vi.fn() } };
+  return { ...actual, api: { ...actual.api, research: vi.fn(), trace: vi.fn() } };
 });
 const result: ResearchResponse = {
   run_id: "run-test",
@@ -59,6 +59,7 @@ const result: ResearchResponse = {
 
 beforeEach(() => {
   vi.mocked(api.research).mockReset();
+  vi.mocked(api.trace).mockReset();
 });
 describe("research interactions", () => {
   it("sends the customer's free-form question and displays actual returned passages", async () => {
@@ -172,5 +173,57 @@ describe("research interactions", () => {
     await user.click(screen.getByRole("button", { name: "Cancel" }));
     await waitFor(() => expect(observed?.aborted).toBe(true));
     expect(screen.queryByRole("alert")).toBeNull();
+  });
+  it("ignores a cancelled response that arrives after the next research answer", async () => {
+    let finish!: (value: ResearchResponse) => void;
+    vi.mocked(api.research)
+      .mockReturnValueOnce(
+        new Promise<ResearchResponse>((resolve) => {
+          finish = resolve;
+        }),
+      )
+      .mockResolvedValueOnce({
+        ...result,
+        run_id: "new-run",
+        claims: [{ ...result.claims[0], text: "Current question evidence." }],
+      });
+    const user = userEvent.setup();
+    render(
+      <Research
+        initialQuestion="Deposit paperwork?"
+        onQuestionConsumed={() => undefined}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "Search legal sources" }));
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+    await user.click(screen.getByRole("button", { name: "Search legal sources" }));
+    await screen.findByRole("heading", { name: "An excerpt to start with" });
+    await act(async () => finish(result));
+    expect(
+      screen.getByRole("region", { name: "Your answer" }).querySelector(".answer-text")
+        ?.textContent,
+    ).toBe("Current question evidence.");
+  });
+  it("clears and cancels saved trace details when a document answer changes", async () => {
+    let finish!: (value: Record<string, unknown>) => void;
+    vi.mocked(api.trace).mockReturnValueOnce(
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+    );
+    const user = userEvent.setup();
+    const view = render(<ResearchAnswer result={result} />);
+    await user.click(screen.getByText("Method, configuration & run details"));
+    await user.click(screen.getByRole("button", { name: "Inspect saved run" }));
+    const signal = vi.mocked(api.trace).mock.calls[0][1];
+    view.rerender(<ResearchAnswer result={{ ...result, run_id: "next-run" }} />);
+    expect(signal?.aborted).toBe(true);
+    await act(async () =>
+      finish({ run_id: "run-test", text: "Previous private answer" }),
+    );
+    expect(screen.queryByLabelText("Saved run details")).toBeNull();
+    expect(
+      screen.getByRole("button", { name: "Inspect saved run" }).hasAttribute("disabled"),
+    ).toBe(false);
   });
 });

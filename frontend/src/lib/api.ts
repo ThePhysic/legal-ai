@@ -46,6 +46,7 @@ export async function request<T>(path: string, options: RequestInit = {}): Promi
       0,
     );
   }
+  signal.throwIfAborted();
   if (!response.ok) {
     let message = `Request failed (${response.status}). Please try again.`;
     try {
@@ -57,6 +58,7 @@ export async function request<T>(path: string, options: RequestInit = {}): Promi
     } catch {
       /* proxy failures may not have JSON bodies */
     }
+    signal.throwIfAborted();
     if (response.status === 401) {
       message =
         "Your local session has expired. Reconnect to create a new private workspace.";
@@ -67,8 +69,11 @@ export async function request<T>(path: string, options: RequestInit = {}): Promi
   }
   if (response.status === 204) return undefined as T;
   try {
-    return (await response.json()) as T;
+    const data = (await response.json()) as T;
+    signal.throwIfAborted();
+    return data;
   } catch {
+    signal.throwIfAborted();
     throw new ApiError(
       "The local API returned an unreadable response. Please try again.",
       response.status,
@@ -102,32 +107,34 @@ export const api = {
       body: JSON.stringify(body),
       signal,
     }),
-  corpus: () =>
+  corpus: (signal?: AbortSignal) =>
     request<{
       sources: Source[];
       coverage: string[];
       limitations: string[];
       mode: string;
-    }>("/corpus"),
-  trace: (id: string) =>
-    request<Record<string, unknown>>(`/runs/${encodeURIComponent(id)}`),
-  documents: () => request<{ documents: LegalDocument[] }>("/documents"),
+    }>("/corpus", { signal }),
+  trace: (id: string, signal?: AbortSignal) =>
+    request<Record<string, unknown>>(`/runs/${encodeURIComponent(id)}`, { signal }),
+  documents: (signal?: AbortSignal) =>
+    request<{ documents: LegalDocument[] }>("/documents", { signal }),
   document: (id: string, signal?: AbortSignal) =>
     request<DocumentDetail>(`/documents/${encodeURIComponent(id)}`, { signal }),
-  upload: (file: File, replaceId?: string) => {
+  upload: (file: File, replaceId?: string, signal?: AbortSignal) => {
     const body = new FormData();
     body.append("file", file);
     if (replaceId) body.append("replace_document_id", replaceId);
-    return request<LegalDocument>("/documents", { method: "POST", body });
+    return request<LegalDocument>("/documents", { method: "POST", body, signal });
   },
-  retry: (id: string) =>
+  retry: (id: string, signal?: AbortSignal) =>
     request<LegalDocument>(`/documents/${encodeURIComponent(id)}/retry`, {
       method: "POST",
+      signal,
     }),
-  deleteDocument: (id: string) =>
+  deleteDocument: (id: string, signal?: AbortSignal) =>
     request<{ document_id: string; status: "deleted" | "deletion_pending" }>(
       `/documents/${encodeURIComponent(id)}`,
-      { method: "DELETE" },
+      { method: "DELETE", signal },
     ),
   analysis: (
     id: string,
@@ -139,15 +146,16 @@ export const api = {
       body: JSON.stringify(body),
       signal,
     }),
-  evaluations: () =>
-    request<{ runs: EvaluationRun[]; datasets: Dataset[] }>("/evaluations"),
-  evaluate: (dataset_id: string, configurations: string[]) =>
+  evaluations: (signal?: AbortSignal) =>
+    request<{ runs: EvaluationRun[]; datasets: Dataset[] }>("/evaluations", { signal }),
+  evaluate: (dataset_id: string, configurations: string[], signal?: AbortSignal) =>
     request<EvaluationRun>("/evaluations", {
       method: "POST",
       body: JSON.stringify({ dataset_id, configurations }),
+      signal,
     }),
-  evaluation: (id: string) =>
-    request<EvaluationRun>(`/evaluations/${encodeURIComponent(id)}`),
+  evaluation: (id: string, signal?: AbortSignal) =>
+    request<EvaluationRun>(`/evaluations/${encodeURIComponent(id)}`, { signal }),
 };
 
 export function errorMessage(error: unknown): string {

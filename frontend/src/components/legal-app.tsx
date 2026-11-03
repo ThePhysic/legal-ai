@@ -30,16 +30,19 @@ export function LegalApp() {
   const [sessionError, setSessionError] = useState("");
   const [initialQuestion, setInitialQuestion] = useState("");
   const main = useRef<HTMLElement>(null);
+  const connectionVersion = useRef(0);
   const consumeQuestion = useCallback(() => setInitialQuestion(""), []);
   async function connect() {
+    const version = ++connectionVersion.current;
     setSessionBusy(true);
     setSessionError("");
     try {
-      setSession(await ensureSession());
+      const next = await ensureSession();
+      if (version === connectionVersion.current) setSession(next);
     } catch (e) {
-      setSessionError(errorMessage(e));
+      if (version === connectionVersion.current) setSessionError(errorMessage(e));
     } finally {
-      setSessionBusy(false);
+      if (version === connectionVersion.current) setSessionBusy(false);
     }
   }
   useEffect(() => {
@@ -56,11 +59,16 @@ export function LegalApp() {
     };
     change();
     window.addEventListener("hashchange", change);
-    return () => window.removeEventListener("hashchange", change);
+    return () => {
+      connectionVersion.current++;
+      window.removeEventListener("hashchange", change);
+    };
   }, []);
   useEffect(() => {
     const expired = () => {
+      connectionVersion.current++;
       setSession(null);
+      setSessionBusy(false);
       setSessionError(
         "Your local session expired. Reconnect to create a fresh private workspace. Previous documents are not carried into a new workspace.",
       );

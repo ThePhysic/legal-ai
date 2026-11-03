@@ -49,4 +49,24 @@ describe("local API client", () => {
       message: "Request failed (502). Please try again.",
     });
   });
+  it("does not expire a newer workspace when an aborted request finishes reading an old 401", async () => {
+    const controller = new AbortController();
+    let finish!: (value: unknown) => void;
+    const body = new Promise((resolve) => {
+      finish = resolve;
+    });
+    const expired = vi.fn();
+    window.addEventListener("legalai:session-expired", expired);
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({ ok: false, status: 401, json: () => body }),
+    );
+    const pending = request("/documents", { signal: controller.signal });
+    await Promise.resolve();
+    controller.abort();
+    finish({ detail: "Old session revoked" });
+    await expect(pending).rejects.toMatchObject({ name: "AbortError" });
+    expect(expired).not.toHaveBeenCalled();
+    window.removeEventListener("legalai:session-expired", expired);
+  });
 });

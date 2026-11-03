@@ -1,7 +1,9 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { LegalApp } from "@/components/legal-app";
+import { ensureSession } from "@/lib/api";
+import type { Session } from "@/lib/types";
 
 vi.mock("@/lib/api", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@/lib/api")>();
@@ -64,5 +66,39 @@ describe("keyboard and hash navigation", () => {
         screen.getByRole("button", { name: "My documents" }).getAttribute("aria-current"),
       ).toBe("page"),
     );
+  });
+  it("does not restore an expired workspace from an earlier reconnect response", async () => {
+    let resolve!: (session: Session) => void;
+    const pending = new Promise<Session>((done) => {
+      resolve = done;
+    });
+    const user = userEvent.setup();
+    render(<LegalApp />);
+    await user.click(screen.getByRole("button", { name: "My documents" }));
+    await screen.findByRole("heading", { name: "Document workspace content" });
+    vi.mocked(ensureSession).mockReturnValueOnce(pending);
+    await user.click(screen.getByRole("button", { name: "Reconnect session" }));
+    await act(async () => window.dispatchEvent(new Event("legalai:session-expired")));
+    expect(
+      screen.queryByRole("heading", { name: "Document workspace content" }),
+    ).toBeNull();
+    await act(async () =>
+      resolve({
+        workspace_id: "own",
+        label: "Local",
+        mode: "offline",
+        provider_status: {},
+      }),
+    );
+    expect(
+      screen.queryByRole("heading", { name: "Document workspace content" }),
+    ).toBeNull();
+    expect(
+      screen.getByRole("button", { name: "Reconnect session" }).hasAttribute("disabled"),
+    ).toBe(false);
+    await user.click(screen.getByRole("button", { name: "Reconnect session" }));
+    expect(
+      await screen.findByRole("heading", { name: "Document workspace content" }),
+    ).toBeTruthy();
   });
 });

@@ -276,15 +276,20 @@ export function ResearchAnswer({
   const [trace, setTrace] = useState<Record<string, unknown> | null>(null);
   const [traceError, setTraceError] = useState("");
   const [traceBusy, setTraceBusy] = useState(false);
+  const traceAbort = useRef<AbortController | null>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     setSelected(result.passages[0]?.passage_id ?? null);
     setTrace(null);
     setTraceError("");
-    resultHeading.current?.focus({ preventScroll: true });
-    resultHeading.current
-      ?.closest(".answer-card")
-      ?.scrollIntoView({ behavior: "auto", block: "start" });
+    setTraceBusy(false);
+    if (!resultHeading.current?.closest("[hidden]")) {
+      resultHeading.current?.focus({ preventScroll: true });
+      resultHeading.current
+        ?.closest(".answer-card")
+        ?.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+    return () => traceAbort.current?.abort();
   }, [result]);
   const supportedIds = new Set(result.claims.flatMap((c) => c.passage_ids));
   const supporting = result.passages.filter((p) => supportedIds.has(p.passage_id));
@@ -300,14 +305,18 @@ export function ResearchAnswer({
       ? firstSentence
       : `${firstSentence.slice(0, 360).replace(/\s+\S*$/, "")}…`;
   async function loadTrace() {
+    const controller = new AbortController();
+    traceAbort.current?.abort();
+    traceAbort.current = controller;
     setTraceBusy(true);
     setTraceError("");
     try {
-      setTrace(await api.trace(result.run_id));
+      const data = await api.trace(result.run_id, controller.signal);
+      if (!controller.signal.aborted) setTrace(data);
     } catch (e) {
-      setTraceError(errorMessage(e));
+      if (!controller.signal.aborted) setTraceError(errorMessage(e));
     } finally {
-      setTraceBusy(false);
+      if (!controller.signal.aborted) setTraceBusy(false);
     }
   }
   return (

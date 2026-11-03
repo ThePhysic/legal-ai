@@ -45,21 +45,20 @@ export function Research({
     setError("");
     setResult(null);
     try {
-      setResult(
-        await api.research(
-          {
-            question: question.trim(),
-            jurisdiction,
-            applicable_on: date || null,
-            source_scope: "public",
-            configuration,
-            top_k: 5,
-          },
-          current.signal,
-        ),
+      const data = await api.research(
+        {
+          question: question.trim(),
+          jurisdiction,
+          applicable_on: date || null,
+          source_scope: "public",
+          configuration,
+          top_k: 5,
+        },
+        current.signal,
       );
+      if (!current.signal.aborted && controller.current === current) setResult(data);
     } catch (e) {
-      if (!isAbort(e)) setError(errorMessage(e));
+      if (!current.signal.aborted && !isAbort(e)) setError(errorMessage(e));
     } finally {
       if (controller.current === current) setBusy(false);
     }

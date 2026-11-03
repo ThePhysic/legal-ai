@@ -39,11 +39,14 @@ const ACTIVE = [
 export function Documents() {
   const [documents, setDocuments] = useState<LegalDocument[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [detail, setDetail] = useState<DocumentDetail | null>(null);
+  const [loadedDetail, setDetail] = useState<DocumentDetail | null>(null);
+  const detail = loadedDetail?.document_id === selectedId ? loadedDetail : null;
   const [analysis, setAnalysis] = useState<DocumentAnalysis | null>(null);
-  const [busy, setBusy] = useState<
-    "list" | "upload" | "detail" | "analysis" | "retry" | ""
-  >("");
+  const [operation, setOperation] = useState<"upload" | "analysis" | "retry" | "">("");
+  const [listBusy, setListBusy] = useState(true);
+  const [detailBusy, setDetailBusy] = useState(false);
+  const [detailError, setDetailError] = useState("");
+  const [detailRevision, setDetailRevision] = useState(0);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [question, setQuestion] = useState("");
@@ -51,55 +54,77 @@ export function Documents() {
   const [compareId, setCompareId] = useState<string | null>(null);
   const [confirm, setConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const busy = deleting
+    ? "delete"
+    : operation || (detailBusy ? "detail" : listBusy ? "list" : "");
   const [replacement, setReplacement] = useState(false);
   const [tab, setTab] = useState<"points" | "text">("points");
   const input = useRef<HTMLInputElement>(null);
   const listHeading = useRef<HTMLHeadingElement>(null);
   const analysisHeading = useRef<HTMLHeadingElement>(null);
   const analysisAbort = useRef<AbortController | null>(null);
+  const detailAbort = useRef<AbortController | null>(null);
+  const operationAbort = useRef<AbortController | null>(null);
+  const lifetime = useRef<AbortController | null>(null);
+  const refreshSequence = useRef(0);
   const selectionRef = useRef<string | null>(null);
-  const refresh = useCallback(async () => {
-    const data = await api.documents();
-    setDocuments(data.documents.filter((d) => d.status !== "deleted"));
+  const selected = documents.find((d) => d.document_id === selectedId) ?? null;
+  const refresh = useCallback(async (signal = lifetime.current!.signal) => {
+    const sequence = ++refreshSequence.current;
+    const data = await api.documents(signal);
+    if (!signal.aborted && sequence === refreshSequence.current)
+      setDocuments(data.documents.filter((d) => d.status !== "deleted"));
   }, []);
   useEffect(() => {
-    setBusy("list");
-    refresh()
-      .catch((e) => setError(errorMessage(e)))
-      .finally(() => setBusy(""));
+    const controller = new AbortController();
+    lifetime.current = controller;
+    refresh(controller.signal)
+      .catch((e) => {
+        if (!controller.signal.aborted) setError(errorMessage(e));
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setListBusy(false);
+      });
+    return () => {
+      controller.abort();
+      operationAbort.current?.abort();
+      analysisAbort.current?.abort();
+    };
   }, [refresh]);
   useEffect(() => {
     if (!documents.some((d) => ACTIVE.includes(d.status))) return;
     const id = setInterval(() => {
-      void refresh().catch((e) => setError(errorMessage(e)));
+      const signal = lifetime.current!.signal;
+      void refresh(signal).catch((e) => {
+        if (!signal.aborted) setError(errorMessage(e));
+      });
     }, 1800);
     return () => clearInterval(id);
   }, [documents, refresh]);
   useEffect(() => {
-    selectionRef.current = selectedId;
-    analysisAbort.current?.abort();
-    setAnalysis(null);
-    setLocator("");
-    setQuestion("");
-    setDetail(null);
-    setCompareId(null);
-    if (!selectedId) return;
+    if (!selectedId || !selected) {
+      setDetailBusy(false);
+      return;
+    }
     const abort = new AbortController();
-    setBusy("detail");
+    detailAbort.current = abort;
+    setDetailBusy(true);
+    setDetailError("");
     api
       .document(selectedId, abort.signal)
-      .then(setDetail)
+      .then((data) => {
+        if (!abort.signal.aborted && selectionRef.current === selectedId) setDetail(data);
+      })
       .catch((e) => {
-        if (!isAbort(e)) setError(errorMessage(e));
+        if (!abort.signal.aborted && !isAbort(e)) setDetailError(errorMessage(e));
       })
       .finally(() => {
-        if (!abort.signal.aborted) setBusy("");
+        if (!abort.signal.aborted) setDetailBusy(false);
       });
     return () => abort.abort();
-  }, [selectedId]);
-  useEffect(() => () => analysisAbort.current?.abort(), []);
+  }, [selectedId, selected?.status, detailRevision]);
   useEffect(() => {
-    if (analysis && !analysis.answer) {
+    if (analysis && !analysis.answer && !analysisHeading.current?.closest("[hidden]")) {
       analysisHeading.current?.focus({ preventScroll: true });
       analysisHeading.current?.scrollIntoView({ behavior: "auto", block: "start" });
     }
@@ -108,19 +133,35 @@ export function Documents() {
     if (tab === "text" && locator && detail) {
       const index = detail.sections.findIndex((section) => section.locator === locator);
       const element = document.getElementById(`section-${index}`);
-      element?.focus();
-      element?.scrollIntoView({ behavior: "auto", block: "nearest" });
+      if (!element?.closest("[hidden]")) {
+        element?.focus();
+        element?.scrollIntoView({ behavior: "auto", block: "nearest" });
+      }
     }
   }, [tab, locator, detail]);
-  const selected = documents.find((d) => d.document_id === selectedId) ?? null;
-  useEffect(() => {
-    if (selected?.status === "ready" && detail?.status !== "ready") {
-      void api
-        .document(selected.document_id)
-        .then(setDetail)
-        .catch((e) => setError(errorMessage(e)));
-    }
-  }, [selected?.status, selected?.document_id, detail?.status]);
+  function chooseDocument(id: string | null) {
+    if (selectionRef.current === id) return;
+    selectionRef.current = id;
+    detailAbort.current?.abort();
+    operationAbort.current?.abort();
+    analysisAbort.current?.abort();
+    setOperation("");
+    setSelectedId(id);
+    setAnalysis(null);
+    setLocator("");
+    setQuestion("");
+    setDetail(null);
+    setDetailError("");
+    setCompareId(null);
+    setReplacement(false);
+  }
+  function startOperation(name: "upload" | "retry" | "analysis") {
+    const controller = new AbortController();
+    operationAbort.current?.abort();
+    operationAbort.current = controller;
+    setOperation(name);
+    return controller;
+  }
   async function upload(file: File, replaceId?: string) {
     if (busy) return;
     setError("");
@@ -133,11 +174,13 @@ export function Documents() {
       setError("Choose a PDF, DOCX, TXT, or Markdown file.");
       return;
     }
-    setBusy("upload");
+    const controller = startOperation("upload");
     try {
-      const doc = await api.upload(file, replaceId);
-      await refresh();
-      setSelectedId(doc.document_id);
+      const doc = await api.upload(file, replaceId, controller.signal);
+      if (controller.signal.aborted) return;
+      await refresh(controller.signal);
+      if (controller.signal.aborted) return;
+      chooseDocument(doc.document_id);
       setNotice(
         replaceId
           ? doc.document_id === replaceId
@@ -149,38 +192,37 @@ export function Documents() {
       );
       setReplacement(false);
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setBusy("");
+      if (!controller.signal.aborted) setOperation("");
       if (input.current) input.current.value = "";
     }
   }
   async function retry() {
-    if (!selected) return;
-    setBusy("retry");
+    if (!selected || busy) return;
+    const controller = startOperation("retry");
     setError("");
     try {
-      const doc = await api.retry(selected.document_id);
-      await refresh();
-      if (doc.document_id === selectionRef.current)
-        setDetail(await api.document(doc.document_id));
+      await api.retry(selected.document_id, controller.signal);
+      if (controller.signal.aborted) return;
+      await refresh(controller.signal);
+      if (controller.signal.aborted) return;
       setNotice(
         "The processing retry completed. Check the status and any remaining error below.",
       );
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setBusy("");
+      if (!controller.signal.aborted) setOperation("");
     }
   }
   async function analyze(event?: FormEvent) {
     event?.preventDefault();
     if (!selected || selected.status !== "ready" || busy) return;
     const id = selected.document_id;
-    const abort = new AbortController();
+    const abort = startOperation("analysis");
     analysisAbort.current?.abort();
     analysisAbort.current = abort;
-    setBusy("analysis");
     setError("");
     try {
       const data = await api.analysis(
@@ -191,40 +233,56 @@ export function Documents() {
         },
         abort.signal,
       );
-      if (selectionRef.current === id) {
+      if (!abort.signal.aborted && selectionRef.current === id) {
         setAnalysis(data);
         setCompareId(data.comparison.passages[0]?.passage_id ?? null);
         setTab("points");
       }
     } catch (e) {
-      if (!isAbort(e)) setError(errorMessage(e));
+      if (!abort.signal.aborted && !isAbort(e)) setError(errorMessage(e));
     } finally {
-      if (analysisAbort.current === abort) setBusy("");
+      if (!abort.signal.aborted && analysisAbort.current === abort) setOperation("");
     }
   }
   async function remove() {
-    if (!selected) return;
+    if (!selected || deleting) return;
     const id = selected.document_id;
+    const controller = new AbortController();
+    operationAbort.current = controller;
     setDeleting(true);
     setError("");
     try {
-      const result = await api.deleteDocument(id);
+      const result = await api.deleteDocument(id, controller.signal);
+      if (controller.signal.aborted) return;
       setConfirm(false);
+      // The successful mutation owns selection reset, while its refresh remains cancellable.
+      selectionRef.current = null;
       setSelectedId(null);
       setDetail(null);
       setAnalysis(null);
-      await refresh();
+      setDocuments((previous) =>
+        previous.flatMap((doc) =>
+          doc.document_id !== id
+            ? [doc]
+            : result.status === "deleted"
+              ? []
+              : [{ ...doc, status: "deletion_pending" }],
+        ),
+      );
       setNotice(
         result.status === "deleted"
           ? "The API confirmed deletion of this document."
           : "Search access was revoked. Storage cleanup is still pending; refresh or retry deletion to check completion.",
       );
       window.requestAnimationFrame(() => listHeading.current?.focus());
+      await refresh(controller.signal);
     } catch (e) {
-      setConfirm(false);
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) {
+        setConfirm(false);
+        setError(errorMessage(e));
+      }
     } finally {
-      setDeleting(false);
+      if (!controller.signal.aborted) setDeleting(false);
     }
   }
   return (
@@ -324,7 +382,10 @@ export function Documents() {
               disabled={Boolean(busy)}
               onClick={() => {
                 setError("");
-                void refresh().catch((e) => setError(errorMessage(e)));
+                const signal = lifetime.current!.signal;
+                void refresh(signal).catch((e) => {
+                  if (!signal.aborted) setError(errorMessage(e));
+                });
               }}
             >
               Refresh
@@ -343,7 +404,8 @@ export function Documents() {
               aria-pressed={selectedId === doc.document_id}
               disabled={busy === "upload" || deleting}
               onClick={() => {
-                setSelectedId(doc.document_id);
+                if (selectionRef.current !== doc.document_id)
+                  chooseDocument(doc.document_id);
                 setError("");
                 setReplacement(false);
               }}
@@ -489,6 +551,12 @@ export function Documents() {
                 </details>
               </section>
               {busy === "detail" && <Busy>Opening document text…</Busy>}
+              {detailError && (
+                <ErrorNotice
+                  message={detailError}
+                  onRetry={() => setDetailRevision((previous) => previous + 1)}
+                />
+              )}
               {selected.status === "ready" && detail && (
                 <>
                   <section className="card document-review">
@@ -622,11 +690,12 @@ export function Documents() {
                                 <h4>{finding.title}</h4>
                                 <p>{finding.text}</p>
                                 <p className="small muted">
-                                  {finding.verified &&
-                                  ["contract_text", "document_fact"].includes(
+                                  {["contract_text", "document_fact"].includes(
                                     finding.kind,
                                   )
-                                    ? "Text identity checked; underlying facts are not independently verified."
+                                    ? finding.verified
+                                      ? "Text identity checked; underlying facts are not independently verified."
+                                      : "Exact section text; passage match not established. Underlying facts are not independently verified."
                                     : "Rule-based consideration; legal applicability and underlying facts are not verified."}
                                 </p>
                                 <button
@@ -716,9 +785,10 @@ export function Documents() {
             passages.
           </p>
           <p>
-            Saved private run diagnostics in this workspace will also be removed to clear
-            copied private text. Public research runs are retained. If file cleanup is
-            pending, the interface will say so.
+            All saved research run history in this workspace will also be removed because
+            questions may contain copied private text, including questions searched
+            against public sources. Frozen public evaluation reports are retained. If file
+            cleanup is pending, the interface will say so.
           </p>
         </ConfirmDialog>
       )}

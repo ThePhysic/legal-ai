@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api, errorMessage } from "@/lib/api";
 import type { Configuration, Dataset, EvaluationRun } from "@/lib/types";
 import { Badge, Busy, dateLabel, EmptyState, ErrorNotice, Icon } from "./ui";
@@ -33,47 +33,62 @@ export function Evaluations() {
   const [busy, setBusy] = useState(false);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState("");
+  const activeRequest = useRef<AbortController | null>(null);
+  function beginRequest() {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    return controller;
+  }
   async function load() {
+    const controller = beginRequest();
     setBusy(true);
     setError("");
     try {
-      const data = await api.evaluations();
+      const data = await api.evaluations(controller.signal);
+      if (controller.signal.aborted) return;
       setDatasets(data.datasets);
       setRuns(data.runs);
       setDataset((previous) => previous || data.datasets[0]?.id || "");
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setBusy(false);
+      if (!controller.signal.aborted) setBusy(false);
     }
   }
   useEffect(() => {
     void load();
+    return () => activeRequest.current?.abort();
   }, []);
   async function run() {
     if (!dataset || !configurations.length) return;
+    const controller = beginRequest();
     setRunning(true);
     setError("");
     try {
-      const data = await api.evaluate(dataset, configurations);
+      const data = await api.evaluate(dataset, configurations, controller.signal);
+      if (controller.signal.aborted) return;
       setSelected(data);
-      const listing = await api.evaluations();
+      const listing = await api.evaluations(controller.signal);
+      if (controller.signal.aborted) return;
       setRuns(listing.runs);
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setRunning(false);
+      if (!controller.signal.aborted) setRunning(false);
     }
   }
   async function select(id: string) {
+    const controller = beginRequest();
     setBusy(true);
     setError("");
     try {
-      setSelected(await api.evaluation(id));
+      const data = await api.evaluation(id, controller.signal);
+      if (!controller.signal.aborted) setSelected(data);
     } catch (e) {
-      setError(errorMessage(e));
+      if (!controller.signal.aborted) setError(errorMessage(e));
     } finally {
-      setBusy(false);
+      if (!controller.signal.aborted) setBusy(false);
     }
   }
   const selectedDataset = datasets.find((d) => d.id === dataset);
