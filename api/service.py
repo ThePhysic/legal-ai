@@ -21,7 +21,9 @@ from api.retrieval import (
     evidence_relevance,
     explicit_evidence_conflicts,
     public_topic_gap,
+    question_scope_text,
     retrieve,
+    temporal_applicability_requested,
     tokenize,
     unsafe_question,
     validate_claims,
@@ -129,7 +131,7 @@ class BackendService:
                 "provider": "local", "namespace": "public-v1", "bm25_k1": 1.5, "bm25_b": 0.75,
                 "fusion_k": 60, "reranker": "term-identifier-coverage-v1", "rerank_candidate_limit": 30,
                 "context_token_budget": self.settings.context_tokens, "top_k": top_k,
-                "corpus_revision": self.corpus_revision, "question_guard": "captured-ca-topics-personal-verdict-v1"}
+                "corpus_revision": self.corpus_revision, "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2"}
 
     def readiness(self):
         with self.engine.connect() as connection:
@@ -195,8 +197,7 @@ class BackendService:
         if not candidates:
             gaps.append("No authorized ready sources cover the requested jurisdiction and scope.")
         date_requested = request.applicable_on
-        date_wording = re.sub(r"\b(?:civil\s+code|code|section)\s+\d{4}(?:\.\d+)?|§\s*\d{4}(?:\.\d+)?", "", request.question, flags=re.I)
-        if request.source_scope == "public" and not date_requested and re.search(r"\b(?:19|20)\d{2}\b(?!\.\d)|\b(historic|historical|last year|previous year|today|currently|current law|as of)\b", date_wording, re.I):
+        if request.source_scope == "public" and not date_requested and temporal_applicability_requested(request.question):
             gaps.append("Date-specific wording requires an explicit applicability date and validated source effective-date bounds.")
             candidates = []
         if date_requested:
@@ -220,12 +221,13 @@ class BackendService:
                 candidates = []
         # Source instructions are never instructions to tools or authentication.
         candidates = [item for item in candidates if not re.search(r"ignore\b.{0,45}\b(instructions|previous)|system prompt|reveal.{0,20}(secret|token)", item["text"], re.I)]
-        ranked_candidates = retrieve(request.question, candidates, request.configuration, 30)
+        retrieval_question = question_scope_text(request.question) if request.source_scope == "public" else request.question
+        ranked_candidates = retrieve(retrieval_question, candidates, request.configuration, 30)
         conflicts = explicit_evidence_conflicts(ranked_candidates)
         ranked = ranked_candidates[:request.top_k]
         if conflicts:
             gaps.append("A bounded mechanical check found otherwise-matching passages with explicit opposite/negated wording. The system abstains rather than resolving them; broader legal contradictions are not assessed.")
-        if not evidence_relevance(request.question, ranked):
+        if not evidence_relevance(retrieval_question, ranked):
             ranked = []
             gaps.append("The available passages do not provide enough relevant evidence for this question.")
         elapsed = (time.perf_counter() - started) * 1000

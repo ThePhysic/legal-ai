@@ -162,18 +162,25 @@ def _parse(raw: bytes, extension: str):
             if "word/document.xml" not in archive.namelist():
                 raise ParseError("Not a valid DOCX document.")
         from docx import Document
+        from docx.table import Table
+        from docx.text.paragraph import Paragraph
 
         doc = Document(io.BytesIO(raw))
         sections = []
         current = {"locator": "section-1", "title": "Document", "text": ""}
-        for paragraph in doc.paragraphs:
-            if paragraph.style and paragraph.style.name.startswith("Heading") and current["text"]:
-                sections.append(current)
-                current = {"locator": f"section-{len(sections) + 1}", "title": paragraph.text[:160], "text": ""}
-            current["text"] += paragraph.text + "\n"
-        for table in doc.tables:
-            for row in table.rows:
-                current["text"] += " | ".join(cell.text for cell in row.cells) + "\n"
+        for block in doc.iter_inner_content():
+            if isinstance(block, Paragraph):
+                heading = block.style and block.style.name.startswith("Heading")
+                if heading:
+                    if current["text"].strip():
+                        sections.append(current)
+                        current = {"locator": f"section-{len(sections) + 1}", "title": block.text[:160], "text": ""}
+                    else:
+                        current["title"] = block.text[:160]
+                current["text"] += block.text + "\n"
+            elif isinstance(block, Table):
+                for row in block.rows:
+                    current["text"] += " | ".join(cell.text for cell in row.cells) + "\n"
         sections.append(current)
         return _checked_sections(sections)
     text = raw.decode("utf-8-sig")

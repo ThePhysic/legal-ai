@@ -7,6 +7,67 @@ from collections import Counter
 
 STOP = set("a an the is are was were be to of in on for and or by with it as at what how when can does do my i me you your this that which from about under much must may should would will not have has been any if then they their".split())
 
+# Deterministic English jurisdiction roster, not geocoding or legal applicability
+# evidence. All other US states/territories plus country names/common aliases.
+FOREIGN_PLACES = """Alabama;Alaska;Arizona;Arkansas;Colorado;Connecticut;Delaware;Florida;Georgia;Hawaii;Idaho;Illinois;Indiana;Iowa;Kansas;Kentucky;Louisiana;Maine;Maryland;Massachusetts;Michigan;Minnesota;Mississippi;Missouri;Montana;Nebraska;Nevada;New Hampshire;New Jersey;New Mexico;New York;North Carolina;North Dakota;Ohio;Oklahoma;Oregon;Pennsylvania;Rhode Island;South Carolina;South Dakota;Tennessee;Texas;Utah;Vermont;Virginia;Washington;West Virginia;Wisconsin;Wyoming;District of Columbia;Washington DC;Puerto Rico;Guam;American Samoa;Northern Mariana Islands;US Virgin Islands;
+Afghanistan;Albania;Algeria;Andorra;Angola;Antigua and Barbuda;Argentina;Armenia;Australia;Austria;Azerbaijan;Bahamas;Bahrain;Bangladesh;Barbados;Belarus;Belgium;Belize;Benin;Bhutan;Bolivia;Bosnia and Herzegovina;Botswana;Brazil;Brunei;Bulgaria;Burkina Faso;Burundi;Cabo Verde;Cape Verde;Cambodia;Cameroon;Canada;Central African Republic;Chad;Chile;China;Colombia;Comoros;Congo;Costa Rica;Croatia;Cuba;Cyprus;Czechia;Czech Republic;Denmark;Djibouti;Dominica;Dominican Republic;Ecuador;Egypt;El Salvador;Equatorial Guinea;Eritrea;Estonia;Eswatini;Swaziland;Ethiopia;Fiji;Finland;France;Gabon;Gambia;Germany;Ghana;Greece;Grenada;Guatemala;Guinea;Guinea-Bissau;Guyana;Haiti;Honduras;Hungary;Iceland;India;Indonesia;Iran;Iraq;Ireland;Israel;Italy;Ivory Coast;Cote d'Ivoire;Jamaica;Japan;Jordan;Kazakhstan;Kenya;Kiribati;Kuwait;Kyrgyzstan;Laos;Latvia;Lebanon;Lesotho;Liberia;Libya;Liechtenstein;Lithuania;Luxembourg;Madagascar;Malawi;Malaysia;Maldives;Mali;Malta;Marshall Islands;Mauritania;Mauritius;Mexico;Micronesia;Moldova;Monaco;Mongolia;Montenegro;Morocco;Mozambique;Myanmar;Burma;Namibia;Nauru;Nepal;Netherlands;New Zealand;Nicaragua;Niger;Nigeria;North Korea;North Macedonia;Norway;Oman;Pakistan;Palau;Palestine;Panama;Papua New Guinea;Paraguay;Peru;Philippines;Poland;Portugal;Qatar;Romania;Russia;Rwanda;Saint Kitts and Nevis;Saint Lucia;Saint Vincent and the Grenadines;Samoa;San Marino;Sao Tome and Principe;Saudi Arabia;Senegal;Serbia;Seychelles;Sierra Leone;Singapore;Slovakia;Slovenia;Solomon Islands;Somalia;South Africa;South Korea;South Sudan;Spain;Sri Lanka;Sudan;Suriname;Sweden;Switzerland;Syria;Taiwan;Tajikistan;Tanzania;Thailand;Timor-Leste;Togo;Tonga;Trinidad and Tobago;Tunisia;Turkey;Turkiye;Turkmenistan;Tuvalu;Uganda;Ukraine;United Arab Emirates;UAE;United Kingdom;UK;England;Scotland;Wales;Northern Ireland;Uruguay;Uzbekistan;Vanuatu;Vatican City;Holy See;Venezuela;Vietnam;Yemen;Zambia;Zimbabwe;Hong Kong;Macau;Greenland;Bermuda;Cayman Islands;Gibraltar;Jersey;Guernsey;Isle of Man"""
+PLACE_PATTERN = re.compile(r"\b(?:" + "|".join(re.escape(place.strip()) for place in sorted(
+    FOREIGN_PLACES.split(";"), key=len, reverse=True) if place.strip()) + r")\b", re.I)
+STATE_CODES = "AL AK AZ AR CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC PR GU AS MP VI"
+
+
+def question_scope_text(question):
+    """Ignore quoted literal street addresses, never quoted jurisdiction names."""
+    def replace(match):
+        literal = next(group for group in match.groups() if group is not None)
+        address = re.search(r"\b\d{1,6}\s+[^\n]{1,100}\b(?:street|st|avenue|ave|road|rd|lane|ln|drive|dr|way|boulevard|blvd|court|ct|place|pl)\b", literal, re.I)
+        return " " if address else literal
+    return re.sub(r'"([^"\n]{1,500})"|“([^”\n]{1,500})”|`([^`\n]{1,500})`', replace, question)
+
+
+def foreign_jurisdiction_requested(question):
+    value = question_scope_text(question)
+    california_explicit = bool(re.search(r"\bCalifornia\b|\bUS-CA\b|\bCA\s+(?:law|rules?|statutes?|security|deposit)", value, re.I))
+    comparison = bool(re.search(r"\b(?:compar\w*|versus|vs|difference|both|between|instead|rather than)\b", value, re.I))
+    legal_following = r"^\s*(?:['’]s\s*)?(?:security[ -]?deposit|deposit|landlord|tenant|rental|screening|retaliation|civil|housing|law|rules?|statutes?|return|deduct|deadline)\b"
+    for match in PLACE_PATTERN.finditer(value):
+        before, after = value[max(0, match.start() - 100):match.start()], value[match.end():match.end() + 100]
+        attributed = re.search(r"\b(?:in|under|within|throughout|across|outside|of|for|state of|country of)\s+(?:the\s+)?$", before, re.I)
+        scoped_list = re.search(r"\b(?:in|for|under|within|across)\b[^.!?]{0,80}\band\s*$", before, re.I)
+        if not california_explicit or comparison or attributed or scoped_list or re.search(legal_following, after, re.I):
+            return True
+    codes = "|".join(STATE_CODES.split())
+    if re.search(r"\bUS-(?!CA\b)[A-Z]{2}\b", value, re.I) or re.search(
+            r"\b(?:in|under|for)\s+(?:" + codes + r")\b|\b(?:" + codes + r")\s+(?:security|deposit|rental|law|rules?)\b", value):
+        return True
+    adjectives = r"German|French|British|English|Scottish|Welsh|Canadian|Australian|Indian|Chinese|Japanese|Irish|Italian|Spanish|Portuguese|Brazilian|Mexican|Swiss|Swedish|Norwegian|Danish|Finnish|Dutch|Belgian|Austrian|Polish|Greek|Turkish|Russian|Ukrainian|Korean|Singaporean|Malaysian|Indonesian|Philippine|Filipino|South African|Israeli|Saudi|Emirati"
+    return bool(re.search(r"\b(?:" + adjectives + r")\s+(?:security[ -]?deposit|deposit|tenant|rental|law|rules?|statutes?)\b", value, re.I))
+
+
+def temporal_applicability_requested(question):
+    """Recognize applicability dates, not statutory return/notice durations.
+
+    Relative dates require a supplied reference date and validated source bounds;
+    the system never infers historical applicability from a snapshot timestamp.
+    """
+    value = question_scope_text(question)
+    value = re.sub(r"\b(?:civil\s+code|code|section)\s+\d{4}(?:\.\d+)?|§\s*\d{4}(?:\.\d+)?", "", value, flags=re.I)
+    unit = r"(?:days?|weeks?|months?|years?|decades?|centur(?:y|ies)|summers?|winters?|springs?|autumns?|falls?)"
+    quantity = r"(?:\d+|a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|hundred|couple(?:\s+of)?|few|several|many|half(?:\s+a)?)"
+    patterns = [
+        r"\b(?:19|20)\d{2}\b(?!\.\d)",
+        r"\b(?:historic\w*|today|tomorrow|yesterday|currently|now|previously|formerly|back then|at present|as of|current law|current rules|in the past|used to apply)\b",
+        r"\b(?:last|previous|prior|past|next|coming|upcoming|this)\s+" + unit + r"\b",
+        r"\b" + unit + r"\s+(?:ago|back|from now)\b",
+        r"\b(?:in|over|within)\s+(?:the\s+)?(?:last|past|next)\s+" + quantity + r"\s+" + unit + r"\b",
+        r"\b(?:in|after)\s+" + quantity + r"\s+" + unit + r"\s+(?:time|from now)\b",
+        r"\b(?:applied|applicable|in force)\b.{0,40}\b" + quantity + r"\s+" + unit + r"\s+(?:earlier|before|later)\b",
+        r"\b(?:rules?|law|statutes?|requirements?)\b.{0,30}\b(?:apply|applicable|in force)\b.{0,15}\bin\s+" + quantity + r"\s+(?:years?|decades?|centuries)\b",
+        r"\b(?:before|after|prior to|since)\s+(?:the\s+)?(?:amendment|reform|law changed|rules changed|new law)\b",
+        r"\b(?:pre[ -]?amendment|old (?:law|rules|statute)|at the time)\b",
+    ]
+    return any(re.search(pattern, value, re.I) for pattern in patterns)
+
 
 def tokenize(text: str):
     return [token for token in re.findall(r"[a-z0-9]+(?:\.[0-9]+)*", text.lower()) if token not in STOP]
@@ -139,7 +200,7 @@ def public_topic_gap(question, sources):
     unsupported or ambiguous topics need a narrower question instead of matching
     coincidental corpus terms. It does not establish substantive answer coverage.
     """
-    value = question.lower()
+    value = question_scope_text(question).lower()
     inventory = " ".join(str(source.get("source_id", "")) + " " + str(source.get("title", "")) for source in sources)
     available = set(re.findall(r"\b(?:1942\.5|1950\.5|1950\.6)\b", inventory))
     covered_topics = set(available)
@@ -160,7 +221,7 @@ def public_topic_gap(question, sources):
     outside = re.search(
         r"\b(?:patents?|copyrights?|trademarks?|bankruptcy|insolvency|immigration|visas?|asylum|deportation|citizenship|divorce|custody|alimony|probate|inheritance|murder|arrest|criminal|prosecut(?:e|ion)|federal|fdic|mortgages?|overtime)\b"
         r"|\b(?:intellectual property|income tax|estate tax|employment law|workers compensation|banking law)\b", value)
-    foreign = re.search(r"\b(?:nevada|new york|texas|florida|washington|oregon|arizona|canada|united kingdom|england|australia)\b", value)
+    foreign = foreign_jurisdiction_requested(question)
     if outside or foreign:
         return "This question includes a topic or jurisdiction outside the captured California deposit, screening-fee and retaliation statutes. The corpus cannot answer it."
     if identifiers and identifiers <= available:
