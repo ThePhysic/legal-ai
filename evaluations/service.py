@@ -47,6 +47,12 @@ def mean(values):
     return sum(values) / len(values) if values else None
 
 
+def source_sha256(path: Path) -> str:
+    """Fingerprint equivalent Python source across checkout newline formats."""
+    normalized = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(normalized).hexdigest()
+
+
 def code_manifest() -> dict:
     paths = ("api/service.py", "api/retrieval.py", "api/schemas.py", "evaluations/service.py",
              "evaluations/scoring.py", "evaluations/datasets.py")
@@ -57,7 +63,8 @@ def code_manifest() -> dict:
         except importlib.metadata.PackageNotFoundError:
             packages[name] = "not-installed"
     return {"python": platform.python_version(), "platform": platform.platform(), "packages": packages,
-            "file_sha256": {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest() for path in paths}}
+            "source_hash_normalization": "SHA-256 after normalizing CRLF and CR newlines to LF; all other source bytes preserved. Dataset and corpus hashes remain raw-byte hashes.",
+            "file_sha256": {path: source_sha256(ROOT / path) for path in paths}}
 
 
 class EvaluationService:
