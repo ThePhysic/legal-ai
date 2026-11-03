@@ -277,7 +277,9 @@ class EvaluationService:
             "citation_identity_rate": mean([int(item["identity_valid"]) for item in citations]),
             "exact_quote_membership_rate": mean([int(item["exact_quote_member"]) for item in citations]),
             "semantic_support": None, "answer_correctness": None, "human_usability": None,
-            "usage": {**usage, "complete_observation_count": len(observations),
+            "usage": {**usage, "complete_observation_count": sum(all(value is not None for value in item.values())
+                                                                 for item in observations),
+                      "total_observation_count": len(observations),
                       "expected_observation_count": expected_observations,
                       "cost_basis": "Observed provider usage only; local CPU/infrastructure cost unestimated."},
             "starter_retrieval_gate": {"recall_at_10_minimum": .70, "mrr_at_10_minimum": .60,

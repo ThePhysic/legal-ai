@@ -169,6 +169,8 @@ def test_invalid_usage_is_unknown_rather_than_claimed_free(evaluation_fixture, m
     metrics = report["configurations"][0]["metrics"]
     assert report["status"] == "completed_with_errors"
     assert metrics["usage"]["provider_calls"] is metrics["usage"]["provider_cost_usd"] is None
+    assert metrics["usage"]["complete_observation_count"] == 2
+    assert metrics["usage"]["total_observation_count"] == metrics["usage"]["expected_observation_count"] == 4
     assert metrics["failure_counts"]["usage_not_reported"] == 2
     assert "NaN" not in json.dumps(report)
 
