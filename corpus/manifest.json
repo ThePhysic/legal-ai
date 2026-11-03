@@ -1,0 +1,1333 @@
+{
+  "schema_version": "1",
+  "corpus_id": "ca-landlord-tenant-starter",
+  "revision": "ca-dre-2026-188b2f6a3a4432e4",
+  "chunker": "pdf-marker-groups-950bytes-v1",
+  "captured_at": "2026-11-03T20:15:16.375733+00:00",
+  "sources": [
+    {
+      "source_id": "ca-civ-1950-5",
+      "title": "California Civil Code § 1950.5 — Residential security deposits",
+      "publisher": "California Legislature; official compilation by California Department of Real Estate",
+      "url": "https://www.dre.ca.gov/files/pdf/relaw/excerpts.pdf",
+      "edition_url": "https://www.dre.ca.gov/Publications/RealEstateLaw.html",
+      "related_authority_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+      "source_type": "statute",
+      "jurisdiction": "US-CA",
+      "scope": "public",
+      "version": "dre-2026-d35baad41098",
+      "content_hash": "d35baad41098176b0fabba080197762f8d214bc07ae3b23f576b72564fa0fa3a",
+      "captured_at": "2026-11-03T20:15:16.375733+00:00",
+      "publication_as_of": "2026-01-01",
+      "effective_from": null,
+      "effective_to": null,
+      "applicability_status": "Not independently validated; edition date is not an effective-date interval",
+      "rights_basis": "Selected statutory government-edict text only (U.S. Copyright Office Compendium 313.6(C)(2)); DRE Conditions of Use Ownership distinguishes public-domain text from protected artwork/marks. No commentary, artwork or seals redistributed.",
+      "file": "snapshots/ca-civ-1950-5.txt",
+      "sections": [
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-001:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–143, paragraph group 1, excerpt 1",
+          "title": "Statutory paragraph group 1",
+          "text": "1950.5. (a) This section applies to security for a rental agreement for residential property that is used as the dwelling of the tenant.",
+          "page_numbers": [
+            143
+          ],
+          "content_hash": "8649911b6e2658b68508254cc60e430f44d140c5d6836ffb9d9b0f6e57e70939"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-002:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–143, paragraph group 2, excerpt 1",
+          "title": "Statutory paragraph group 2",
+          "text": "(b) As used in this section, “security” means any payment, fee, deposit, or charge, including, but not limited to, any payment, fee, deposit, or charge, except as provided in Section 1950.6, that is imposed at the beginning of the tenancy to be used to reimburse the landlord for costs associated with processing a new tenant or that is imposed as an advance payment of rent, used or to be used for any purpose, including, but not limited to, any of the following:",
+          "page_numbers": [
+            143
+          ],
+          "content_hash": "3f730c6f64d6ccd481f2c2852908aa1928c9e54458bff179a4a5dca9d90ca889"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-003:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–143, paragraph group 3, excerpt 1",
+          "title": "Statutory paragraph group 3",
+          "text": "(1) The compensation of a landlord for a tenant’s default in the payment of rent.",
+          "page_numbers": [
+            143
+          ],
+          "content_hash": "f9056a580243577ed21cd2452b9bec6010a1a5a017d7808e747df20f77d02165"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-004:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–143, paragraph group 4, excerpt 1",
+          "title": "Statutory paragraph group 4",
+          "text": "(2) The repair of damages to the premises, exclusive of ordinary wear and tear, caused by the tenant or by a guest or licensee of the tenant.",
+          "page_numbers": [
+            143
+          ],
+          "content_hash": "04a4dc8313d18d526f6c6ac28005f60cdc783435e4522cd13e962964a2d525f5"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-005:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–143, paragraph group 5, excerpt 1",
+          "title": "Statutory paragraph group 5",
+          "text": "(3) The cleaning of the premises upon termination of the tenancy necessary to return the unit to the same level of cleanliness it was in at the inception of the tenancy. The amendments to this paragraph enacted by the act adding this sentence shall apply only to tenancies for which the tenant’s right to occupy begins after January 1, 2003.",
+          "page_numbers": [
+            143
+          ],
+          "content_hash": "59379d29658d6df19950f6ec3f7197dd7684765f8821052f7e5bd5bdc2a06b1c"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-006:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 143–144, paragraph group 6, excerpt 1",
+          "title": "Statutory paragraph group 6",
+          "text": "(4) To remedy future defaults by the tenant in any obligation under the rental agreement to restore, replace, or return personal property or appurtenances, exclusive of ordinary wear and tear, if the security deposit is authorized to be applied thereto by the rental agreement.",
+          "page_numbers": [
+            143,
+            144
+          ],
+          "content_hash": "0e7241ebf8e48253c01f480ac118a7d92562cf64e7b1b7004755ec122ff28b55"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-007:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 7, excerpt 1",
+          "title": "Statutory paragraph group 7",
+          "text": "(c) (1) Except as provided in paragraph (2), (3), or (5), a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to one month’s rent, in addition to any rent for the first month paid on or before initial occupancy.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "98caf687628826304a8abfe616c31c985eea53fe4f0d85e3bbb19ddf101226a9"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-008:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 8, excerpt 1",
+          "title": "Statutory paragraph group 8",
+          "text": "(2) This subdivision does not prohibit an advance payment of not less than six months’ rent if the term of the lease is six months or longer.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "9f4a8c38b62f06110f9cc46556fb5cd3f625572ca0702e5334473609daf22295"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-009:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 9, excerpt 1",
+          "title": "Statutory paragraph group 9",
+          "text": "(3) This subdivision does not preclude a landlord and a tenant from entering into a mutual agreement for the landlord, at the request of the tenant and for a specified fee or charge, to make structural, decorative, furnishing, or other similar alterations, if the alterations are other than cleaning or repairing for which the landlord may charge the previous tenant as provided by subdivision (e).",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "755cd63543f9c456e101df341e75c64592123ca598210c8836eca19f54e7ec22"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-010:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 10, excerpt 1",
+          "title": "Statutory paragraph group 10",
+          "text": "(4) On or after April 1, 2025, if a landlord or its agent charges a service member who rents residential property in which the service member will reside a higher than standard or advertised security pursuant to paragraph (1) due to the credit history, credit score, housing history, or other factor related to the tenant, the landlord shall provide the tenant with a written statement, on or before the date the lease is signed, of the amount of the higher security and an explanation why the higher security amount is being charged. The additional amount of security shall be returned to the tenant after no more than six months of residency if the tenant is not in arrears for any rent due during that period. The date for return of the additional amount of security shall be included in the lease agreement. For purposes of this paragraph, “service member” has the same meaning as in Section 400 of the Military and Veterans Code.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "678ccf30b57c0026d2a13d4e96fb77fde2c2be784377d50e3994a6c3d1b47d37"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-011:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 11, excerpt 1",
+          "title": "Statutory paragraph group 11",
+          "text": "(5) (A) Notwithstanding paragraph (1), a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to two months’ rent, in addition to any rent for the first month paid on or before initial occupancy if the landlord meets both of the following requirements:",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "27ce9cc3b7fcdae2a660a59619a2a00f3a19126207ae7cb206728abf5117cede"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-012:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 12, excerpt 1",
+          "title": "Statutory paragraph group 12",
+          "text": "(i) The landlord is a natural person or a limited liability company in which all members are natural persons.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "6e012cfd2298f25938e173f5bc337383fdd4375e1a9ac8931aa0d2d08f26d79b"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-013:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 13, excerpt 1",
+          "title": "Statutory paragraph group 13",
+          "text": "(ii) The landlord owns no more than two residential rental properties that collectively include no more than four dwelling units offered for rent.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "dc3bd5fe13ca7a0de510ccdab61838a6b768705975fb8fd5fb2d6d393f0c9bac"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-014:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 14, excerpt 1",
+          "title": "Statutory paragraph group 14",
+          "text": "(B) Subparagraph (A) shall not apply if the prospective tenant is a service member. A landlord shall not refuse to enter into a rental agreement for residential property with a prospective tenant who is a service member because this subparagraph prohibits the landlord from demanding or receiving a greater amount of security than that which is established in paragraph (1). For purposes of this subparagraph, “service member” has the same meaning as in Section 400 of the Military and Veterans Code.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "6097ad09acc0bac3bb85d3c6b9fb510f28990df0190c801ad1d0f5cf9bc0149a"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-015:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 15, excerpt 1",
+          "title": "Statutory paragraph group 15",
+          "text": "(C) For purposes of this paragraph:",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "60798a399595077442592e673122179a72151ef1dedf82ca7c4a36fbc17fd009"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-016:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 16, excerpt 1",
+          "title": "Statutory paragraph group 16",
+          "text": "(i) “Natural person” includes any natural person who is a settlor or beneficiary of a family trust.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "7c09bcf8155c8fb67eace91494f50e648b4c30e3d024df9376f3c11a53e3454b"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-017:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 17, excerpt 1",
+          "title": "Statutory paragraph group 17",
+          "text": "(ii) “Family trust” means a revocable living trust or irrevocable trust in which the settlors and beneficiaries of the trust are persons who are related to each other as sibling, spouse, domestic partner, child, parent, grandparent, or grandchild.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "4bece3ad1e1a0c561478e602a13bc8046dbb449b392303813184687a70f8ec7e"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-018:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 18, excerpt 1",
+          "title": "Statutory paragraph group 18",
+          "text": "(6) This subdivision shall not apply to a security collected or demanded by the landlord before July 1, 2024.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "df9fa338d3c7ed035c7f2ca4e4202b0267ee1d1b5897ad09a9cacaf7f45af69d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-019:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 19, excerpt 1",
+          "title": "Statutory paragraph group 19",
+          "text": "(d) Any security shall be held by the landlord for the tenant who is party to the lease or agreement. The claim of a tenant to the security shall be prior to the claim of any creditor of the landlord.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "e1bc556cdcb1ef265a731dafe4e9335ff5e0dae8cbd44663ba3145d9bf998e55"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-020:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 20, excerpt 1",
+          "title": "Statutory paragraph group 20",
+          "text": "(e) (1) Subject to paragraph (2), the landlord may claim of the security only those amounts as are reasonably necessary for the purposes specified in subdivision",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "ccde6f589b9608537eae4fb29e888c230b46fd67c711f3e3f75cc9cfedc920a4"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-021:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 21, excerpt 1",
+          "title": "Statutory paragraph group 21",
+          "text": "(b).",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "c2c0ab36382fd8ff47e614306534e6254ec5bde3af16ed0b9a3e123cbc44d876"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-022:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 22, excerpt 1",
+          "title": "Statutory paragraph group 22",
+          "text": "(2) (A) The landlord shall not assert a claim against the tenant or the security for damages to the premises or any defective conditions that preexisted the tenancy, for ordinary wear and tear or the effects thereof, whether the wear and tear preexisted the tenancy or occurred during the tenancy, or for the cumulative effects of ordinary wear and tear occurring during any one or more tenancies.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "7af6a01c4798967cbd03e551e86dd5de2653c1ad37f18f540c87cad32a1b64a8"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-023:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 144–144, paragraph group 23, excerpt 1",
+          "title": "Statutory paragraph group 23",
+          "text": "(B) Claims against the tenant or the security for materials or supplies and for work performed by a contractor, the landlord, or the landlord’s employee shall be limited to a reasonable amount necessary to restore the premises back to the condition it was in at the inception of the tenancy, exclusive of ordinary wear and tear.",
+          "page_numbers": [
+            144
+          ],
+          "content_hash": "b266f54608863bbbb147dd07c69558200217942ab73ba3ffab3fa9b47b89d264"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-024:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 24, excerpt 1",
+          "title": "Statutory paragraph group 24",
+          "text": "(C) The landlord shall not require a tenant to pay for, or assert a claim against the tenant or the security for, professional carpet cleaning or other professional cleaning services, unless reasonably necessary to return the premises to the condition it w as in at the inception of tenancy, exclusive of ordinary wear and tear.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "63f229306e0ede18a655f6af1a93fc13469301922ff35c6ac1a5cedb3d667d52"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-025:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 25, excerpt 1",
+          "title": "Statutory paragraph group 25",
+          "text": "(f) (1) Within a reasonable time after notification of either party’s intention to terminate the tenancy, or before the end of the lease term, the landlord shall notify the tenant in writing of the tenant’s option to request an initial inspection and of the tenant’s right to be present at the inspection. At a reasonable time, but no earlier than two weeks before the termination or the end of lease date, the landlord, or an agent of the landlord, shall, upon the request of the tenant, make an initial inspect ion of the premises prior to any final inspection the landlord makes after the tenant has vacated the premises. The purpose of the initial inspection shall be to allow the tenant an opportunity to remedy identified deficiencies, in a manner consistent with the rights and obligations of the parties under the rental agreement, in order to avoid deductions from the security. If a tenant chooses not to request an initial",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "fe48e002d896dcc80272e7cf01169b6496c6042890139138b0436f3e848b9791"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-025:part-2",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 25, excerpt 2",
+          "title": "Statutory paragraph group 25",
+          "text": "inspection, the duties of the landlord under this subdivision are discharged. If an inspection is requested, the parties shall attempt to schedule the inspection at a mutually acceptable date and time. The landlord shall give at least 48 hours’ prior written notice of the date and time of the inspection if either a mutual time is agreed upon, or if a mutually agreed time cannot be scheduled but the tenant still wishes an inspection. The tenant and landlord may agree to forgo the 48- hour prior written notice by both signing a written waiver. The landlord shall proceed with the inspection whether the tenant is present or not, unless the tenant previously withdrew their request for the inspection. Written notice by the landlord shall contain, in substantially the same form, the following: “State law permits former tenants to reclaim abandoned personal property left at the former address of the tenant, subject to certain conditions.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "b4179788aa2619fe420a8bc9656ddbe1de75e0357b0b21cc1641b8318715f5d8"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-025:part-3",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 25, excerpt 3",
+          "title": "Statutory paragraph group 25",
+          "text": "You may or may not be able to reclaim property without incurring additional costs, depending on the cost of st oring the property and the length of time before it is reclaimed. In general, these costs will be lower the sooner you contact your former landlord after being notified that property belonging to you was left behind after you moved out.”",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "fd5aa9335b53fbe717390abfc74b94fdb936dfdf9114037a68728502502d7f23"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-026:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 26, excerpt 1",
+          "title": "Statutory paragraph group 26",
+          "text": "(2) Based on the inspection, the landlord shall give the tenant an itemized statement specifying repairs or cleanings that are proposed to be the basis of any deductions from the security the landlord intends to make pursuant to paragraphs (1) to (4), inclusive, of subdivision (b). This statement shall also include the texts of paragraphs (1) to (4), inclusiv e, of subdivision (b). The statement shall be given to the tenant, if the tenant is present for the inspection, or shall be left inside the premises.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "c81ce8efebd5a8ec5cec8e982846d2a308169951e77e2f4c1e25d0a1e6a6c74d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-027:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 27, excerpt 1",
+          "title": "Statutory paragraph group 27",
+          "text": "(3) The tenant shall have the opportunity during the period following the initial inspection until termination of the tenancy to remedy identified deficiencies, in a manner consistent with the rights and obligations of the parties under the rental agreement, in order to avoid deductions from the security.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "74a26ce15f2e75026e78fe668b3a8d52d017d4cca52d6b7a8352d4d230c6b5ee"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-028:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 28, excerpt 1",
+          "title": "Statutory paragraph group 28",
+          "text": "(4) Subject to paragraphs (5) and (6), if an initial inspection is conducted pursuant to this subdivision and, at the time of inspection, the premises do not contain tenant possessions that prevent the landlord from identifying repairs or cleanings due to the presence of those possessions, the landlord shall not use the security for deductions for repairs or cleanings that are not identified in the itemized statement described in paragraph (2).",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "4a16994a02bcdb0310b00b4b33378a3419a5378ef042e10f4d44ae292843f551"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-029:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 29, excerpt 1",
+          "title": "Statutory paragraph group 29",
+          "text": "(5) Nothing in this subdivision shall prevent a landlord from using the security for deductions itemized in the statement provided for in paragraph",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "7207bb86bc29a1604e7d18f8c640af07f2abffbfaadb29a91cec13035dc7519e"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-030:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 30, excerpt 1",
+          "title": "Statutory paragraph group 30",
+          "text": "(2) that were not cured by the tenant so long as the deductions are for damages authorized by this section.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "2939fcc01fe1ae9a4f9d547c5ee2c114e0c047a58aad3a52eebdb887fc0975b0"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-031:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 31, excerpt 1",
+          "title": "Statutory paragraph group 31",
+          "text": "(6) Nothing in this subdivision shall prevent a landlord from using the security for any purpose specified in paragraphs (1) to (4), inclusive, of subdivision (b) that occurs between completion of the initial inspection when possession of the unit is returned to the landlord or that was not identified during the initial inspection due to the presence of a tenant’s possessions.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "8ce7a98ba5940c85f3c195121de0e7270134d84cfb9e7365807fe97ed27fd8f7"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-032:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 32, excerpt 1",
+          "title": "Statutory paragraph group 32",
+          "text": "(7) The requirements of this subdivision do not apply when the tenancy is terminated pursuant to subdivision (2), (3), or (4) of Section 1161 of the Code of Civil Procedure.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "c39bf0d3cf9852af908a9baa050ce2e8ba246cc73acb28512ff64ff47e7c00f0"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-033:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–145, paragraph group 33, excerpt 1",
+          "title": "Statutory paragraph group 33",
+          "text": "(g) (1) For tenancies that begin on or after July 1, 2025, the landlord shall take photographs of the unit immediately before, or at the inception of, the tenancy.",
+          "page_numbers": [
+            145
+          ],
+          "content_hash": "ba58556a31cabd2717e6246254e3a22881dc86d43e61ea92858780cfa94097d6"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-034:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 145–146, paragraph group 34, excerpt 1",
+          "title": "Statutory paragraph group 34",
+          "text": "(2) Beginning April 1, 2025, the landlord shall take photographs of the unit within a reasonable time after the possession of the unit is returned to the landlord, but prior to any repairs or cleanings for which the landlord will make a deduction from or claim against the security deposit pursuant to this section, and shall also take photographs of the unit within a reasonable time after such repairs or cleanings are completed.",
+          "page_numbers": [
+            145,
+            146
+          ],
+          "content_hash": "0239f9db7727f70e299ab044b55ad76ea65d1193d7550470b1dba01f69087114"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-035:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 35, excerpt 1",
+          "title": "Statutory paragraph group 35",
+          "text": "(h) (1) No later than 21 calendar days after the tenant has vacated the premises, but not earlier than the time that either the landlord or the tenant provides a notice to terminate the tenancy under Section 1946 or 1946.1, Section 1161 of the Code of Civi l Procedure, or not earlier than 60 calendar days prior to the expiration of a fixed-term lease, the landlord shall furnish the tenant, a copy of an itemized statement indicating the basis for, and the amount of, any security received and the disposition of the security, and shall return any remaining portion of the security to the tenant as follows:",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "5abe5e3f6407bbc65fb4d41e84905a0dc3b82b8f37d74f427160e9815bcf219d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-036:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 36, excerpt 1",
+          "title": "Statutory paragraph group 36",
+          "text": "(A) (i) Subject to subparagraph (C), and except as provided by clause (ii), the landlord shall return the remainder of the security by personal delivery or by a check made payable to the tenant and mailed by first -class mail, postage prepaid.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "d58d752d295cf9c4a36594897379600283a506458edf04640044d3e2c055fef1"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-037:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 37, excerpt 1",
+          "title": "Statutory paragraph group 37",
+          "text": "(ii) (I) If the landlord received the security or rental payments from the tenant electronically, the landlord shall return the remainder of the security electronically to a bank account or other financial institution designated by the tenant in writing, o r by any electronic or virtual method available to the landlord if agreed to in writing by the tenant. Alternatively, the landlord and tenant may, by written agreement, designate another method of return, including, but not limited to, by personal delivery or by a check made payable to the tenant and mailed by first -class mail, postage prepaid, to an address provided by the tenant. Upon the termination of a landlord’s interest in the premises and the transfer of the security to the landlord’s successor in i nterest as provided in subdivision (i), the landlord’s successor in interest shall return the remainder of the security electronically to a bank account or other financial",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "f16b4e6a8b7ea7972fd812eed924d10219c3b07a0e7e117b75c15198f776eea7"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-037:part-2",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 37, excerpt 2",
+          "title": "Statutory paragraph group 37",
+          "text": "institution designated by the tenant in writing or by any electronic or virtual method available to the landlord’s successor in interest if agreed to in writing by the tenant only if the landlord’s successor in interest received rental payments electronically from the tenant.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "00e051b3dcace12b2dfb8583fb7fb05b4205af377c99e3df5e7f0006d86bf172"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-038:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 38, excerpt 1",
+          "title": "Statutory paragraph group 38",
+          "text": "(II) Pursuant to subclause (I), if the landlord received the security or rental payments from the tenant electronically or the landlord’s successor in interest received rental payments from the tenant electronically, the landlord or the landlord’s successor in interest shall, within a reasonable time after notification of either party’s intention to terminate the tenancy, or before the end of the lease term, notify the tenant in writing of the tenant’s right to receive the security electronically to a bank account or other financial institution designated by the tenant, or by any electronic or virtual method available to the landlord or the landlord’s successor in interest, if agreed to in writing by the tenant, pursuant to subclause (I). The requirements of this subclause do not apply when the landlord or the landlord’s successor in interest and tenant have previously entered into a written agreement designating another",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "a6398669caf72a124402c6728f925a02e007d4cd85755e9a9f1989bcbde0a57d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-038:part-2",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 38, excerpt 2",
+          "title": "Statutory paragraph group 38",
+          "text": "method of return of the security pursuant to subclause (I) or when the tenancy is terminated pursuant to subdivision (2), (3), or (4) of Section 1161 of the Code of Civil Procedure.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "aef2ba72c3556b8e985af7e2613b742920fb23b5c346057578c4007eaa15e373"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-039:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 39, excerpt 1",
+          "title": "Statutory paragraph group 39",
+          "text": "(B) (i) Subject to subparagraph (C), and except as provided by clause (ii), the landlord shall furnish the itemized statement by personal delivery or first -class mail, postage prepaid.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "9ab47ec5e5f5cfd0f414d817b6f385c5f3d3b391a1bcc5f43f8af83f7e7ddc5a"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-040:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 40, excerpt 1",
+          "title": "Statutory paragraph group 40",
+          "text": "(ii) Upon mutual agreement between the landlord and tenant entered into at the commencement of the tenancy or at any time during or after the tenancy, the itemized statement may be furnished by either of the following:",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "5d30e98c96333c04ea7f6cddc4875f3a3a217ca97d1edaa1cf402479a62821fe"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-041:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 41, excerpt 1",
+          "title": "Statutory paragraph group 41",
+          "text": "(I) Emailed to an account provided by the tenant.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "5d052ae9eccd4859d1967c40d3fe10b842177e5f5f8e62333c2c1e6104f0268f"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-042:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–146, paragraph group 42, excerpt 1",
+          "title": "Statutory paragraph group 42",
+          "text": "(II) Mailed to an address provided by the tenant by first -class mail, postage prepaid.",
+          "page_numbers": [
+            146
+          ],
+          "content_hash": "9d0e06b1308980c3ab95decc4aeb6d737db9f49fbd283fe1b947218744ff41a7"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-043:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 146–147, paragraph group 43, excerpt 1",
+          "title": "Statutory paragraph group 43",
+          "text": "(C) (i) Except as provided in clause (iii) and unless the landlord and all adult tenants residing in the unit enter into a written mutual agreement pursuant to clause (ii), if multiple adult tenants reside in the unit, the landlord shall return the remaind er of the security by a check made payable to all adult tenants on the rental or lease agreement at the time the tenancy terminates and furnish the itemized statement by personal delivery or first-class mail, postage prepaid, to any one of the adult tenants chosen by the landlord.",
+          "page_numbers": [
+            146,
+            147
+          ],
+          "content_hash": "b2249865befc791d3bb9ad60fba908db12cb55c6f4b6943e3f0a31a0cf71eb93"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-044:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 44, excerpt 1",
+          "title": "Statutory paragraph group 44",
+          "text": "(ii) If multiple adult tenants reside in the unit, the landlord may enter into a mutual written agreement between the landlord and all adult tenants, at the commencement of the tenancy or at any time during or after the tenancy, that specifies both of the following:",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "c2e88c94a8a83776e610756054c2a30c22287de27ccac3a35ac2abb72a45e978"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-045:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 45, excerpt 1",
+          "title": "Statutory paragraph group 45",
+          "text": "(I) How any remaining portion of the security will be returned, including whether it will be returned to a specific adult tenant or divided among multiple tenants, with the allocation percentages. If any remaining portion of the security is to be returned to multiple adult tenants, the landlord may return the security by either a check by first -class mail, postage prepaid, or an electronic deposit to a bank account or other financial institution designated by each adult tenant, as specified in the written agreement.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "e5841e53467f7c78567258c3eb5b230b9f4cf138fa35935f22c074c3d9cbb6a2"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-046:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 46, excerpt 1",
+          "title": "Statutory paragraph group 46",
+          "text": "(II) For each adult tenant, whether the landlord will furnish the itemized statement by email or first -class mail, postage prepaid, along with a forwarding address or email account.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "374f7a52817c82cbf6d0f1f68967476c28ae2aec2a0c44494fb8ca8e8e1be410"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-047:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 47, excerpt 1",
+          "title": "Statutory paragraph group 47",
+          "text": "(iii) If multiple adult tenants reside in a unit and a tenant terminates the lease pursuant to Section 1946.7 and no written mutual agreement was entered into by the landlord and all adult tenants pursuant to clause (ii), and the tenant who terminated the lease pursuant to Section 1946.7 requests that the security be disbursed in a manner other than by check made payable to all adult tenants, the landlord may return the security in a manner other than by check made payable to all adult tenants.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "031e4c87ab959aba09553e6fd02a8f42638a684757c29b67f18cf0037f08f38f"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-048:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 48, excerpt 1",
+          "title": "Statutory paragraph group 48",
+          "text": "(2) The landlord shall also include, along with and at the same time the itemized statement is sent, copies of documents showing charges incurred and deducted by the landlord to repair or clean the premises, as follows:",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "7160537988b3b796e2e27c53acaff742f8f2fb092e5e767154402e73237721f1"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-049:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 49, excerpt 1",
+          "title": "Statutory paragraph group 49",
+          "text": "(A) If the landlord or landlord’s employee did the work, the itemized statement shall reasonably describe the work performed. The itemized statement shall include the time spent and the reasonable hourly rate charged.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "d1c555b13763ff354f460b38a1bdc41d6e5eab0ea5161bcc2c70bbb67c6389a6"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-050:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 50, excerpt 1",
+          "title": "Statutory paragraph group 50",
+          "text": "(B) If the landlord or landlord’s employee did not do the work, the landlord shall provide the tenant a copy of the bill, invoice, or receipt supplied by the person or entity performing the work. The itemized statement shall provide the tenant with the name, address, and telephone number of the person or entity, if the bill, invoice, or receipt does not include that information.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "bb2968d0d2458d29782efe5e67306a4af1cd499c1fefd33c776f4dfb42ae31c5"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-051:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 51, excerpt 1",
+          "title": "Statutory paragraph group 51",
+          "text": "(C) If a deduction is made for materials or supplies, the landlord shall provide a copy of the bill, invoice, or receipt. If a particular material or supply item is purchased by the landlord on an ongoing basis, the landlord may document the cost of the item by providing a copy of a bill, invoice, receipt, vendor price list, or other vendor document that reasonably documents the cost of the item used in the repair or cleaning of the unit.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "a4958484737cd2cf2140281c90c8f41c7cf5e1c50a5620ff42a99713538fde12"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-052:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 52, excerpt 1",
+          "title": "Statutory paragraph group 52",
+          "text": "(D) If a deduction is made for repairs or cleanings allowed by this section, the landlord shall provide photographs taken pursuant to subdivision (g), along with a written explanation of the cost of the allowable repairs or cleanings, as described in subparagraphs (A) to (C), inclusive. The landlord may provide such photographs to the tenant by mail, email, computer flash drive, or by providing a link where the tenant may view the photographs online.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "7dd8af69c30d736d2166976b03984c94f4773bcd178060dc5dcd37dc46af61b8"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-053:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 53, excerpt 1",
+          "title": "Statutory paragraph group 53",
+          "text": "(3) If a repair to be done by the landlord or the landlord’s employee cannot reasonably be completed within 21 calendar days after the tenant has vacated the premises, or if the documents from a person or entity providing services, materials, or supplies are not in the landlord’s possession within 21 calendar days after the tenant has vacated the premises, the landlord may deduct the amount of a good faith estimate of the charges that will be incurred and provide that estimate with the itemized statement. If the reason for the estimate is because the documents from a person or entity providing services, materials, or supplies are not in the landlord’s possession, the itemized statement shall include the name, address, and telephone number of the person or entity. Within 14 calendar days of completing the repair or receiving the documentation, the landlord shall complete the requirements in paragraphs (1) and (2) in the manner",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "e4abe6753758145820f917b23f09da125c5dc12a4b707929b5d67eb5fedc7eed"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-053:part-2",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 53, excerpt 2",
+          "title": "Statutory paragraph group 53",
+          "text": "specified.",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "1fa234ecd8e3aab9d4396ad4d89ed1a3b6d9e03cc32b03b7147fa5fc7d6c7186"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-054:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 54, excerpt 1",
+          "title": "Statutory paragraph group 54",
+          "text": "(4) The landlord need not comply with paragraph",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "4436ebb3a784dc4fcb4451f194482c9780e4a918c3e1d766356a9db513b956f0"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-055:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 147–147, paragraph group 55, excerpt 1",
+          "title": "Statutory paragraph group 55",
+          "text": "(2) or (3) if either of the following applies:",
+          "page_numbers": [
+            147
+          ],
+          "content_hash": "2cdba886a72c76eb75d8df6473c04e7435e9323190a45b33e6e2e06e5777bf62"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-056:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 56, excerpt 1",
+          "title": "Statutory paragraph group 56",
+          "text": "(A) The deductions for repairs and cleaning together do not exceed one hundred twenty-five dollars ($125).",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "97853235a62ecbebb2fb708540013dbc1ed4c6771ac6d08391175152c86d5c2d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-057:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 57, excerpt 1",
+          "title": "Statutory paragraph group 57",
+          "text": "(B) The tenant waived the rights specified in paragraphs (2) and (3). The waiver shall only be effective if it is signed by the tenant at the same time or after a notice to terminate a tenancy under Section 1946 or 1946.1 has been given, a notice under Section 1161 of the Code of Civil Procedure has been given, or no earlier than 60 calendar days prior to the expiration of a fixed -term lease. The waiver shall substantially include the text of paragraph (2).",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "fadc6dd394b6b5ddd6614165e53cb186e0e44e7f575ffa11115119a02bb98c9e"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-058:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 58, excerpt 1",
+          "title": "Statutory paragraph group 58",
+          "text": "(5) Notwithstanding paragraph (4), the landlord shall comply with paragraphs (2) and (3) when a tenant makes a request for documentation within 14 calendar days after receiving the itemized statement specified in paragraph (1). The landlord shall comply within 14 calendar days after receiving the request from the tenant.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "0edee3a54fc6f49e67e57db51874b6da90371cbfae2aa58d38f1dd69c40f2980"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-059:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 59, excerpt 1",
+          "title": "Statutory paragraph group 59",
+          "text": "(6) Any mailings to the tenant pursuant to this subdivision shall be sent to the address provided by the tenant. If the tenant does not provide an address, mailings pursuant to this subdivision shall be sent to the unit that has been vacated.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "3a416fe8743eeb5847e153ed26c7eef7cb2bcc8f3c66e87213fd84821015c99a"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-060:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 60, excerpt 1",
+          "title": "Statutory paragraph group 60",
+          "text": "(7) The landlord shall not be entitled to claim any amount of the security if the landlord, in bad faith, fails to comply with this subdivision.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "ce37893fda7a3a9c75335006984725c69af098368fc6280578278aedea76a065"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-061:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 61, excerpt 1",
+          "title": "Statutory paragraph group 61",
+          "text": "(i) Upon termination of the landlord’s interest in the premises, whether by sale, assignment, death, appointment of receiver, or otherwise, the landlord or the landlord’s agent shall, within a reasonable time, do one of the following acts, either of which shall relieve the landlord of further liability with respect to the security held:",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "f7c1a68aae78bafb006f44e223459ea7a239ee64935c833fe0587d4353b0a930"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-062:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 62, excerpt 1",
+          "title": "Statutory paragraph group 62",
+          "text": "(1) Transfer the portion of the security remaining after any lawful deductions are made under subdivision (e) to the landlord’s successor in interest. The landlord shall thereafter notify the tenant by personal delivery or by first-class mail, postage prepaid, of the transfer, of any claims made against the security, of the amount of the security deposited, and of the names of the successors in interest, their addresses, and their telephone numbers. If the notice to the tenant is made by personal delivery, the tenant shall acknowledge receipt of the notice and sign their name on the landlord’s copy of the notice.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "aaa52cb964891c9ccf4ce8febf114e5b6dfa1496a3481f3783e225d89e9e460b"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-063:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 63, excerpt 1",
+          "title": "Statutory paragraph group 63",
+          "text": "(2) Return the portion of the security remaining after any lawful deductions are made under subdivision (e) to the tenant, together with an accounting as provided in subdivision (h).",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "d15a02abf6cb6127488a94df11f6f9cded26584cd23617b67064a4b2f163915a"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-064:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 64, excerpt 1",
+          "title": "Statutory paragraph group 64",
+          "text": "(j) Prior to the voluntary transfer of a landlord’s interest in the premises, the landlord shall deliver to the landlord’s successor in interest a written statement indicating the following:",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "04fc3788701f97a9e24f86cda58d51ff0adc73357adde41f013d25e48a388fd4"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-065:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 65, excerpt 1",
+          "title": "Statutory paragraph group 65",
+          "text": "(1) The security remaining after any lawful deductions are made.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "c9368de8b6d90343d1143e76c7213d487beea8e2420a9af73c1d83cccb2d5937"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-066:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 66, excerpt 1",
+          "title": "Statutory paragraph group 66",
+          "text": "(2) An itemization of any lawful deductions from any security received.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "75e35ec27d39ff30aed8bcc33600d37f1d202c26fa512a7a226899e43f03c475"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-067:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 67, excerpt 1",
+          "title": "Statutory paragraph group 67",
+          "text": "(3) Their election under paragraph (1) or (2) of subdivision (i). This subdivision does not affect the validity of title to the real property transferred in violation of this subdivision.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "3610c980954031190a35ce49618dae9862a0e3b956044e398fbf39cf4b7ee060"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-068:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 68, excerpt 1",
+          "title": "Statutory paragraph group 68",
+          "text": "(k) (1) In the event of noncompliance with subdivision",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "72ec83c78dea9fe47d8397a2d997c910763397cc57abac0361c8c88d791f25ab"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-069:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 69, excerpt 1",
+          "title": "Statutory paragraph group 69",
+          "text": "(i), the landlord’s successors in interest shall be jointly and severally liable with the landlord for repayment of the security, or that portion thereof to which the tenant is entitled, when and as pr ovided in subdivisions (e) and (h). A successor in interest of a landlord may not require the tenant to post any security to replace that amount not transferred to the tenant or successors in interest as provided in subdivision (i), unless and until the successor in interest first makes restitution of the initial security as provided in paragraph (2) of subdivision (i) or provides the tenant with an accounting as provided in subdivision (h).",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "ba59bb291f4d1c109d2dd309ee1e7364764d7eb3acfe779c4f304043e0a82adb"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-070:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 70, excerpt 1",
+          "title": "Statutory paragraph group 70",
+          "text": "(2) This subdivision does not preclude a successor in interest from recovering from the tenant compensatory damages that are in excess of the security received from the landlord previously paid by the tenant to the landlord.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "20e82b3212dc110d10b2b4070aa268e1e141d2405dccc7d3e0e6f4135e877100"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-071:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 71, excerpt 1",
+          "title": "Statutory paragraph group 71",
+          "text": "(3) Notwithstanding this subdivision, if, upon inquiry and reasonable investigation, a landlord’s successor in interest has a good faith belief that the lawfully remaining security deposit is transferred to the successor in interest or returned to the tenant pursuant to subdivision (i), the successor in interest is not liable for damages as provided in subdivision",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "3155c7721dc53db9e9346395140eb1bac79bce2b05e590ae2e0c9408c0faece7"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-072:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 72, excerpt 1",
+          "title": "Statutory paragraph group 72",
+          "text": "(m), or any security not transferred pursuant to subdivision (i).",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "b39e2c143b60a2f0c07d24442145310f6de977a4915f38b7bcd47c5128bcaec7"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-073:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–148, paragraph group 73, excerpt 1",
+          "title": "Statutory paragraph group 73",
+          "text": "(l) Upon receipt of any portion of the security under paragraph (1) of subdivision (i), the landlord’s successors in interest shall have all of the rights and obligations of a landlord holding the security with respect to the security.",
+          "page_numbers": [
+            148
+          ],
+          "content_hash": "1868d1ab5a3c4748e96030def47272b2004cb623db197bb0e35cede86354531d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-074:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 148–149, paragraph group 74, excerpt 1",
+          "title": "Statutory paragraph group 74",
+          "text": "(m) The bad faith claim or retention by a landlord or the landlord’s successors in interest of the security or any portion thereof in violation of this section, or the bad faith demand of replacement of security in violation of subdivision (k), may subject the landlord or the landlord’s successors in interest to statutory damages of up to twice the amount of the security, in addition to actual damages. The court may award damages for bad faith whenever the facts warrant that award, regardless of whether the injured party has specifically requested relief. In an action under this section, the landlord or the landlord’s successors in interest shall have the burden of proof as to the reasonableness of the amounts claimed or the authority pursuant to this section to demand additional security deposits.",
+          "page_numbers": [
+            148,
+            149
+          ],
+          "content_hash": "0ac83fee696326d6c9411467c007599098dee3749fa6bd271dbdc942ee61b782"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-075:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 149–149, paragraph group 75, excerpt 1",
+          "title": "Statutory paragraph group 75",
+          "text": "(n) A lease or rental agreement shall not contain a provision characterizing any security as “nonrefundable.”",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "f158b240ac463b78d055a5a7536e822396c394c7b80b7047b8dabc2ffe86aabe"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-076:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 149–149, paragraph group 76, excerpt 1",
+          "title": "Statutory paragraph group 76",
+          "text": "(o) An action under this section may be maintained in small claims court if the damages claimed, whether actual, statutory, or both, are within the jurisdictional amount allowed by Section 116.220 or 116.221 of the Code of Civil Procedure.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "5dc2349c5d0506c709d83afb1eaca7a0f8346697ae9ab70feb52f837d5a4dfee"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-077:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 149–149, paragraph group 77, excerpt 1",
+          "title": "Statutory paragraph group 77",
+          "text": "(p) Proof of the existence of and the amount of a security deposit may be established by any credible evidence, including, but not limited to, a canceled check, a receipt, a lease indicating the requirement of a deposit as well as the amount, prior consist ent statements or actions of the landlord or tenant, or a statement under penalty of perjury that satisfies the credibility requirements set forth in Section 780 of the Evidence Code.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "d40128619cc994a8b91c98913edac2b8e98047ffd2cb981c8ab8856f7135bbe5"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-078:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 149–149, paragraph group 78, excerpt 1",
+          "title": "Statutory paragraph group 78",
+          "text": "(q) The amendments to this section made during the 1985 portion of the 1985– 86 Regular Session of the Legislature that are set forth in subdivision (e) are declaratory of existing law.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "9125da94a1bd7004e8fdf984167418b8f4659d6cfcb636f16f5919c6a6a1dd7d"
+        },
+        {
+          "passage_id": "ca-civ-1950-5:dre-2026-d35baad41098:group-079:part-1",
+          "locator": "Civil Code § 1950.5, PDF pp. 149–149, paragraph group 79, excerpt 1",
+          "title": "Statutory paragraph group 79",
+          "text": "(r) The amendments to this section made during the 2003 portion of the 2003– 04 Regular Session of the Legislature that are set forth in paragraph (1) of subdivision (f) are declaratory of existing law.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "dddffeb14908ef5ace78c3798ee5b8823e92a6f5cea3f113cd5cce03a9152642"
+        }
+      ],
+      "source_pdf_sha256": "f68f64e547b1836572a39721c060df9cf9cadf02362107bff514ecb75784b5d2",
+      "source_pdf_pages": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149
+      ],
+      "parser": "pypdf 6.21.4",
+      "normalization": "PDF line whitespace normalized; running headers/following editorial titles removed. Chunk boundaries are not new legal subdivisions."
+    },
+    {
+      "source_id": "ca-civ-1950-6",
+      "title": "California Civil Code § 1950.6 — Residential application screening fees",
+      "publisher": "California Legislature; official compilation by California Department of Real Estate",
+      "url": "https://www.dre.ca.gov/files/pdf/relaw/excerpts.pdf",
+      "edition_url": "https://www.dre.ca.gov/Publications/RealEstateLaw.html",
+      "related_authority_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.6.",
+      "source_type": "statute",
+      "jurisdiction": "US-CA",
+      "scope": "public",
+      "version": "dre-2026-ca61b0949edd",
+      "content_hash": "ca61b0949edddb7ba275dae0902adb8f7fcc1366defe33fa7a26c0c03251457a",
+      "captured_at": "2026-11-03T20:15:16.375733+00:00",
+      "publication_as_of": "2026-01-01",
+      "effective_from": null,
+      "effective_to": null,
+      "applicability_status": "Not independently validated; edition date is not an effective-date interval",
+      "rights_basis": "Selected statutory government-edict text only (U.S. Copyright Office Compendium 313.6(C)(2)); DRE Conditions of Use Ownership distinguishes public-domain text from protected artwork/marks. No commentary, artwork or seals redistributed.",
+      "file": "snapshots/ca-civ-1950-6.txt",
+      "sections": [
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-001:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 1, excerpt 1",
+          "title": "Statutory paragraph group 1",
+          "text": "1950.6. (a) Notwithstanding Section 1950.5, when a landlord or their agent receives a request to rent a residential property from an applicant, the landlord or their agent may charge, pursuant to subdivision (c), that applicant an application screening fee to cover the costs of obtaining information about the applicant. The information requested and obtained by the landlord or their agent may include, but is not limited to, personal reference checks and consumer credit reports produced by consumer credit re porting agencies as defined in Section 1785.3. A landlord or their agent may, but is not required to, accept and rely upon a consumer credit report presented by an applicant.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "dbe1d1b2efaf6bd305257d2f0814c70eeda63f9bcec1ebd6af9a8de6a7482949"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-002:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 2, excerpt 1",
+          "title": "Statutory paragraph group 2",
+          "text": "(b) The amount of the application screening fee shall not be greater than the actual out -of-pocket costs of gathering information concerning the applicant, including, but not limited to, the cost of using a tenant screening service or a consumer credit reporting service, and the reasonable value of time spent by the landlord or their agent in obtaining information on the applicant. In no case shall the amount of the application screening fee charged by the landlord or their agent be greater than thirty dollars ($30) per applicant. The thirty dollar ($30) application screening fee may be adjusted annually by the landlord or their agent commensurate with an increase in the Consumer Price Index, beginning on January 1, 1998.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "cab81cd94b4a02f3e6a8a522063cacf682fa881efeb54f135d76d0f87d8c8db0"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-003:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 3, excerpt 1",
+          "title": "Statutory paragraph group 3",
+          "text": "(c) (1) A landlord or their agent shall not charge an applicant an application screening fee when they know or should have known that no rental unit is available at that time or will be available within a reasonable period of time.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "1b44c127055546aee58d3a6a6f34390102f08936659583763387772c7015e8db"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-004:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 4, excerpt 1",
+          "title": "Statutory paragraph group 4",
+          "text": "(2) A landlord or their agent may charge an applicant an application screening fee only if the landlord or their agent, at the time the application screening fee is collected, offers any of the following:",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "7327098541b2992e13270ebccc68efa548fb224bfa61ff3f7e47f1db390baf7e"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-005:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 5, excerpt 1",
+          "title": "Statutory paragraph group 5",
+          "text": "(A) An application screening process that complies with all of the following:",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "a911f66832ac2620f84e6bcaee70a7a59f98b8a23a68b566e61a2b46eca62854"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-006:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 6, excerpt 1",
+          "title": "Statutory paragraph group 6",
+          "text": "(i) Completed applications are considered, as provided for in the landlord’s established screening criteria, in the order in which the completed applications were received. The landlord’s screening criteria shall be provided to the applicant in writing together with the application form.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "a35dc27a20ccb468ad13538551243027808e8ed06c721b52f9c37088b8e6000f"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-007:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 7, excerpt 1",
+          "title": "Statutory paragraph group 7",
+          "text": "(ii) The first applicant who meets the landlord’s established screening criteria is approved for tenancy.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "26ed25c826d0e68f49f9ed9d7e022ca57ec8f023d84dbe612d1511df7a19d610"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-008:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–149, paragraph group 8, excerpt 1",
+          "title": "Statutory paragraph group 8",
+          "text": "(iii) Applicants are not charged an application screening fee unless or until their application is actually considered.",
+          "page_numbers": [
+            149
+          ],
+          "content_hash": "31eee1c6d7459a14044ca6166d8f1a76c82f059159ba2abeb47decf4cc7e043f"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-009:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 149–150, paragraph group 9, excerpt 1",
+          "title": "Statutory paragraph group 9",
+          "text": "(iv) Clause (iii) shall not be considered violated if a landlord or their agent inadvertently collects an application screening fee from an applicant as the result of multiple concurrent application submissions, provided that the landlord or their agent is sues a refund of the application screening fee within seven days to any applicant whose application is not considered. The landlord may offer, as an alternative to refunding the screening fee, the option, at the applicant’s discretion, for the screening fee paid by the applicant to be applied to an application for another rental unit offered by the landlord. A landlord or their agent shall not be required to refund an application screening fee to an applicant whose application is denied, after consideration, because the applicant does not meet the landlord’s established screening criteria.",
+          "page_numbers": [
+            149,
+            150
+          ],
+          "content_hash": "36324ca6199095f66a15b1b031d9e915cf2a2f4f7e66fe00914ac410f4c68327"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-010:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 10, excerpt 1",
+          "title": "Statutory paragraph group 10",
+          "text": "(B) An application screening process in which the landlord or their agent returns the entire screening fee to any applicant who is not selected for tenancy, regardless of the reason, within 7 days of selecting an applicant for tenancy or 30 days of when the application was submitted, whichever occurs first.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "b28ec257eb5b0c6be391df962a3d933e30f8472d02341ce61930b11f0ae23de8"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-011:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 11, excerpt 1",
+          "title": "Statutory paragraph group 11",
+          "text": "(d) The landlord or their agent shall provide, personally, or by mail, the applicant with a receipt for the fee paid by the applicant, which receipt shall itemize the out-of- pocket expenses and time spent by the landlord or their agent to obtain and process the information about the applicant. The landlord or their agent and the applicant may agree to have the landlord provide a copy of the receipt for the fee paid by the applicant to an email account provided by the applicant.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "20b7a8910f328e9fccf511ddd45ae4a5dca54445f097cda00dfde1ba623ed285"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-012:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 12, excerpt 1",
+          "title": "Statutory paragraph group 12",
+          "text": "(e) If the landlord or their agent does not perform a personal reference check or does not obtain a consumer credit report, the landlord or their agent shall return any amount of the screening fee that is not used for the purposes authorized by this section to the applicant.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "b0c87807621f2c21cc5b930675a3c1dfe9eb8cec3de46c820322aa03f7abd66c"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-013:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 13, excerpt 1",
+          "title": "Statutory paragraph group 13",
+          "text": "(f) If an application screening fee has been paid by the applicant, the landlord or their agent shall provide a copy of the consumer credit report to the applicant who is the subject of that report by personal delivery, mail, or email within seven days of the landlord or their agent receiving the report.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "04e6977d4eb2fb0c851424d6999c0e3811c3cbd804392edd7f73052d83f75b33"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-014:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 14, excerpt 1",
+          "title": "Statutory paragraph group 14",
+          "text": "(g) Nothing in this section prevents a landlord from accepting a reusable screening report pursuant to Section 1950.1.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "497b60c4732fe23433331609c2022459cc62e265733413211d1184163775da45"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-015:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 15, excerpt 1",
+          "title": "Statutory paragraph group 15",
+          "text": "(h) As used in this section, “landlord” means an owner of residential rental property.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "0ac10bcbed76b6239e2b72c15dcf7b8f926313699f6c228109a38a2fec11a6b8"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-016:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 16, excerpt 1",
+          "title": "Statutory paragraph group 16",
+          "text": "(i) As used in this section, “application screening fee” means any nonrefundable payment of money charged by a landlord or their agent to an applicant, the purpose of which is to purchase a consumer credit report and to validate, review, or otherwise process an application for the rent or lease of residential rental property.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "2c9d4eef75d40decdb8ef0b009aeaefc8521e90e8fbdf3397dc2a7c37b8b7d4d"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-017:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 17, excerpt 1",
+          "title": "Statutory paragraph group 17",
+          "text": "(j) As used in this section, “applicant” means any entity or individual who makes a request to a landlord or their agent to rent a residential housing unit, or an entity or individual who agrees to act as a guarantor or cosignor on a rental agreement.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "89507d30cef7607db75b63a58ad81eb901d64bbfff46ad633a7f330f7e2ebed8"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-018:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 18, excerpt 1",
+          "title": "Statutory paragraph group 18",
+          "text": "(k) The application screening fee shall not be considered an “advance fee” as that term is used in Section 10026 of the Business and Professions Code, and shall not be considered “security” as that term is used in Section 1950.5.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "c8349f6b00b71d4ef32723cb3576505d681288fa1083a98a9540f76b8fe22f1b"
+        },
+        {
+          "passage_id": "ca-civ-1950-6:dre-2026-ca61b0949edd:group-019:part-1",
+          "locator": "Civil Code § 1950.6, PDF pp. 150–150, paragraph group 19, excerpt 1",
+          "title": "Statutory paragraph group 19",
+          "text": "(l) This section is not intended to preempt any provisions or regulations that govern the collection of deposits and fees under federal or state housing assistance programs.",
+          "page_numbers": [
+            150
+          ],
+          "content_hash": "3408cac6338dada515fd8b2ff7cd2193415b74fe174274815af0f4be62284da7"
+        }
+      ],
+      "source_pdf_sha256": "f68f64e547b1836572a39721c060df9cf9cadf02362107bff514ecb75784b5d2",
+      "source_pdf_pages": [
+        149,
+        150
+      ],
+      "parser": "pypdf 6.21.4",
+      "normalization": "PDF line whitespace normalized; running headers/following editorial titles removed. Chunk boundaries are not new legal subdivisions."
+    },
+    {
+      "source_id": "ca-civ-1942-5",
+      "title": "California Civil Code § 1942.5 — Retaliatory conduct in residential tenancies",
+      "publisher": "California Legislature; official compilation by California Department of Real Estate",
+      "url": "https://www.dre.ca.gov/files/pdf/relaw/excerpts.pdf",
+      "edition_url": "https://www.dre.ca.gov/Publications/RealEstateLaw.html",
+      "related_authority_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1942.5.",
+      "source_type": "statute",
+      "jurisdiction": "US-CA",
+      "scope": "public",
+      "version": "dre-2026-f4090317a4ec",
+      "content_hash": "f4090317a4ec14f68fcdd115f8b523c965e9a74305233b331981a7f8e15511a3",
+      "captured_at": "2026-11-03T20:15:16.375733+00:00",
+      "publication_as_of": "2026-01-01",
+      "effective_from": null,
+      "effective_to": null,
+      "applicability_status": "Not independently validated; edition date is not an effective-date interval",
+      "rights_basis": "Selected statutory government-edict text only (U.S. Copyright Office Compendium 313.6(C)(2)); DRE Conditions of Use Ownership distinguishes public-domain text from protected artwork/marks. No commentary, artwork or seals redistributed.",
+      "file": "snapshots/ca-civ-1942-5.txt",
+      "sections": [
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-001:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 1, excerpt 1",
+          "title": "Statutory paragraph group 1",
+          "text": "1942.5. (a) If the lessor retaliates against the lessee because of the exercise by the lessee of the lessee’s rights under this chapter or because of the lessee’s complaint to an appropriate agency as to tenantability of a dwelling, and if the lessee of a dwellin g is not in default as to the payment of rent, the lessor may not recover possession of a dwelling in any action or proceeding, cause the lessee to quit involuntarily, increase the rent, or decrease any services within 180 days of any of the following:",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "dadc0f5be31629529ec985be9cf9f44db76298e8aa4110bbf3c0344a11240266"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-002:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 2, excerpt 1",
+          "title": "Statutory paragraph group 2",
+          "text": "(1) After the date upon which the lessee, in good faith, has given notice pursuant to Section 1942, has provided notice of a suspected bed bug infestation, or has made an oral complaint to the lessor regarding tenantability.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "525f00ad0d1e3507ef0ec18e579d9de2920cb3e227c62bf91dc00799f43426f1"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-003:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 3, excerpt 1",
+          "title": "Statutory paragraph group 3",
+          "text": "(2) After the date upon which the lessee, in good faith, has filed a written complaint, or an oral complaint which is registered or otherwise recorded in writing, with an appropriate agency, of which the lessor has notice, for the purpose of obtaining corr ection of a condition relating to tenantability.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "e9fea9971291247836c57877a802bf4bf03c8cc4c5c989365f4a1a035b7ca948"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-004:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 4, excerpt 1",
+          "title": "Statutory paragraph group 4",
+          "text": "(3) After the date of an inspection or issuance of a citation, resulting from a complaint described in paragraph (2) of which the lessor did not have notice.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "9b6b210a4846f943028ee7e84df9ad3fc038359b07f9c6b6629fadb0240b856b"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-005:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 5, excerpt 1",
+          "title": "Statutory paragraph group 5",
+          "text": "(4) After the filing of appropriate documents commencing a judicial or arbitration proceeding involving the issue of tenantability.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "61779a80e807b49cfe74ebaa583fa6cd25aca8985c517497d24e8b33ddb06570"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-006:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 6, excerpt 1",
+          "title": "Statutory paragraph group 6",
+          "text": "(5) After entry of judgment or the signing of an arbitration award, if any, when in the judicial proceeding or arbitration the issue of tenantability is determined adversely to the lessor. In each instance, the 180-day period shall run from the latest applicable date referred to in paragraphs (1) to (5), inclusive.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "6dc1ad2fc61c16f905d2c3e6ec33068d5afb9e84ba69a90e259414ec523ec9b5"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-007:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 7, excerpt 1",
+          "title": "Statutory paragraph group 7",
+          "text": "(b) A lessee may not invoke subdivision (a) more than once in any 12-month period.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "eded5a48f266c4c92186b6f337fe9f80b4265d28497b501d2c665a16dc24d4d9"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-008:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 8, excerpt 1",
+          "title": "Statutory paragraph group 8",
+          "text": "(c) To report, or to threaten to report, the lessee or individuals known to the landlord to be associated with the lessee to immigration authorities is a form of retaliatory conduct prohibited under subdivision (a). This subdivision shall in no way limit t he definition of retaliatory conduct prohibited under this section.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "597fae1b5122a3960809a747763e712bb2702bc83d229178f61dc472fe0d5677"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-009:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 9, excerpt 1",
+          "title": "Statutory paragraph group 9",
+          "text": "(d) Notwithstanding subdivision (a), it is unlawful for a lessor to increase rent, decrease services, cause a lessee to quit involuntarily, bring an action to recover possession, or threaten to do any of those acts, for the purpose of retaliating against t he lessee because the lessee has lawfully organized or participated in a lessees’ association or an organization advocating lessees’ rights or has lawfully and peaceably exercised any rights under the law. In an action brought by or against the lessee pursuant to this subdivision, the lessee shall bear the burden of producing evidence that the lessor’s conduct was, in fact, retaliatory.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "1a1a1a9714f8e4984f9d7b0659b7a0148d16722bc25bfd4485f61a1ec03d903b"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-010:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–128, paragraph group 10, excerpt 1",
+          "title": "Statutory paragraph group 10",
+          "text": "(e) To report, or to threaten to report, the lessee or individuals known to the landlord to be associated with the lessee to immigration authorities is a form of retaliatory conduct prohibited under subdivision (d). This subdivision shall in no way limit t he definition of retaliatory conduct prohibited under this section.",
+          "page_numbers": [
+            128
+          ],
+          "content_hash": "3a83b40d5a8222677f0f99b2447f3867e33aa52deb85cf4c34785d60444e862f"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-011:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 128–129, paragraph group 11, excerpt 1",
+          "title": "Statutory paragraph group 11",
+          "text": "(f) This section does not limit in any way the exercise by the lessor of the lessor’s rights under any lease or agreement or any law pertaining to the hiring of property or the lessor’s right to do any of the acts described in subdivision (a) or (d) for any lawful cause. Any waiver by a lessee of the lessee’s rights under this section is void as contrary to public policy.",
+          "page_numbers": [
+            128,
+            129
+          ],
+          "content_hash": "cb2c12dbaf28bc3c1cdd2c03f19961ee2eb70398fff32a7a8df2e8c1f5c6954f"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-012:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 12, excerpt 1",
+          "title": "Statutory paragraph group 12",
+          "text": "(g) Notwithstanding subdivisions (a) to (f), inclusive, a lessor may recover possession of a dwelling and do any of the other acts described in subdivision (a) within the period or periods prescribed therein, or within subdivision (d), if the notice of termination, rent increase, or other act, and any pleading or statement of issues in an arbitration, if any, states the ground upon which the lessor, in good faith, seeks to recover possession, increase rent, or do any of the other acts described in subdivisi on (a) or (d). If the statement is controverted, the lessor shall establish its truth at the trial or other hearing.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "2671c7c9a725058d39c36ff451b1e1fc912b207852330058bc77a2a89cce767b"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-013:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 13, excerpt 1",
+          "title": "Statutory paragraph group 13",
+          "text": "(h) Any lessor or agent of a lessor who violates this section shall be liable to the lessee in a civil action for all of the following:",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "a69e7278d8e7cce33e5a551ce93131fa15d78220449a68a42baf2b319338a413"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-014:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 14, excerpt 1",
+          "title": "Statutory paragraph group 14",
+          "text": "(1) The actual damages sustained by the lessee.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "cbb210c7a0605007ef8bea8873e4915d45d87b218b67c3a5149e18ced2e4bf02"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-015:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 15, excerpt 1",
+          "title": "Statutory paragraph group 15",
+          "text": "(2) Punitive damages in an amount of not less than one hundred dollars ($100) nor more than two thousand dollars ($2,000) for each retaliatory act where the lessor or agent has been guilty of fraud, oppression, or malice with respect to that act.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "7d9131e452abd76339e97d012658217c5d2e43b07bafb4cd23cb7d0321821ded"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-016:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 16, excerpt 1",
+          "title": "Statutory paragraph group 16",
+          "text": "(i) In any action brought for damages for retaliatory eviction, the court shall award reasonable attorney’s fees to the prevailing party if either party requests attorney’s fees upon the initiation of the action.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "79cb2b972a828d4a5b5d8314c43421dfc7f11a4858448c05f221f55676996c3d"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-017:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 17, excerpt 1",
+          "title": "Statutory paragraph group 17",
+          "text": "(j) The remedies provided by this section shall be in addition to any other remedies provided by statutory or decisional law.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "63b0b2906e840631906f59a4e57e9eb2983d019d26744dc1d5d26c39cf669856"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-018:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 18, excerpt 1",
+          "title": "Statutory paragraph group 18",
+          "text": "(k) A lessor does not violate subdivision (c) or (e) by complying with any legal obligation under any federal government program that provides for rent limitations or rental assistance to a qualified tenant.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "05d6909d6365bc90647732d83c29888ee3adf99cbd0c79e1af71e67688d446d8"
+        },
+        {
+          "passage_id": "ca-civ-1942-5:dre-2026-f4090317a4ec:group-019:part-1",
+          "locator": "Civil Code § 1942.5, PDF pp. 129–129, paragraph group 19, excerpt 1",
+          "title": "Statutory paragraph group 19",
+          "text": "(l) This section shall become operative on October 1, 2021.",
+          "page_numbers": [
+            129
+          ],
+          "content_hash": "8e6870564b627505d6582bfbc521b84d601201370e73babe36bc81601252d5e5"
+        }
+      ],
+      "source_pdf_sha256": "f68f64e547b1836572a39721c060df9cf9cadf02362107bff514ecb75784b5d2",
+      "source_pdf_pages": [
+        128,
+        129
+      ],
+      "parser": "pypdf 6.21.4",
+      "normalization": "PDF line whitespace normalized; running headers/following editorial titles removed. Chunk boundaries are not new legal subdivisions."
+    }
+  ],
+  "limitations": [
+    "Selected sections only, not comprehensive/current coverage.",
+    "Publication date does not establish applicability.",
+    "Legislature section URLs returned 403; actual source is the official DRE compilation.",
+    "No professional legal review or case-specific determination."
+  ]
+}

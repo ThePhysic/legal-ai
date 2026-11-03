@@ -12,6 +12,7 @@ htmlcov/
 !.env.example
 .local/
 runtime/
+.runtime/
 node_modules/
 .next/
 out/
