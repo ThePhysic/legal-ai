@@ -4,7 +4,9 @@ import os
 import httpx
 
 base = os.environ.get("LEGAL_AI_BASE_URL", "http://127.0.0.1:8000")
-with httpx.Client(base_url=base, timeout=30) as client:
+browser_origin = os.environ.get("LEGAL_AI_BROWSER_ORIGIN")
+headers = {"Origin": browser_origin} if browser_origin else {}
+with httpx.Client(base_url=base, headers=headers, timeout=30) as client:
     session = client.post("/v1/sessions", json={"label": "Python SDK example"})
     session.raise_for_status()
     client.headers["Authorization"] = "Bearer " + session.json()["access_token"]

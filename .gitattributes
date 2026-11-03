@@ -4,5 +4,5 @@
 *.jpg -text
 *.zip -text
 # Frozen benchmark/report bytes are hashed; preserve their original newlines.
-evaluations/datasets/*.json -text
-evaluations/reports/*.json -text
+evaluations/datasets/*.json -text whitespace=cr-at-eol
+evaluations/reports/*.json -text whitespace=cr-at-eol

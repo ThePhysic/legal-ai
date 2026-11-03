@@ -42,7 +42,7 @@ The customer takeaway shows the first exact source sentence (or a clearly shorte
 
 ## Real browser acceptance checks
 
-From the repository root, run `node scripts/browser-check.mjs` while the web/API are running. Optional environment variables: `LEGAL_AI_BASE_URL` (default `http://127.0.0.1:3000`), `LEGAL_AI_API_URL` (default `http://127.0.0.1:8000`), and `LEGAL_AI_BROWSER_PATH` (set to a Chromium/Chrome executable on Linux). `LEGAL_AI_WEB_URL` is also supported as a base URL alias. The script uses native Node WebSocket/CDP, waits for local readiness, sends the correct Origin on SDK requests, and keeps bearer tokens in memory.
+From the repository root, run `node scripts/browser-check.mjs` while the web/API are running. Optional environment variables: `LEGAL_AI_BASE_URL` (default `http://127.0.0.1:3000`), `LEGAL_AI_API_URL` (default `http://127.0.0.1:8000`), and `LEGAL_AI_BROWSER_PATH` (override the full Chrome, Edge, or Chromium executable path on Windows, macOS, or Linux). Without an override, installed browsers are detected from standard platform locations and the local Playwright cache. `LEGAL_AI_WEB_URL` is also supported as a base URL alias. The script uses native Node WebSocket/CDP, waits for local readiness, sends the correct Origin on SDK requests, and keeps bearer tokens in memory.
 
 `LEGAL_AI_CDP_PORT` selects another debug port and a matching ignored profile directory, so independent runs can use separate browser instances. Chromium sandbox disabling is enabled only on Linux with `CI=true`/`CI=1`, or with explicit `LEGAL_AI_BROWSER_NO_SANDBOX=true`/`1`; normal local Windows runs keep the sandbox.
 

@@ -1,0 +1,5 @@
+# Reviewed false positive only: this historical assignment was EMPTY. The
+# multiline regex consumed the next LEGAL_AI_PINECONE_DIMENSION variable name.
+# Current placeholders are quoted; no API key was present. No directory/rule
+# allowlist is used, so other commits/values remain scanned.
+72ffbb52f1ddaf031ce28dea6d08d8a1c898f4e2:.env.example:generic-api-key:9

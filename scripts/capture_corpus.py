@@ -54,7 +54,8 @@ def sections(lines, source_id, version):
         chunks, chunk = [], []
         for word in " ".join(line for line, _ in entries).split():
             if chunk and len((" ".join(chunk) + " " + word).encode("utf8")) > 950:
-                chunks.append(" ".join(chunk)); chunk = []
+                chunks.append(" ".join(chunk))
+                chunk = []
             chunk.append(word)
         if chunk:
             chunks.append(" ".join(chunk))
