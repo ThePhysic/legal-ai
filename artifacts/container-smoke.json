@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-11-03T20:53:36.431383+00:00",
+  "app_url": "http://127.0.0.1:3017",
+  "api_url": "http://127.0.0.1:8017",
+  "scope": "Actual local Docker Compose, PostgreSQL, encrypted storage and production Next.js proxy; synthetic inputs only",
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Production frontend responds",
+      "passed": true
+    },
+    {
+      "name": "Container API is ready in offline mode",
+      "passed": true
+    },
+    {
+      "name": "Proxy bootstraps distinct private workspaces",
+      "passed": true
+    },
+    {
+      "name": "Session cookie is HttpOnly",
+      "passed": true
+    },
+    {
+      "name": "Actual frozen public sources loaded",
+      "passed": true
+    },
+    {
+      "name": "Statute identifier is not misread as historical year",
+      "passed": true
+    },
+    {
+      "name": "Claims bind versioned passages",
+      "passed": true
+    },
+    {
+      "name": "Research observes zero provider calls",
+      "passed": true
+    },
+    {
+      "name": "Real private ingestion is ready",
+      "passed": true
+    },
+    {
+      "name": "Actual parser exposes sections and private passages",
+      "passed": true
+    },
+    {
+      "name": "Foreign workspace cannot read document",
+      "passed": true
+    },
+    {
+      "name": "Foreign workspace cannot download document",
+      "passed": true
+    },
+    {
+      "name": "Foreign workspace cannot read nested private source",
+      "passed": true
+    },
+    {
+      "name": "Document Q&A uses own actual private text",
+      "passed": true
+    },
+    {
+      "name": "Rule-based considerations are not verified legal findings",
+      "passed": true
+    },
+    {
+      "name": "Replacement publishes a different ready version",
+      "passed": true
+    },
+    {
+      "name": "Replaced original is no longer downloadable",
+      "passed": true
+    },
+    {
+      "name": "Real deletion cleanup completes",
+      "passed": true
+    },
+    {
+      "name": "Deleted original cannot be downloaded",
+      "passed": true
+    },
+    {
+      "name": "Measured evaluation completes across four configurations",
+      "passed": true
+    },
+    {
+      "name": "Owner can reload persisted PostgreSQL evaluation",
+      "passed": true
+    },
+    {
+      "name": "Foreign workspace cannot load evaluation",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "No live provider/model/Pinecone calls",
+    "No public deployment",
+    "No independent legal/semantic assessment"
+  ]
+}

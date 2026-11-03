@@ -80,7 +80,7 @@ flowchart LR
     Grounding -. disabled live adapter .-> Provider[Embeddings / structured generation provider]
 ```
 
-See [design and acceptance](docs/design.md), [API contract](docs/api-contract.md), [corpus provenance/rights](corpus/RIGHTS.md), [security and operations](docs/security.md), [deployment recipe](docs/deployment.md), and [developer examples](examples/).
+See the [product walkthrough](docs/walkthrough.md), [design and acceptance](docs/design.md), [API contract](docs/api-contract.md), [corpus provenance/rights](corpus/RIGHTS.md), [security and operations](docs/security.md), [deployment recipe](docs/deployment.md), and [developer examples](examples/).
 
 ## Security and reliability
 
@@ -91,6 +91,8 @@ See [design and acceptance](docs/design.md), [API contract](docs/api-contract.md
 - Deterministic IDs, version hashes, ingestion failure/retry, replacement/current-version consistency and idempotent reconciliation.
 
 These controls have local tests; they are not a claim of production certification, distributed abuse protection or a completed novice-user study.
+
+The [offline verification record](docs/verification.md) documents 295 passing Python tests, 15 frontend tests, 38 real production-browser checks, 22 container smoke checks and the clean Astra medium adversarial review, with their practical limits.
 
 ## Offline and external validation gates
 

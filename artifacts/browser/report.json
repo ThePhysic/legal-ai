@@ -1,0 +1,496 @@
+{
+  "checked_at": "2026-11-03T20:54:02.124Z",
+  "browser": "Chrome/156.0.8078.4",
+  "origin": "http://127.0.0.1:3017",
+  "duration_ms": 30412,
+  "passed": 38,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Home exposes both primary tasks and creates only its own local session",
+      "passed": true,
+      "duration_ms": 1000,
+      "detail": {
+        "tasks": 2
+      }
+    },
+    {
+      "name": "Mobile Home keeps both task choices visible and readable",
+      "passed": true,
+      "duration_ms": 472,
+      "detail": {
+        "cards": [
+          {
+            "top": 496.40625,
+            "bottom": 757.015625
+          },
+          {
+            "top": 496.40625,
+            "bottom": 757.015625
+          }
+        ],
+        "font": 14,
+        "overflow": false
+      }
+    },
+    {
+      "name": "Free-form public research returns actual claims, passages and honest source counts",
+      "passed": true,
+      "duration_ms": 763,
+      "detail": {
+        "badge": "Source-linked extraction",
+        "answer": "(2) Beginning April 1, 2025, the landlord shall take photographs of the unit within a reasonable time after the possession of the unit is returned to the landlord, but prior to any repairs or cleanings for which the landlord will make a deduction from or claim against the security deposit pursuant to this section, and shall also take photographs of the unit…",
+        "claims": 3,
+        "support": "3 supporting passages. A source link alone is not supporting evidence. Citation identity is separate from semantic verification.",
+        "passages": 3
+      }
+    },
+    {
+      "name": "Citation selection focuses exact evidence and source dates remain explicit",
+      "passed": true,
+      "duration_ms": 687
+    },
+    {
+      "name": "Saved run provenance loads from the API and distinguishes identity from semantics",
+      "passed": true,
+      "duration_ms": 240
+    },
+    {
+      "name": "Exact statutory citation 1950.5 works",
+      "passed": true,
+      "duration_ms": 214,
+      "detail": {
+        "claims": 5,
+        "passages": 5
+      }
+    },
+    {
+      "name": "Real lexical retrieval path answers locally",
+      "passed": true,
+      "duration_ms": 214,
+      "detail": {
+        "passages": 3,
+        "claims": 3
+      }
+    },
+    {
+      "name": "Real dense retrieval path answers locally",
+      "passed": true,
+      "duration_ms": 218,
+      "detail": {
+        "passages": 5,
+        "claims": 5
+      }
+    },
+    {
+      "name": "Real hybrid retrieval path answers locally",
+      "passed": true,
+      "duration_ms": 201,
+      "detail": {
+        "passages": 5,
+        "claims": 5
+      }
+    },
+    {
+      "name": "Real rerank retrieval path answers locally",
+      "passed": true,
+      "duration_ms": 217,
+      "detail": {
+        "passages": 4,
+        "claims": 4
+      }
+    },
+    {
+      "name": "Other jurisdiction abstains",
+      "passed": true,
+      "duration_ms": 232,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Foreign state named in the question abstains",
+      "passed": true,
+      "duration_ms": 215,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Unknown historical applicability abstains",
+      "passed": true,
+      "duration_ms": 231,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Relative historical applicability abstains",
+      "passed": true,
+      "duration_ms": 214,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Individual lawfulness verdict abstains",
+      "passed": true,
+      "duration_ms": 214,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Out-of-corpus question abstains",
+      "passed": true,
+      "duration_ms": 232,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Actual local transport failure is distinct from evidence gaps and retry recovers",
+      "passed": true,
+      "duration_ms": 274
+    },
+    {
+      "name": "Pending real request can be cancelled without a false error result",
+      "passed": true,
+      "duration_ms": 245
+    },
+    {
+      "name": "Keyboard skip link preserves Research and focuses main",
+      "passed": true,
+      "duration_ms": 62
+    },
+    {
+      "name": "Keyboard skip link preserves Documents and ignores non-view hashes",
+      "passed": true,
+      "duration_ms": 197
+    },
+    {
+      "name": "Real multipart upload parses sample lease into sections and private passages",
+      "passed": true,
+      "duration_ms": 1125,
+      "detail": {
+        "sections": 1
+      }
+    },
+    {
+      "name": "Document analysis returns actual findings and public source comparison",
+      "passed": true,
+      "duration_ms": 556,
+      "detail": {
+        "findings": 6
+      }
+    },
+    {
+      "name": "Document finding link focuses the matching extracted section",
+      "passed": true,
+      "duration_ms": 241
+    },
+    {
+      "name": "Private document Q&A returns private source passages, not a legal verdict",
+      "passed": true,
+      "duration_ms": 759
+    },
+    {
+      "name": "Document findings, private answer and comparisons reflow at every target width",
+      "passed": true,
+      "duration_ms": 722
+    },
+    {
+      "name": "Original download returns actual owned bytes through the browser session",
+      "passed": true,
+      "duration_ms": 22
+    },
+    {
+      "name": "Deletion modal traps Tab, Escape restores focus, and cancellation preserves document",
+      "passed": true,
+      "duration_ms": 300
+    },
+    {
+      "name": "Replacement uploads new content and removes the previous current document",
+      "passed": true,
+      "duration_ms": 987
+    },
+    {
+      "name": "Confirmed deletion reports API result and returns focus to document list",
+      "passed": true,
+      "duration_ms": 197
+    },
+    {
+      "name": "Invalid synthetic PDF exposes real parsing failure and retry remains honest",
+      "passed": true,
+      "duration_ms": 2166,
+      "detail": "Retry endpoint exercised on persistently invalid bytes; successful interrupted-worker recovery is covered separately by backend tests."
+    },
+    {
+      "name": "Evaluation runs a real versioned dataset with all four local configurations",
+      "passed": true,
+      "duration_ms": 5468
+    },
+    {
+      "name": "Evaluation preserves actual manifest, case results and list navigation",
+      "passed": true,
+      "duration_ms": 234
+    },
+    {
+      "name": "Reference uses the actual three-source, 122-passage corpus with unknown applicability dates",
+      "passed": true,
+      "duration_ms": 176,
+      "detail": {
+        "sources": 3,
+        "passages": 122
+      }
+    },
+    {
+      "name": "Customer/developer control names and text field labels are present",
+      "passed": true,
+      "duration_ms": 3
+    },
+    {
+      "name": "All five views reflow at 360, 390, 768, 1024 and 1440 CSS pixels",
+      "passed": true,
+      "duration_ms": 7191,
+      "detail": {
+        "layouts": 25,
+        "zoom_equivalent_css_width": 720
+      }
+    },
+    {
+      "name": "Reduced motion removes animation and key text contrast meets WCAG AA",
+      "passed": true,
+      "duration_ms": 231,
+      "detail": {
+        "primary": 8.807797778901712,
+        "body": 5.170854274948272,
+        "transition": "0s"
+      }
+    },
+    {
+      "name": "Separate-session real HTTP authorization prevents document, source and trace leakage",
+      "passed": true,
+      "duration_ms": 1093,
+      "detail": {
+        "unauthorized_operations": 9,
+        "private_diagnostics_purged": true
+      }
+    },
+    {
+      "name": "No browser runtime exceptions or external request attempts occurred",
+      "passed": true,
+      "duration_ms": 0,
+      "detail": {
+        "exceptions": 0,
+        "external_requests": 0
+      }
+    }
+  ],
+  "runtime_errors": [],
+  "external_attempts": [],
+  "api_responses": [
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/sessions",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/runs/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}/analysis",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}/analysis",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}/download",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}/retry",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/evaluations",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/evaluations",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/evaluations",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/evaluations/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/corpus",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/corpus",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/sources/ca-civ-1950-5",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/sources/ca-civ-1950-6",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/sources/ca-civ-1942-5",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/research",
+      "status": 200
+    }
+  ],
+  "limitations": [
+    "Automated browser checks do not establish novice-user comprehension or an independent accessibility audit.",
+    "720 CSS pixels exercise reflow equivalent to 200% zoom on a 1440 CSS pixel viewport; native browser zoom itself is not emulated.",
+    "No live provider, Pinecone, deployment or independent semantic-quality gate is exercised.",
+    "Persistently invalid PDF retry exercises honest failure; interrupted-job successful recovery remains a backend integration-test gate."
+  ]
+}
