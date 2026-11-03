@@ -5,6 +5,7 @@ publisher artwork, seals, editorial commentary and the full PDF are excluded.
 """
 import argparse
 import hashlib
+import io
 import json
 import re
 from datetime import UTC, datetime
@@ -16,6 +17,8 @@ from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 URL = "https://www.dre.ca.gov/files/pdf/relaw/excerpts.pdf"
 EDITION_URL = "https://www.dre.ca.gov/Publications/RealEstateLaw.html"
+EXPECTED_PDF_SHA256 = "f68f64e547b1836572a39721c060df9cf9cadf02362107bff514ecb75784b5d2"
+MAX_PDF_BYTES = 12_000_000
 TARGETS = [("1950.5", "1950.6", "Residential security deposits"),
            ("1950.6", "1950.7", "Residential application screening fees"),
            ("1942.5", "1945.5", "Retaliatory conduct in residential tenancies")]
@@ -23,6 +26,14 @@ TARGETS = [("1950.5", "1950.6", "Residential security deposits"),
 
 def sha(content):
     return hashlib.sha256(content.encode("utf8") if isinstance(content, str) else content).hexdigest()
+
+
+def validate_capture_bytes(raw):
+    if len(raw) > MAX_PDF_BYTES:
+        raise SystemExit("Source PDF exceeds capture limit")
+    if sha(raw) != EXPECTED_PDF_SHA256:
+        raise SystemExit("Source PDF differs from the reviewed 2026 capture. Review its edition, page bounds and rights before updating the pinned hash; existing corpus files were not changed.")
+    return raw
 
 
 def sections(lines, source_id, version):
@@ -80,12 +91,11 @@ def main():
     if args.download:
         args.pdf.parent.mkdir(parents=True, exist_ok=True)
         with urlopen(URL, timeout=30) as response:
-            raw = response.read(12_000_001)
-        if len(raw) > 12_000_000:
-            raise SystemExit("Source PDF exceeds capture limit")
+            raw = validate_capture_bytes(response.read(MAX_PDF_BYTES + 1))
         args.pdf.write_bytes(raw)
-    raw = args.pdf.read_bytes()
-    reader = PdfReader(args.pdf)
+    with args.pdf.open("rb") as handle:
+        raw = validate_capture_bytes(handle.read(MAX_PDF_BYTES + 1))
+    reader = PdfReader(io.BytesIO(raw))
     # Exact bounded pages established against this captured 2026 publication.
     # A changed publication must be independently inspected before changing these.
     lines = []
