@@ -131,7 +131,7 @@ class BackendService:
                 "provider": "local", "namespace": "public-v1", "bm25_k1": 1.5, "bm25_b": 0.75,
                 "fusion_k": 60, "reranker": "term-identifier-coverage-v1", "rerank_candidate_limit": 30,
                 "context_token_budget": self.settings.context_tokens, "top_k": top_k,
-                "corpus_revision": self.corpus_revision, "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2"}
+                "corpus_revision": self.corpus_revision, "question_guard": "captured-ca-topics-postal-temporal-verdict-v3"}
 
     def readiness(self):
         with self.engine.connect() as connection:
@@ -245,7 +245,8 @@ class BackendService:
         response = {"run_id": uuid.uuid4().hex, "configuration": request.configuration, "method": METHODS[request.configuration],
                     "passages": ranked, "coverage_gaps": gaps, "trace": trace, "usage": usage}
         if persist:
-            self.store_run(workspace_id, response, request.source_scope == "private")
+            # User questions/traces are private even when evidence is public.
+            self.store_run(workspace_id, response, private=True)
         return response
 
     def search_public(self, question, configuration, jurisdiction="US-CA", applicable_on=None, top_k=10):
@@ -284,7 +285,7 @@ class BackendService:
                     "coverage_gaps": gaps, "limitations": LIMITS, "method": "Deterministic extractive quotations; " + searched["method"],
                     "configuration": request.configuration, "usage": usage}
         if persist:
-            self.store_run(workspace_id, {**response, "trace": searched["trace"]}, request.source_scope == "private")
+            self.store_run(workspace_id, {**response, "trace": searched["trace"]}, private=True)
         return response
 
     def run(self, workspace_id, run_id):
@@ -453,9 +454,11 @@ class BackendService:
         payload.update(sections=[], passage_count=0, error=None)
         document.payload = self.storage.seal(payload)
         db.execute(delete(Chunk).where(Chunk.workspace_id == workspace_id, Chunk.document_id == document.id))
-        # Conservative purge of all private workspace runs prevents copied document
-        # excerpts from surviving deletion in searches, answers or diagnostics.
-        db.execute(delete(Run).where(Run.workspace_id == workspace_id, Run.private.is_(True)))
+        # Public-source questions can contain pasted private text. Include older
+        # releases' public research records; keep only frozen evaluation reports.
+        for run in db.scalars(select(Run).where(Run.workspace_id == workspace_id)):
+            if run.private or self.storage.open(run.payload).get("run_kind") != "evaluation":
+                db.delete(run)
 
     def delete_document(self, workspace_id, document_id):
         with self.lock:
@@ -494,15 +497,22 @@ class BackendService:
         passages = [item for item in detail["passages"] if item["locator"] in selected]
         findings = []
         for section in sections[:20]:
-            refs = [item["passage_id"] for item in passages if item["locator"] == section["locator"]]
-            findings.append({"kind": "contract_text", "title": section["title"], "text": section["text"][:700],
-                             "locator": section["locator"], "passage_ids": refs, "verified": True,
-                             "identity_validated": True, "support_status": "verbatim_quote"})
+            section_passages = [item for item in passages if item["locator"] == section["locator"]]
+
+            def literal_finding(kind, title, literal):
+                matches = [item for item in section_passages if literal in item["text"]]
+                refs = [item["passage_id"] for item in matches]
+                checked = bool(refs) and validate_claims([{"text": literal, "passage_ids": refs,
+                    "source_ids": [document_id], "support_status": "verbatim_quote"}], matches)
+                return {"kind": kind, "title": title, "text": literal, "locator": section["locator"],
+                        "passage_ids": refs if checked else [], "verified": checked,
+                        "identity_validated": checked, "support_status": "verbatim_quote" if checked else "not_assessed"}
+
+            excerpt = (section_passages[0]["text"] if section_passages else section["text"])[:700]
+            findings.append(literal_finding("contract_text", section["title"], excerpt))
             for match in list(re.finditer(r"\$\s?\d[\d,]*(?:\.\d{2})?|\b\d{4}-\d{2}-\d{2}\b|\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}\b", section["text"], re.I))[:10]:
                 literal = match.group()
-                findings.append({"kind": "document_fact", "title": "Literal amount or date in document",
-                    "text": literal, "locator": section["locator"], "passage_ids": refs, "verified": True,
-                    "identity_validated": True, "support_status": "verbatim_quote"})
+                findings.append(literal_finding("document_fact", "Literal amount or date in document", literal))
         all_text = "\n".join(item["text"] for item in sections)
         comparison_topics = []
         for pattern, topic in [(r"deposit|security", "California security deposit deductions return"),

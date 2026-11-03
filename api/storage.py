@@ -23,7 +23,7 @@ class EncryptedStorage:
         elif key_path.exists():
             key = key_path.read_bytes()
         else:
-            if (root / "objects").exists() or (root / "legal-ai.db").exists():
+            if any((root / name).exists() for name in ("objects", "legal-ai.db", ".key-check.enc")):
                 raise RuntimeError("Encryption key missing; restore the runtime key before opening existing data.")
             key = Fernet.generate_key()
             try:

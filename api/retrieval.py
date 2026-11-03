@@ -16,17 +16,33 @@ PLACE_PATTERN = re.compile(r"\b(?:" + "|".join(re.escape(place.strip()) for plac
 STATE_CODES = "AL AK AZ AR CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC PR GU AS MP VI"
 
 
-def question_scope_text(question):
-    """Ignore quoted literal street addresses, never quoted jurisdiction names."""
+QUOTED_LITERAL = re.compile(r'"([^"\n]{1,500})"|“([^”\n]{1,500})”|`([^`\n]{1,500})`')
+STREET_ADDRESS = re.compile(r"\b\d{1,6}\s+[^,\n]{1,100}\b(?:street|st|avenue|ave|road|rd|lane|ln|drive|dr|way|boulevard|blvd|court|ct|place|pl)\b", re.I)
+
+
+def question_scope_text(question, *, preserve_location=False):
+    """Mask street text for retrieval; preserve postal suffixes for scope checks."""
     def replace(match):
         literal = next(group for group in match.groups() if group is not None)
-        address = re.search(r"\b\d{1,6}\s+[^\n]{1,100}\b(?:street|st|avenue|ave|road|rd|lane|ln|drive|dr|way|boulevard|blvd|court|ct|place|pl)\b", literal, re.I)
-        return " " if address else literal
-    return re.sub(r'"([^"\n]{1,500})"|“([^”\n]{1,500})”|`([^`\n]{1,500})`', replace, question)
+        address = STREET_ADDRESS.search(literal)
+        if not address:
+            return literal
+        if preserve_location:
+            return literal[:address.start()] + " " + literal[address.end():]
+        return " "
+    return QUOTED_LITERAL.sub(replace, question)
 
 
 def foreign_jurisdiction_requested(question):
-    value = question_scope_text(question)
+    value = question_scope_text(question, preserve_location=True)
+    codes = "|".join(STATE_CODES.split())
+    for match in QUOTED_LITERAL.finditer(question):
+        literal = next(group for group in match.groups() if group is not None)
+        address = STREET_ADDRESS.search(literal)
+        if address:
+            location = literal[address.end():]
+            if PLACE_PATTERN.search(location) or re.search(r"\b(?:" + codes + r")\b(?=\s*(?:\d{5}(?:-\d{4})?\b|$))", location):
+                return True
     california_explicit = bool(re.search(r"\bCalifornia\b|\bUS-CA\b|\bCA\s+(?:law|rules?|statutes?|security|deposit)", value, re.I))
     comparison = bool(re.search(r"\b(?:compar\w*|versus|vs|difference|both|between|instead|rather than)\b", value, re.I))
     legal_following = r"^\s*(?:['’]s\s*)?(?:security[ -]?deposit|deposit|landlord|tenant|rental|screening|retaliation|civil|housing|law|rules?|statutes?|return|deduct|deadline)\b"
@@ -36,7 +52,6 @@ def foreign_jurisdiction_requested(question):
         scoped_list = re.search(r"\b(?:in|for|under|within|across)\b[^.!?]{0,80}\band\s*$", before, re.I)
         if not california_explicit or comparison or attributed or scoped_list or re.search(legal_following, after, re.I):
             return True
-    codes = "|".join(STATE_CODES.split())
     if re.search(r"\bUS-(?!CA\b)[A-Z]{2}\b", value, re.I) or re.search(
             r"\b(?:in|under|for)\s+(?:" + codes + r")\b|\b(?:" + codes + r")\s+(?:security|deposit|rental|law|rules?)\b", value):
         return True
@@ -50,7 +65,7 @@ def temporal_applicability_requested(question):
     Relative dates require a supplied reference date and validated source bounds;
     the system never infers historical applicability from a snapshot timestamp.
     """
-    value = question_scope_text(question)
+    value = question_scope_text(question, preserve_location=True)
     value = re.sub(r"\b(?:civil\s+code|code|section)\s+\d{4}(?:\.\d+)?|§\s*\d{4}(?:\.\d+)?", "", value, flags=re.I)
     unit = r"(?:days?|weeks?|months?|years?|decades?|centur(?:y|ies)|summers?|winters?|springs?|autumns?|falls?)"
     quantity = r"(?:\d+|a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|hundred|couple(?:\s+of)?|few|several|many|half(?:\s+a)?)"
