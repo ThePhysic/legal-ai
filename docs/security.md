@@ -16,11 +16,15 @@ The ignored runtime key `.runtime/.encryption.key` survives restart. An operator
 
 Deletion revokes document search/access immediately and removes retained private run/analysis text, then removes stored original objects/chunks. Failed cleanup stays deletion-pending and is retryable; it must never restore visibility. Local demo backups are operator controlled: document deletion cannot erase arbitrary OS backups, clipboard content or files a user downloaded. Production must disclose backup retention and exceptions before confirmation. Session expiry does not itself erase documents; an operator retention procedure is needed for abandoned workspaces.
 
+Custom questions and search/research history are private user content even when their evidence comes from public statutes. Document deletion or replacement conservatively purges all saved custom search/research history in that workspace, including history from earlier releases that classified public-source questions differently. Frozen public evaluation reports remain available. This policy concerns saved server records; it cannot erase text copied, downloaded or independently retained by the browser or user.
+
 ## Parsing and resource isolation
 
 Allowed inputs are capped PDF, DOCX, text and Markdown. Validate signatures and UTF-8; reject encrypted PDFs, scanned/no-text files, PDF active/embedded content, unsafe OOXML relationships/entities/archive paths and excessive compressed expansion. Extraction runs in a separate process with a kill timeout and output caps. This reduces risk but is not a hardened parser sandbox; production should use isolated containers with CPU/memory/filesystem/network restrictions and patched parsing libraries.
 
 Source/document text is untrusted data. The application does not execute uploaded code, embedded links or source instructions, and React escapes rendered text. Extractive quotes cannot change authorization or create tools. Citation identity, legal applicability and semantic support are distinct. Provider output must pass structured schema and source/version/quote checks before exposure; no provider-memory fallback is permitted.
+
+Literal analysis findings cite only passages that actually contain the displayed text and match its document/version. A value split across passages remains visible with a section locator, empty passage references and unvalidated identity flags. The interface distinguishes this section text from a validated passage quote and from a rule-based consideration.
 
 ## Operational limits
 

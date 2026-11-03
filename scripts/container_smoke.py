@@ -61,14 +61,23 @@ def main():
         replacement = successful(owner.post("/api/v1/documents", data={"replace_document_id": document_id}, files={"file": ("container-synthetic-replacement.txt", sample.replace(b"$350", b"$275"), "text/plain")}))
         check("Replacement publishes a different ready version", replacement["document_id"] != document_id and replacement["status"] == "ready")
         check("Replaced original is no longer downloadable", owner.get("/api/v1/documents/" + document_id + "/download").status_code == 404)
+        pasted = successful(owner.post("/api/v1/research", json={"question": 'What security deposit rules relate to "ContainerPrivateQuestionCanary deposit is $275"?'}))
+        check("Public-source custom question has an owned saved run", owner.get("/api/v1/runs/" + pasted["run_id"]).status_code == 200)
         deleted = successful(owner.delete("/api/v1/documents/" + replacement["document_id"]))
         check("Real deletion cleanup completes", deleted["status"] == "deleted")
         check("Deleted original cannot be downloaded", owner.get("/api/v1/documents/" + replacement["document_id"] + "/download").status_code == 404)
+        check("Deletion purges custom questions that used public sources", owner.get("/api/v1/runs/" + pasted["run_id"]).status_code == 404)
         listing = successful(owner.get("/api/v1/evaluations"))
         run = successful(owner.post("/api/v1/evaluations", json={"dataset_id": listing["datasets"][0]["id"], "configurations": ["lexical", "dense", "hybrid", "rerank"]}))
         check("Measured evaluation completes across four configurations", run["status"] in {"completed", "complete"} and len(run["configurations"]) == 4)
         check("Owner can reload persisted PostgreSQL evaluation", owner.get("/api/v1/evaluations/" + run["evaluation_id"]).status_code == 200)
         check("Foreign workspace cannot load evaluation", other.get("/api/v1/evaluations/" + run["evaluation_id"]).status_code == 404)
+        boundary = successful(owner.post("/api/v1/documents", files={"file": ("container-synthetic-boundary.txt", ("x" * 798 + "$1234 due deposit.").encode(), "text/plain")}))
+        inspected = successful(owner.post("/api/v1/documents/" + boundary["document_id"] + "/analysis", json={}))
+        fact = next(finding for finding in inspected["findings"] if finding["text"] == "$1234")
+        check("Cross-passage literal keeps section provenance without false quote validation", bool(fact["locator"]) and not fact["passage_ids"] and not fact["verified"] and not fact["identity_validated"] and fact["support_status"] == "not_assessed")
+        successful(owner.delete("/api/v1/documents/" + boundary["document_id"]))
+        check("Document deletion preserves frozen public evaluation reports", owner.get("/api/v1/evaluations/" + run["evaluation_id"]).status_code == 200)
     report = {"checked_at": datetime.now(UTC).isoformat(), "app_url": args.app_url, "api_url": args.api_url,
               "scope": "Actual local Docker Compose, PostgreSQL, encrypted storage and production Next.js proxy; synthetic inputs only",
               "passed": len(checks), "failed": 0, "checks": checks,

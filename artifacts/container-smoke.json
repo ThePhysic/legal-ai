@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-03T20:53:36.431383+00:00",
+  "checked_at": "2026-11-03T21:17:39.924566+00:00",
   "app_url": "http://127.0.0.1:3017",
   "api_url": "http://127.0.0.1:8017",
   "scope": "Actual local Docker Compose, PostgreSQL, encrypted storage and production Next.js proxy; synthetic inputs only",
-  "passed": 22,
+  "passed": 26,
   "failed": 0,
   "checks": [
     {
@@ -75,11 +75,19 @@
       "passed": true
     },
     {
+      "name": "Public-source custom question has an owned saved run",
+      "passed": true
+    },
+    {
       "name": "Real deletion cleanup completes",
       "passed": true
     },
     {
       "name": "Deleted original cannot be downloaded",
+      "passed": true
+    },
+    {
+      "name": "Deletion purges custom questions that used public sources",
       "passed": true
     },
     {
@@ -92,6 +100,14 @@
     },
     {
       "name": "Foreign workspace cannot load evaluation",
+      "passed": true
+    },
+    {
+      "name": "Cross-passage literal keeps section provenance without false quote validation",
+      "passed": true
+    },
+    {
+      "name": "Document deletion preserves frozen public evaluation reports",
       "passed": true
     }
   ],

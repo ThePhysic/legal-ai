@@ -92,13 +92,13 @@ See the [product walkthrough](docs/walkthrough.md), [design and acceptance](docs
 
 These controls have local tests; they are not a claim of production certification, distributed abuse protection or a completed novice-user study.
 
-The [offline verification record](docs/verification.md) documents 295 passing Python tests, 15 frontend tests, 38 real production-browser checks, 22 container smoke checks and the clean Astra medium adversarial review, with their practical limits.
+The [offline verification record](docs/verification.md) documents 392 passing Python tests, 30 frontend tests, 40 real production-browser checks, 26 container smoke checks and the clean Astra medium adversarial review. The [second audit](docs/reaudit.md) records newly discovered failures, corrections and regression evidence.
 
 ## Offline and external validation gates
 
 The user explicitly selected **offline only**. Live adapter tests use intercepted transports, not provider accounts. The current enforceable live budget is zero calls/tokens/dollars. Existing-index Pinecone and structured embedding/generation adapters are prepared with dimension, namespace, timeout, identity and budget checks; no index or model service was provisioned or contacted.
 
-Actual live Pinecone search evidence, model semantic/legal quality, independent human labels, deployed HTTPS/identity/retention smoke tests and a novice participant study remain separate unexecuted gates. Public production deployment is not claimed. Docker images and the local PostgreSQL/API/production frontend were exercised with 22 passing synthetic container smoke checks; the saved report is [artifacts/container-smoke.json](artifacts/container-smoke.json).
+Actual live Pinecone search evidence, model semantic/legal quality, independent human labels, deployed HTTPS/identity/retention smoke tests and a novice participant study remain separate unexecuted gates. Public production deployment is not claimed. Docker images and the local PostgreSQL/API/production frontend were exercised with 26 passing synthetic container smoke checks; the saved report is [artifacts/container-smoke.json](artifacts/container-smoke.json).
 
 ## Repository and provenance
 

@@ -1,6 +1,6 @@
 # Local and deployment recipes
 
-The authorized release is local/offline. No cloud service or public website has been deployed. Provider execution remains disabled. The installed Docker daemon was started for verification: both images built, the PostgreSQL/API/production Next.js stack became healthy, and the real container smoke suite passed 22 checks. This is local container execution, not a public deployment.
+The authorized release is local/offline. No cloud service or public website has been deployed. Provider execution remains disabled. The installed Docker daemon was started for verification: both images built, the PostgreSQL/API/production Next.js stack became healthy, and the real container smoke suite passed 26 checks. This is local container execution, not a public deployment.
 
 ## Local development
 

@@ -1,0 +1,20 @@
+{
+  "evidence_recorded_at": "2026-11-03T21:19:46.639300+00:00",
+  "scope": "Synthetic local production HTTP and headless Chromium; selected document A response delayed 1800ms, then select B",
+  "before": {
+    "selected_filename": "audit-beta.txt",
+    "displayed_document": "ALPHA",
+    "alpha_detail_requests": 2,
+    "selection_isolation_passed": false
+  },
+  "after": {
+    "selected_filename": "audit-beta.txt",
+    "displayed_document": "BETA",
+    "alpha_detail_requests": 1,
+    "selection_isolation_passed": true
+  },
+  "limitations": [
+    "One controlled delayed-response reproduction, not an exhaustive browser scheduling proof",
+    "No live provider calls or real private input"
+  ]
+}

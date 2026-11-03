@@ -1,13 +1,13 @@
 {
-  "evaluation_id": "1a3813b0c17d40f599526eed2fb9c85b",
+  "evaluation_id": "ef724df0fa894a02b6d8701b87b2d796",
   "dataset_id": "ca-tenancy-starter-v1",
   "dataset_revision": "1.0.0",
-  "created_at": "2026-11-03T20:51:49.450093+00:00",
+  "created_at": "2026-11-03T21:13:25.238808+00:00",
   "status": "completed",
   "method": "Measured offline public retrieval and deterministic extractive research; no model/provider calls.",
   "judgment_provenance": "Implementation-agent authored passage relevance grades (3 direct, 2 supporting, 1 marginal) and abstention expectations, manually assigned against the captured official statutory excerpts before measurements. Not independently reviewed by humans/legal experts. This 28-case starter is not the later approximately-100-question reviewed target.",
   "freeze": {
-    "frozen_at": "2026-11-03T20:51:49.450093+00:00",
+    "frozen_at": "2026-11-03T21:13:25.238808+00:00",
     "dataset_sha256": "42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f",
     "labels_sha256": "d32e1fe133bdec4d1fcda6622e368e14d805a5b38d6be5d0abe7ba142a1ad6dd",
     "corpus_revision": "ca-dre-2026-188b2f6a3a4432e4",
@@ -886,10 +886,10 @@
     ],
     "corpus_identity_sha256": "f592ddd12784968f6e01f521e6407f7b631c69e12c591beeb0c63a7b82bfb100",
     "configuration_sha256": {
-      "lexical": "aeb71c97f42176f51e91438a18c579f2537aa10aefcaccc3b770242d02e7af14",
-      "dense": "13b472d22c6f3662f8e5afa630b7cdbef90bacd49a03f7c0e920f0f149410c6d",
-      "hybrid": "fb0cda47a142deb294b5ee1428fea336c991b7e49cc165def8620aa0ce8abc03",
-      "rerank": "5c1a9e1ec2d72128c7ead772e6c12ed70297394d99d92b634bcdccbed1269273"
+      "lexical": "8e57dfe12b906d124d415da0c718ce566812658b19aaa36174f5da5376ec0d5e",
+      "dense": "b679956442ce1474cd5dadc6fc1673e1a67ab7b940f92659f5e63b431baae49e",
+      "hybrid": "4201bb84531fcb989634dfd68f1f10c537a024100770447d1c84e88647cae194",
+      "rerank": "e7bc4fd44f841192045a76b117d7c7bd454f756c3ab83d77871f0be147dd9a4a"
     },
     "execution": {
       "python": "3.14.9",
@@ -902,10 +902,10 @@
       },
       "source_hash_normalization": "SHA-256 after normalizing CRLF and CR newlines to LF; all other source bytes preserved. Dataset and corpus hashes remain raw-byte hashes.",
       "file_sha256": {
-        "api/service.py": "f9b5bf3938c93f0010cac6e79f4a585ddafb1ec4188d4652126b64e6afb6d7bc",
-        "api/retrieval.py": "eedecd048c82258b163906da02ad57a6fd5b9db0abbff6818d3fd7846e2897d0",
+        "api/service.py": "3f20e1a7c7d73a2dd6e650beb77b062dfd8915f7dc97de411e54260a4d9d3a11",
+        "api/retrieval.py": "ad871bccf4aa58546b17495f07fb307c334c92a99aab827986c61d86ba190f8f",
         "api/schemas.py": "401c8b7b6a06f7308957812882af565012171fd36f2c19fac8fd278665d7626e",
-        "evaluations/service.py": "7f4e84457c0ece818231b35abf72062f5edeae8f002da0af42460570e6551ec9",
+        "evaluations/service.py": "975143c95ab955d1ab6f08f6263b30b0d22e4703ded4e258b7b54c2fb1e4916b",
         "evaluations/scoring.py": "56462957bb3bca3b415e1e419051c6e4467bf96153c43ae788c480034c370fec",
         "evaluations/datasets.py": "3f1da9738a67d96611cca71004818d4fad3837081d9c318c26d6876aab329482"
       }
@@ -1054,13 +1054,13 @@
           }
         },
         "search_latency_ms": {
-          "p50": 11.778700005379505,
-          "p95": 17.703110017464493,
+          "p50": 8.079999999608845,
+          "p95": 11.101585006690584,
           "count": 28
         },
         "answer_latency_ms": {
-          "p50": 12.631750010768883,
-          "p95": 16.761125018820167,
+          "p50": 8.589399993070401,
+          "p95": 11.963944992749019,
           "count": 28
         },
         "abstention": {
@@ -1089,6 +1089,7 @@
           "output_tokens": 0,
           "observed_output_tokens": 0,
           "complete_observation_count": 56,
+          "total_observation_count": 56,
           "expected_observation_count": 56,
           "cost_basis": "Observed provider usage only; local CPU/infrastructure cost unestimated."
         },
@@ -1116,8 +1117,8 @@
         "context_token_budget": 1800,
         "top_k": 10,
         "corpus_revision": "ca-dre-2026-188b2f6a3a4432e4",
-        "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2",
-        "configuration_sha256": "aeb71c97f42176f51e91438a18c579f2537aa10aefcaccc3b770242d02e7af14",
+        "question_guard": "captured-ca-topics-postal-temporal-verdict-v3",
+        "configuration_sha256": "8e57dfe12b906d124d415da0c718ce566812658b19aaa36174f5da5376ec0d5e",
         "dataset_revision": "1.0.0",
         "dataset_sha256": "42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f",
         "generation_model": "none: deterministic exact quotations",
@@ -1213,14 +1214,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 24.619399977382272,
+          "search_latency_ms": 17.25160001660697,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.3333333333333333,
             "ndcg_at_10": 0.5
           },
-          "answer_latency_ms": 13.73740000417456,
+          "answer_latency_ms": 8.128899993607774,
           "passed": true
         },
         {
@@ -1338,14 +1339,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 10.775000002468005,
+          "search_latency_ms": 7.871800014982,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 13.506800023606047,
+          "answer_latency_ms": 8.386800007428974,
           "passed": true
         },
         {
@@ -1423,14 +1424,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 13.720700022531673,
+          "search_latency_ms": 8.583099988754839,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 12.115699995774776,
+          "answer_latency_ms": 9.5963999920059,
           "passed": true
         },
         {
@@ -1500,14 +1501,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 13.451300008455291,
+          "search_latency_ms": 8.42869997723028,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 13.111999985994771,
+          "answer_latency_ms": 8.789599989540875,
           "passed": true
         },
         {
@@ -1587,14 +1588,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 14.061399997444823,
+          "search_latency_ms": 8.729399996809661,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.9737203297462859
           },
-          "answer_latency_ms": 14.233099995180964,
+          "answer_latency_ms": 9.465499984798953,
           "passed": true
         },
         {
@@ -1673,14 +1674,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 12.615000014193356,
+          "search_latency_ms": 7.447300013154745,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 12.911800004076213,
+          "answer_latency_ms": 12.574799999129027,
           "passed": true
         },
         {
@@ -1752,14 +1753,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 16.443500004243106,
+          "search_latency_ms": 8.820899995043874,
           "retrieval": {
             "recall_at_5": 0.6666666666666666,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.9510080040539186
           },
-          "answer_latency_ms": 17.154600005596876,
+          "answer_latency_ms": 8.636099984869361,
           "passed": true
         },
         {
@@ -1829,14 +1830,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 16.772700008004904,
+          "search_latency_ms": 11.045099992770702,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 14.168800000334159,
+          "answer_latency_ms": 10.829499980900437,
           "passed": true
         },
         {
@@ -1914,14 +1915,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 13.369199994485825,
+          "search_latency_ms": 8.273499988717958,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.6309297535714575
           },
-          "answer_latency_ms": 16.50210001389496,
+          "answer_latency_ms": 8.542700001271442,
           "passed": true
         },
         {
@@ -2008,14 +2009,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 18.204100022558123,
+          "search_latency_ms": 11.132000014185905,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 16.9006000214722,
+          "answer_latency_ms": 9.693500003777444,
           "passed": true
         },
         {
@@ -2094,14 +2095,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 11.765000002924353,
+          "search_latency_ms": 9.183499991195276,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.6653152460429406
           },
-          "answer_latency_ms": 13.333199982298538,
+          "answer_latency_ms": 8.533699990948662,
           "passed": true
         },
         {
@@ -2171,14 +2172,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 12.779000011505559,
+          "search_latency_ms": 10.51360002020374,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 15.343900013249367,
+          "answer_latency_ms": 8.647600014228374,
           "passed": true
         },
         {
@@ -2256,14 +2257,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 11.792400007834658,
+          "search_latency_ms": 9.20810000388883,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 13.664199999766424,
+          "answer_latency_ms": 8.91629999387078,
           "passed": true
         },
         {
@@ -2341,14 +2342,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 10.303599992766976,
+          "search_latency_ms": 7.886500010499731,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 12.420899991411716,
+          "answer_latency_ms": 10.531699983403087,
           "passed": true
         },
         {
@@ -2418,14 +2419,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 12.791499990271404,
+          "search_latency_ms": 7.7914999856147915,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 11.77139999344945,
+          "answer_latency_ms": 9.20220001717098,
           "passed": true
         },
         {
@@ -2503,14 +2504,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 14.924799994332716,
+          "search_latency_ms": 10.61259998823516,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.3333333333333333,
             "ndcg_at_10": 0.5
           },
-          "answer_latency_ms": 14.390399999683723,
+          "answer_latency_ms": 9.00510000064969,
           "passed": true
         },
         {
@@ -2593,14 +2594,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 11.597200005780905,
+          "search_latency_ms": 9.788399998797104,
           "retrieval": {
             "recall_at_5": 0.5,
             "recall_at_10": 0.5,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.40172814902148224
           },
-          "answer_latency_ms": 12.659500003792346,
+          "answer_latency_ms": 9.458899992750958,
           "passed": false
         },
         {
@@ -2682,14 +2683,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 12.048800010234118,
+          "search_latency_ms": 8.56519999797456,
           "retrieval": {
             "recall_at_5": 0.6666666666666666,
             "recall_at_10": 0.6666666666666666,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.8129131942200405
           },
-          "answer_latency_ms": 12.60400001774542,
+          "answer_latency_ms": 20.793299976503477,
           "passed": false
         },
         {
@@ -2721,14 +2722,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5790000141132623,
+          "search_latency_ms": 0.9613999864086509,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.521400012075901,
+          "answer_latency_ms": 0.43039998854510486,
           "passed": true
         },
         {
@@ -2760,14 +2761,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4121999954804778,
+          "search_latency_ms": 0.8440000237897038,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.42749999556690454,
+          "answer_latency_ms": 0.8131999929901212,
           "passed": true
         },
         {
@@ -2799,14 +2800,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.450999999884516,
+          "search_latency_ms": 0.6151999987196177,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.40959997568279505,
+          "answer_latency_ms": 0.4762000171467662,
           "passed": true
         },
         {
@@ -2838,14 +2839,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.8631999953649938,
+          "search_latency_ms": 0.9886999905575067,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.3459000145085156,
+          "answer_latency_ms": 0.3698999935295433,
           "passed": true
         },
         {
@@ -2877,14 +2878,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4839000175707042,
+          "search_latency_ms": 0.5354000022634864,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.6292999896686524,
+          "answer_latency_ms": 0.36669999826699495,
           "passed": true
         },
         {
@@ -2916,14 +2917,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.7132999890018255,
+          "search_latency_ms": 0.35930000012740493,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5360000068321824,
+          "answer_latency_ms": 0.2749999985098839,
           "passed": true
         },
         {
@@ -2955,14 +2956,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6529999955091625,
+          "search_latency_ms": 0.43119999463669956,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.606699992204085,
+          "answer_latency_ms": 0.47969998558983207,
           "passed": true
         },
         {
@@ -2994,14 +2995,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5059000104665756,
+          "search_latency_ms": 0.3373999788891524,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.6338999955914915,
+          "answer_latency_ms": 0.3436999977566302,
           "passed": true
         },
         {
@@ -3033,14 +3034,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6059000152163208,
+          "search_latency_ms": 0.28420001035556197,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5727999960072339,
+          "answer_latency_ms": 0.3583999932743609,
           "passed": true
         },
         {
@@ -3072,14 +3073,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5227999936323613,
+          "search_latency_ms": 0.3870000073220581,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5218000151216984,
+          "answer_latency_ms": 0.3270000161137432,
           "passed": true
         }
       ]
@@ -3223,13 +3224,13 @@
           }
         },
         "search_latency_ms": {
-          "p50": 39.84729999501724,
-          "p95": 48.098429999663495,
+          "p50": 27.387049995013513,
+          "p95": 31.878399981360417,
           "count": 28
         },
         "answer_latency_ms": {
-          "p50": 40.52064999996219,
-          "p95": 45.79866500280332,
+          "p50": 26.44799998961389,
+          "p95": 37.09951500350144,
           "count": 28
         },
         "abstention": {
@@ -3258,6 +3259,7 @@
           "output_tokens": 0,
           "observed_output_tokens": 0,
           "complete_observation_count": 56,
+          "total_observation_count": 56,
           "expected_observation_count": 56,
           "cost_basis": "Observed provider usage only; local CPU/infrastructure cost unestimated."
         },
@@ -3285,8 +3287,8 @@
         "context_token_budget": 1800,
         "top_k": 10,
         "corpus_revision": "ca-dre-2026-188b2f6a3a4432e4",
-        "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2",
-        "configuration_sha256": "13b472d22c6f3662f8e5afa630b7cdbef90bacd49a03f7c0e920f0f149410c6d",
+        "question_guard": "captured-ca-topics-postal-temporal-verdict-v3",
+        "configuration_sha256": "b679956442ce1474cd5dadc6fc1673e1a67ab7b940f92659f5e63b431baae49e",
         "dataset_revision": "1.0.0",
         "dataset_sha256": "42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f",
         "generation_model": "none: deterministic exact quotations",
@@ -3422,14 +3424,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.00630000093952,
+          "search_latency_ms": 27.510699990671128,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 41.29419999662787,
+          "answer_latency_ms": 26.414899999508634,
           "passed": true
         },
         {
@@ -3555,14 +3557,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.97089997190051,
+          "search_latency_ms": 26.895899994997308,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 41.65080000529997,
+          "answer_latency_ms": 25.37829999346286,
           "passed": true
         },
         {
@@ -3632,14 +3634,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 40.427899977657944,
+          "search_latency_ms": 28.693500004010275,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 42.15149997617118,
+          "answer_latency_ms": 28.230200026882812,
           "passed": true
         },
         {
@@ -3725,14 +3727,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.52139998343773,
+          "search_latency_ms": 31.687299982877448,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.3333333333333333,
             "ndcg_at_10": 0.5
           },
-          "answer_latency_ms": 40.33270000945777,
+          "answer_latency_ms": 27.585499978158623,
           "passed": true
         },
         {
@@ -3828,14 +3830,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 41.8053999892436,
+          "search_latency_ms": 28.765800001565367,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.902763980283475
           },
-          "answer_latency_ms": 44.897699990542606,
+          "answer_latency_ms": 27.980899991234764,
           "passed": true
         },
         {
@@ -3964,14 +3966,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 41.687299992190674,
+          "search_latency_ms": 29.360500018810853,
           "retrieval": {
             "recall_at_5": 0.5,
             "recall_at_10": 0.5,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.6131471927654584
           },
-          "answer_latency_ms": 40.561100002378225,
+          "answer_latency_ms": 27.694599993992597,
           "passed": false
         },
         {
@@ -4053,14 +4055,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 46.01160000311211,
+          "search_latency_ms": 31.981299980543554,
           "retrieval": {
             "recall_at_5": 0.3333333333333333,
             "recall_at_10": 0.6666666666666666,
             "mrr_at_10": 0.3333333333333333,
             "ndcg_at_10": 0.46401474625742545
           },
-          "answer_latency_ms": 43.61840002820827,
+          "answer_latency_ms": 30.10780000477098,
           "passed": false
         },
         {
@@ -4130,14 +4132,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 39.463299995986745,
+          "search_latency_ms": 28.45099999103695,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 40.794999978970736,
+          "answer_latency_ms": 45.74440000578761,
           "passed": true
         },
         {
@@ -4249,14 +4251,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 48.252100008539855,
+          "search_latency_ms": 30.410299979848787,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 38.56479999376461,
+          "answer_latency_ms": 28.33289999398403,
           "passed": false
         },
         {
@@ -4343,14 +4345,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 45.2056999783963,
+          "search_latency_ms": 26.29839998553507,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 42.061799991643056,
+          "answer_latency_ms": 25.646099995356053,
           "passed": true
         },
         {
@@ -4437,14 +4439,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 44.59129998576827,
+          "search_latency_ms": 28.586599975824356,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.606422698504514
           },
-          "answer_latency_ms": 46.28380000940524,
+          "answer_latency_ms": 25.168599997414276,
           "passed": true
         },
         {
@@ -4514,14 +4516,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 48.197199997957796,
+          "search_latency_ms": 24.75169999524951,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 43.19039999973029,
+          "answer_latency_ms": 29.019400011748075,
           "passed": true
         },
         {
@@ -4599,14 +4601,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 40.23129999404773,
+          "search_latency_ms": 29.437499993946403,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 44.88919998402707,
+          "answer_latency_ms": 30.801800021436065,
           "passed": true
         },
         {
@@ -4676,14 +4678,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 46.05519998585805,
+          "search_latency_ms": 30.811900011030957,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 42.08669997751713,
+          "answer_latency_ms": 26.481099979719147,
           "passed": true
         },
         {
@@ -4763,14 +4765,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 45.87919998448342,
+          "search_latency_ms": 28.773700003512204,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 37.676700012525544,
+          "answer_latency_ms": 30.48109999508597,
           "passed": false
         },
         {
@@ -4850,14 +4852,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 43.74730002018623,
+          "search_latency_ms": 28.358899988234043,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 41.43019998446107,
+          "answer_latency_ms": 27.117099991301075,
           "passed": false
         },
         {
@@ -4897,14 +4899,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 41.29329998977482,
+          "search_latency_ms": 27.263399999355897,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 40.48019999754615,
+          "answer_latency_ms": 35.603800002718344,
           "passed": false
         },
         {
@@ -5002,14 +5004,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 47.91500000283122,
+          "search_latency_ms": 42.34580000047572,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 48.84559998754412,
+          "answer_latency_ms": 37.9049000039231,
           "passed": false
         },
         {
@@ -5041,14 +5043,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6078000005800277,
+          "search_latency_ms": 0.5802999949082732,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.47389999963343143,
+          "answer_latency_ms": 0.47030000132508576,
           "passed": true
         },
         {
@@ -5080,14 +5082,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4230999911669642,
+          "search_latency_ms": 0.4354000266175717,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4873999860137701,
+          "answer_latency_ms": 0.41810001130215824,
           "passed": true
         },
         {
@@ -5119,14 +5121,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.51710000843741,
+          "search_latency_ms": 0.5368000129237771,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4729999927803874,
+          "answer_latency_ms": 0.5025000136811286,
           "passed": true
         },
         {
@@ -5158,14 +5160,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.35799999022856355,
+          "search_latency_ms": 0.37560000782832503,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.3766000154428184,
+          "answer_latency_ms": 0.4372000112198293,
           "passed": true
         },
         {
@@ -5197,14 +5199,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5392000020947307,
+          "search_latency_ms": 0.5564999883063138,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5407999851740897,
+          "answer_latency_ms": 0.6799999973736703,
           "passed": true
         },
         {
@@ -5236,14 +5238,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4318999999668449,
+          "search_latency_ms": 0.816700019640848,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4534000181593001,
+          "answer_latency_ms": 0.49610002315603197,
           "passed": true
         },
         {
@@ -5275,14 +5277,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6287000142037868,
+          "search_latency_ms": 0.43039998854510486,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.9125999931711704,
+          "answer_latency_ms": 0.5588999774772674,
           "passed": true
         },
         {
@@ -5314,14 +5316,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6228999991435558,
+          "search_latency_ms": 0.5527999892365187,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.8055999933276325,
+          "answer_latency_ms": 0.40019999141804874,
           "passed": true
         },
         {
@@ -5353,14 +5355,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5517000099644065,
+          "search_latency_ms": 0.34699999378062785,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5329000123310834,
+          "answer_latency_ms": 0.3171999996993691,
           "passed": true
         },
         {
@@ -5392,14 +5394,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.8154999813996255,
+          "search_latency_ms": 0.33920002169907093,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.9898999996948987,
+          "answer_latency_ms": 0.36940001882612705,
           "passed": true
         }
       ]
@@ -5539,13 +5541,13 @@
           }
         },
         "search_latency_ms": {
-          "p50": 35.02320002007764,
-          "p95": 45.623594999779016,
+          "p50": 34.29560000950005,
+          "p95": 39.75385500671109,
           "count": 28
         },
         "answer_latency_ms": {
-          "p50": 35.8249500131933,
-          "p95": 42.31260499655036,
+          "p50": 34.27559998817742,
+          "p95": 43.26126999367261,
           "count": 28
         },
         "abstention": {
@@ -5574,6 +5576,7 @@
           "output_tokens": 0,
           "observed_output_tokens": 0,
           "complete_observation_count": 56,
+          "total_observation_count": 56,
           "expected_observation_count": 56,
           "cost_basis": "Observed provider usage only; local CPU/infrastructure cost unestimated."
         },
@@ -5601,8 +5604,8 @@
         "context_token_budget": 1800,
         "top_k": 10,
         "corpus_revision": "ca-dre-2026-188b2f6a3a4432e4",
-        "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2",
-        "configuration_sha256": "fb0cda47a142deb294b5ee1428fea336c991b7e49cc165def8620aa0ce8abc03",
+        "question_guard": "captured-ca-topics-postal-temporal-verdict-v3",
+        "configuration_sha256": "4201bb84531fcb989634dfd68f1f10c537a024100770447d1c84e88647cae194",
         "dataset_revision": "1.0.0",
         "dataset_sha256": "42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f",
         "generation_model": "none: deterministic exact quotations",
@@ -5738,14 +5741,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 44.770600012270734,
+          "search_latency_ms": 33.494000002974644,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 42.705200001364574,
+          "answer_latency_ms": 35.54789998452179,
           "passed": true
         },
         {
@@ -5871,14 +5874,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 35.21660002297722,
+          "search_latency_ms": 37.24600002169609,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 41.281100013293326,
+          "answer_latency_ms": 36.609800008591264,
           "passed": true
         },
         {
@@ -5956,14 +5959,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 47.5583000225015,
+          "search_latency_ms": 36.97369998553768,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 35.94850000808947,
+          "answer_latency_ms": 36.27690000575967,
           "passed": true
         },
         {
@@ -6049,14 +6052,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.72610001033172,
+          "search_latency_ms": 34.81930002453737,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 33.822900004452094,
+          "answer_latency_ms": 31.893400009721518,
           "passed": true
         },
         {
@@ -6144,14 +6147,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.56019999855198,
+          "search_latency_ms": 39.43480001180433,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.902763980283475
           },
-          "answer_latency_ms": 36.44560000975616,
+          "answer_latency_ms": 33.45220000483096,
           "passed": true
         },
         {
@@ -6246,14 +6249,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 39.78079999797046,
+          "search_latency_ms": 35.81000000122003,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.9197207891481876
           },
-          "answer_latency_ms": 46.13590001827106,
+          "answer_latency_ms": 33.216799987712875,
           "passed": true
         },
         {
@@ -6327,14 +6330,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 46.082899993052706,
+          "search_latency_ms": 38.593400007812306,
           "retrieval": {
             "recall_at_5": 0.6666666666666666,
             "recall_at_10": 0.6666666666666666,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.8129131942200405
           },
-          "answer_latency_ms": 41.583499987609684,
+          "answer_latency_ms": 37.93359998962842,
           "passed": false
         },
         {
@@ -6404,14 +6407,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 34.80720001971349,
+          "search_latency_ms": 39.750800002366304,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 37.49889999744482,
+          "answer_latency_ms": 39.73190000397153,
           "passed": true
         },
         {
@@ -6505,14 +6508,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.65919999568723,
+          "search_latency_ms": 38.31829997943714,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.2,
             "ndcg_at_10": 0.38685280723454163
           },
-          "answer_latency_ms": 35.81210001721047,
+          "answer_latency_ms": 31.86509999795817,
           "passed": true
         },
         {
@@ -6599,14 +6602,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 41.14529999787919,
+          "search_latency_ms": 35.1776999887079,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 36.96499997749925,
+          "answer_latency_ms": 36.891099996864796,
           "passed": true
         },
         {
@@ -6693,14 +6696,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 35.85019998718053,
+          "search_latency_ms": 32.84669999266043,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.606422698504514
           },
-          "answer_latency_ms": 38.31900001387112,
+          "answer_latency_ms": 38.42929998063482,
           "passed": true
         },
         {
@@ -6770,14 +6773,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.47100000712089,
+          "search_latency_ms": 37.76279999874532,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 36.31160000804812,
+          "answer_latency_ms": 35.09899997152388,
           "passed": true
         },
         {
@@ -6855,14 +6858,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 39.55699998186901,
+          "search_latency_ms": 39.75550000905059,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 37.53390000201762,
+          "answer_latency_ms": 38.75289999996312,
           "passed": true
         },
         {
@@ -6940,14 +6943,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.5822999922093,
+          "search_latency_ms": 33.77189999446273,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 35.837800009176135,
+          "answer_latency_ms": 39.639599999645725,
           "passed": true
         },
         {
@@ -7025,14 +7028,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 34.538300009444356,
+          "search_latency_ms": 33.64969999529421,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.16666666666666666,
             "ndcg_at_10": 0.3562071871080222
           },
-          "answer_latency_ms": 40.785100020002574,
+          "answer_latency_ms": 43.70919999200851,
           "passed": true
         },
         {
@@ -7120,14 +7123,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 34.82980001717806,
+          "search_latency_ms": 35.257100011222064,
           "retrieval": {
             "recall_at_5": 0.0,
             "recall_at_10": 0.0,
             "mrr_at_10": 0.0,
             "ndcg_at_10": 0.0
           },
-          "answer_latency_ms": 37.73209999781102,
+          "answer_latency_ms": 42.429399996763095,
           "passed": false
         },
         {
@@ -7218,14 +7221,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 34.40619999310002,
+          "search_latency_ms": 37.13599999900907,
           "retrieval": {
             "recall_at_5": 0.5,
             "recall_at_10": 0.75,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.5680297708915242
           },
-          "answer_latency_ms": 35.034600005019456,
+          "answer_latency_ms": 49.72879998967983,
           "passed": false
         },
         {
@@ -7307,14 +7310,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.52029997506179,
+          "search_latency_ms": 43.16820000531152,
           "retrieval": {
             "recall_at_5": 0.3333333333333333,
             "recall_at_10": 0.3333333333333333,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.34192741420282435
           },
-          "answer_latency_ms": 35.357900022063404,
+          "answer_latency_ms": 39.95149998809211,
           "passed": false
         },
         {
@@ -7346,14 +7349,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5778000049758703,
+          "search_latency_ms": 0.741700001526624,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4943000094499439,
+          "answer_latency_ms": 0.8951000054366887,
           "passed": true
         },
         {
@@ -7385,14 +7388,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.443600001744926,
+          "search_latency_ms": 0.7653000066056848,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4387000226415694,
+          "answer_latency_ms": 0.5124000017531216,
           "passed": true
         },
         {
@@ -7424,14 +7427,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4501999937929213,
+          "search_latency_ms": 0.36360000376589596,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.4135000053793192,
+          "answer_latency_ms": 0.49810000928118825,
           "passed": true
         },
         {
@@ -7463,14 +7466,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5298000178299844,
+          "search_latency_ms": 0.5506000015884638,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.39820000529289246,
+          "answer_latency_ms": 0.5663000047206879,
           "passed": true
         },
         {
@@ -7502,14 +7505,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5565000174101442,
+          "search_latency_ms": 0.6318000087048858,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5116000247653574,
+          "answer_latency_ms": 0.7932999869808555,
           "passed": true
         },
         {
@@ -7541,14 +7544,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.39430000470019877,
+          "search_latency_ms": 0.4909999843221158,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.39090000791475177,
+          "answer_latency_ms": 0.6596000166609883,
           "passed": true
         },
         {
@@ -7580,14 +7583,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6469000072684139,
+          "search_latency_ms": 0.600200000917539,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.7838000019546598,
+          "answer_latency_ms": 0.6068999937269837,
           "passed": true
         },
         {
@@ -7619,14 +7622,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.533499987795949,
+          "search_latency_ms": 0.5042999982833862,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.7697000110056251,
+          "answer_latency_ms": 0.5220999883022159,
           "passed": true
         },
         {
@@ -7658,14 +7661,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.8146999753080308,
+          "search_latency_ms": 0.4462999932002276,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.6929000082891434,
+          "answer_latency_ms": 0.46109998947940767,
           "passed": true
         },
         {
@@ -7697,14 +7700,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.9078000148292631,
+          "search_latency_ms": 0.5837999924551696,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.7039000047370791,
+          "answer_latency_ms": 0.5791000148747116,
           "passed": true
         }
       ]
@@ -7842,13 +7845,13 @@
           }
         },
         "search_latency_ms": {
-          "p50": 38.62469999876339,
-          "p95": 63.929250017099534,
+          "p50": 35.08810001949314,
+          "p95": 45.95880999841029,
           "count": 28
         },
         "answer_latency_ms": {
-          "p50": 39.82304999954067,
-          "p95": 59.40582000621361,
+          "p50": 36.70205001253635,
+          "p95": 51.36891000438481,
           "count": 28
         },
         "abstention": {
@@ -7877,6 +7880,7 @@
           "output_tokens": 0,
           "observed_output_tokens": 0,
           "complete_observation_count": 56,
+          "total_observation_count": 56,
           "expected_observation_count": 56,
           "cost_basis": "Observed provider usage only; local CPU/infrastructure cost unestimated."
         },
@@ -7904,8 +7908,8 @@
         "context_token_budget": 1800,
         "top_k": 10,
         "corpus_revision": "ca-dre-2026-188b2f6a3a4432e4",
-        "question_guard": "captured-ca-topics-jurisdiction-temporal-verdict-v2",
-        "configuration_sha256": "5c1a9e1ec2d72128c7ead772e6c12ed70297394d99d92b634bcdccbed1269273",
+        "question_guard": "captured-ca-topics-postal-temporal-verdict-v3",
+        "configuration_sha256": "e7bc4fd44f841192045a76b117d7c7bd454f756c3ab83d77871f0be147dd9a4a",
         "dataset_revision": "1.0.0",
         "dataset_sha256": "42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f",
         "generation_model": "none: deterministic exact quotations",
@@ -8009,14 +8013,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 35.84440000122413,
+          "search_latency_ms": 45.26630000327714,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.6309297535714575
           },
-          "answer_latency_ms": 40.26819998398423,
+          "answer_latency_ms": 40.156500006560236,
           "passed": true
         },
         {
@@ -8142,14 +8146,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.93799998331815,
+          "search_latency_ms": 38.95320001174696,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 35.03659999114461,
+          "answer_latency_ms": 37.442300003021955,
           "passed": true
         },
         {
@@ -8227,14 +8231,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 38.31140001420863,
+          "search_latency_ms": 46.33169999578968,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 36.67119998135604,
+          "answer_latency_ms": 39.82389997690916,
           "passed": true
         },
         {
@@ -8328,14 +8332,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 40.84910001256503,
+          "search_latency_ms": 36.4531000086572,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 51.02210000040941,
+          "answer_latency_ms": 57.43029998848215,
           "passed": true
         },
         {
@@ -8423,14 +8427,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 52.648300013970584,
+          "search_latency_ms": 47.933699999703094,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.902763980283475
           },
-          "answer_latency_ms": 49.08289999002591,
+          "answer_latency_ms": 43.395400018198416,
           "passed": true
         },
         {
@@ -8517,14 +8521,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 44.55809999490157,
+          "search_latency_ms": 33.66819999064319,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 49.585500004468486,
+          "answer_latency_ms": 36.82040001149289,
           "passed": true
         },
         {
@@ -8598,14 +8602,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 57.32330001774244,
+          "search_latency_ms": 37.146199989365414,
           "retrieval": {
             "recall_at_5": 0.6666666666666666,
             "recall_at_10": 0.6666666666666666,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.8838695436828513
           },
-          "answer_latency_ms": 61.900900007458404,
+          "answer_latency_ms": 39.981800015084445,
           "passed": false
         },
         {
@@ -8675,14 +8679,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 67.48630001675338,
+          "search_latency_ms": 37.28030002093874,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 64.18719998328015,
+          "answer_latency_ms": 36.5837000135798,
           "passed": true
         },
         {
@@ -8760,14 +8764,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 69.43630002206191,
+          "search_latency_ms": 32.60840001166798,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 47.00049999519251,
+          "answer_latency_ms": 35.42999998899177,
           "passed": true
         },
         {
@@ -8854,14 +8858,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 48.03060000995174,
+          "search_latency_ms": 39.66650000074878,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 48.69590001180768,
+          "answer_latency_ms": 38.479399983771145,
           "passed": true
         },
         {
@@ -8948,14 +8952,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 44.43650000030175,
+          "search_latency_ms": 35.147300019161776,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.606422698504514
           },
-          "answer_latency_ms": 42.94280000613071,
+          "answer_latency_ms": 46.465300023555756,
           "passed": true
         },
         {
@@ -9025,14 +9029,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 47.354300011647865,
+          "search_latency_ms": 38.58700001728721,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 50.41259998688474,
+          "answer_latency_ms": 52.68470000009984,
           "passed": true
         },
         {
@@ -9102,14 +9106,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 40.25330001604743,
+          "search_latency_ms": 39.65709998738021,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 49.81350002344698,
+          "answer_latency_ms": 48.92530001234263,
           "passed": true
         },
         {
@@ -9187,14 +9191,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 35.81440000561997,
+          "search_latency_ms": 36.67850000783801,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 41.31720002624206,
+          "answer_latency_ms": 38.71779999462888,
           "passed": true
         },
         {
@@ -9264,14 +9268,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 40.92020000098273,
+          "search_latency_ms": 35.028900019824505,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 1.0
           },
-          "answer_latency_ms": 51.92470000474714,
+          "answer_latency_ms": 35.686799994437024,
           "passed": true
         },
         {
@@ -9349,14 +9353,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 53.754699998535216,
+          "search_latency_ms": 39.451499993447214,
           "retrieval": {
             "recall_at_5": 1.0,
             "recall_at_10": 1.0,
             "mrr_at_10": 0.3333333333333333,
             "ndcg_at_10": 0.5
           },
-          "answer_latency_ms": 54.77210000390187,
+          "answer_latency_ms": 38.77899999497458,
           "passed": true
         },
         {
@@ -9429,14 +9433,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 37.52419998636469,
+          "search_latency_ms": 34.63300000294112,
           "retrieval": {
             "recall_at_5": 0.5,
             "recall_at_10": 1.0,
             "mrr_at_10": 1.0,
             "ndcg_at_10": 0.8352156817068609
           },
-          "answer_latency_ms": 39.37790001509711,
+          "answer_latency_ms": 33.326300006592646,
           "passed": true
         },
         {
@@ -9518,14 +9522,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 44.06109999399632,
+          "search_latency_ms": 36.2046999798622,
           "retrieval": {
             "recall_at_5": 0.3333333333333333,
             "recall_at_10": 0.6666666666666666,
             "mrr_at_10": 0.5,
             "ndcg_at_10": 0.5349710957202363
           },
-          "answer_latency_ms": 36.80910001276061,
+          "answer_latency_ms": 37.03740000491962,
           "passed": false
         },
         {
@@ -9557,14 +9561,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6056000129319727,
+          "search_latency_ms": 0.8219000010285527,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.9896000265143812,
+          "answer_latency_ms": 0.48210000386461616,
           "passed": true
         },
         {
@@ -9596,14 +9600,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.7859000179450959,
+          "search_latency_ms": 0.4453999863471836,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.701499986462295,
+          "answer_latency_ms": 0.4104999825358391,
           "passed": true
         },
         {
@@ -9635,14 +9639,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.8108000038191676,
+          "search_latency_ms": 0.42890000622719526,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.9350000182166696,
+          "answer_latency_ms": 0.5334000161383301,
           "passed": true
         },
         {
@@ -9674,14 +9678,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6426000036299229,
+          "search_latency_ms": 0.4456999886315316,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.7134000188671052,
+          "answer_latency_ms": 0.3786000015679747,
           "passed": true
         },
         {
@@ -9713,14 +9717,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6124000065028667,
+          "search_latency_ms": 0.8118999830912799,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.5776000034529716,
+          "answer_latency_ms": 0.6635999889113009,
           "passed": true
         },
         {
@@ -9752,14 +9756,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.4639000107999891,
+          "search_latency_ms": 0.5450000171549618,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.48859999515116215,
+          "answer_latency_ms": 0.7462000066880137,
           "passed": true
         },
         {
@@ -9791,14 +9795,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5910999898333102,
+          "search_latency_ms": 0.6794999935664237,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.6359000108204782,
+          "answer_latency_ms": 0.40580000495538116,
           "passed": true
         },
         {
@@ -9830,14 +9834,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.5946999881416559,
+          "search_latency_ms": 0.362000020686537,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 0.8620000153314322,
+          "answer_latency_ms": 0.3544999926816672,
           "passed": true
         },
         {
@@ -9869,14 +9873,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.6760999967809767,
+          "search_latency_ms": 1.0747000051196665,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 1.2772000045515597,
+          "answer_latency_ms": 0.6630000134464353,
           "passed": true
         },
         {
@@ -9908,14 +9912,14 @@
               "output_tokens": 0
             }
           ],
-          "search_latency_ms": 0.9250000002793968,
+          "search_latency_ms": 0.5589999782387167,
           "retrieval": {
             "recall_at_5": null,
             "recall_at_10": null,
             "mrr_at_10": null,
             "ndcg_at_10": null
           },
-          "answer_latency_ms": 1.4013999898452312,
+          "answer_latency_ms": 0.4185000143479556,
           "passed": true
         }
       ]

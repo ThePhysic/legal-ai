@@ -4,13 +4,13 @@ This record covers the independently implemented local product. Tests used synth
 
 | Gate | Observed result |
 | --- | --- |
-| Complete Python suite | 295 passed; two upstream deprecation warnings |
+| Complete Python suite | 392 passed; two upstream deprecation warnings |
 | Python Ruff | API, evaluation, scripts, tests and examples pass |
-| Frontend interaction suite | 15 passed |
+| Frontend interaction suite | 30 passed |
 | Frontend formatting and typecheck | Pass; route types generated before TypeScript, including a fresh scratch source copy without `.next` |
 | Production build | Final API and Next.js Docker images built successfully |
-| Real production browser flows | 38 passed, zero failures; [report](../artifacts/browser/report.json) |
-| PostgreSQL/container/proxy smoke | 22 passed, zero failures; [report](../artifacts/container-smoke.json) |
+| Real production browser flows | 40 passed, zero failures; [report](../artifacts/browser/report.json) |
+| PostgreSQL/container/proxy smoke | 26 passed, zero failures; [report](../artifacts/container-smoke.json) |
 | Python and TypeScript reference clients | Both returned source-linked research through the final local container API |
 | Corpus integrity | Three official statutory snapshots, 122 passages; hashes, identities and size checks pass |
 | Runtime Python dependency audit | No known vulnerabilities reported by pip-audit against exported locked runtime dependencies |
@@ -31,10 +31,12 @@ The final reviewer independently ran 111 applicability/DOCX tests and 65 securit
 
 ## Frozen measurement
 
-Report `1a3813b0c17d40f599526eed2fb9c85b` in [starter.json](../evaluations/reports/starter.json) was regenerated after the final implementation fixes and separately checked against the current normalized code fingerprints. Its 28 author-labeled cases and source identities are unchanged. Dataset SHA-256: `42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f`.
+Report `ef724df0fa894a02b6d8701b87b2d796` in [starter.json](../evaluations/reports/starter.json) was regenerated after the second-audit fixes and separately checked against the current normalized code fingerprints. Its 28 author-labeled cases and source identities are unchanged. Dataset SHA-256: `42806690e8afdf6af8d2e2895a2da272689eec844d6f6b14078a81b8deb62f2f`.
 
 Lexical, hybrid and reranked configurations meet the documented starter retrieval thresholds. The deterministic hash-vector dense baseline fails Recall@10 and retains one false abstention. All ten required negative cases abstain per configuration; measured errors are zero. Citation identity/exact-quote checks pass mechanically. Independent semantic correctness/support and novice-user measurements remain null. Observed provider calls, tokens and dollars are all zero; this does not estimate infrastructure cost.
 
 ## External gates
+
+The [second audit](reaudit.md) records additional reproduced failures discovered after the initial approval, their fixes, expanded regression checks and renewed clean Astra reviews. The table above reflects that corrected release; the original milestone review details are retained as history.
 
 Real Pinecone/model requests, independent human semantic/legal labels, production identity/HTTPS/retention validation, public deployment and novice-user research remain unexecuted. The user explicitly selected offline operation. Prepared adapters and mock transports do not satisfy these gates. See [design](design.md) and [deployment](deployment.md) for the separate enablement requirements.

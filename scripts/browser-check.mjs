@@ -336,6 +336,10 @@ try {
     path.join(output, "invalid-synthetic.pdf"),
     "%PDF-1.7\nThis is intentionally incomplete synthetic parser-test data.\n%%EOF\n",
   );
+  await writeFile(
+    path.join(output, "synthetic-boundary.txt"),
+    "x".repeat(798) + "$1234 due deposit.",
+  );
   browser = spawn(
     browserPath,
     [
@@ -557,6 +561,11 @@ try {
     [
       "Foreign state named in the question abstains",
       "What paperwork must accompany a security deposit deduction in Massachusetts?",
+      {},
+    ],
+    [
+      "Quoted foreign postal address cannot hide jurisdiction",
+      'When must the security deposit be returned for a rental at "123 Main Street, Boston, Massachusetts"?',
       {},
     ],
     [
@@ -828,13 +837,35 @@ try {
       `[...document.querySelectorAll('dialog button')].find(e=>e.textContent==='Delete document')`,
     );
     await wait(
-      `!document.querySelector('dialog[open]') && !document.querySelector('section:not([hidden]) .document-detail')`,
+      `!document.querySelector('dialog[open]') && !document.querySelector('section:not([hidden]) .document-detail') && document.activeElement.matches('.document-list h2')`,
     );
     invariant(
       await evaluate(
         `document.querySelector('section:not([hidden]) [role=status]').textContent.includes('confirmed deletion') && document.activeElement.matches('.document-list h2')`,
       ),
       "Deletion success/focus not confirmed",
+    );
+  });
+  await test("Cross-passage literal is readable without a false validation label", async () => {
+    await uploadFile(path.join(output, "synthetic-boundary.txt"));
+    await click("Analyze & compare sources");
+    await wait(
+      `document.querySelector('section:not([hidden]) .analysis')`,
+      90_000,
+    );
+    invariant(
+      await evaluate(
+        `(() => {const f=[...document.querySelectorAll('section:not([hidden]) .finding')].find(e=>e.querySelector('h4')?.textContent==='Literal amount or date in document');return f?.querySelector('p')?.textContent==='$1234' && f.textContent.includes('Exact section text; passage match not established');})()`,
+      ),
+      "Split literal incorrectly claims passage validation or is missing",
+    );
+    await click("Delete document");
+    await wait(`document.querySelector('dialog[open]')`);
+    await clickExpression(
+      `[...document.querySelectorAll('dialog button')].find(e=>e.textContent==='Delete document')`,
+    );
+    await wait(
+      `!document.querySelector('dialog[open]') && !document.querySelector('section:not([hidden]) .document-detail')`,
     );
   });
   await test("Invalid synthetic PDF exposes real parsing failure and retry remains honest", async () => {

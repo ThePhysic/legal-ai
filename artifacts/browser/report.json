@@ -1,15 +1,15 @@
 {
-  "checked_at": "2026-11-03T20:54:02.124Z",
+  "checked_at": "2026-11-03T21:19:05.318Z",
   "browser": "Chrome/156.0.8078.4",
   "origin": "http://127.0.0.1:3017",
-  "duration_ms": 30412,
-  "passed": 38,
+  "duration_ms": 27859,
+  "passed": 40,
   "failed": 0,
   "results": [
     {
       "name": "Home exposes both primary tasks and creates only its own local session",
       "passed": true,
-      "duration_ms": 1000,
+      "duration_ms": 607,
       "detail": {
         "tasks": 2
       }
@@ -17,7 +17,7 @@
     {
       "name": "Mobile Home keeps both task choices visible and readable",
       "passed": true,
-      "duration_ms": 472,
+      "duration_ms": 454,
       "detail": {
         "cards": [
           {
@@ -36,7 +36,7 @@
     {
       "name": "Free-form public research returns actual claims, passages and honest source counts",
       "passed": true,
-      "duration_ms": 763,
+      "duration_ms": 545,
       "detail": {
         "badge": "Source-linked extraction",
         "answer": "(2) Beginning April 1, 2025, the landlord shall take photographs of the unit within a reasonable time after the possession of the unit is returned to the landlord, but prior to any repairs or cleanings for which the landlord will make a deduction from or claim against the security deposit pursuant to this section, and shall also take photographs of the unit…",
@@ -48,17 +48,17 @@
     {
       "name": "Citation selection focuses exact evidence and source dates remain explicit",
       "passed": true,
-      "duration_ms": 687
+      "duration_ms": 666
     },
     {
       "name": "Saved run provenance loads from the API and distinguishes identity from semantics",
       "passed": true,
-      "duration_ms": 240
+      "duration_ms": 222
     },
     {
       "name": "Exact statutory citation 1950.5 works",
       "passed": true,
-      "duration_ms": 214,
+      "duration_ms": 244,
       "detail": {
         "claims": 5,
         "passages": 5
@@ -67,7 +67,7 @@
     {
       "name": "Real lexical retrieval path answers locally",
       "passed": true,
-      "duration_ms": 214,
+      "duration_ms": 231,
       "detail": {
         "passages": 3,
         "claims": 3
@@ -76,7 +76,7 @@
     {
       "name": "Real dense retrieval path answers locally",
       "passed": true,
-      "duration_ms": 218,
+      "duration_ms": 199,
       "detail": {
         "passages": 5,
         "claims": 5
@@ -85,7 +85,7 @@
     {
       "name": "Real hybrid retrieval path answers locally",
       "passed": true,
-      "duration_ms": 201,
+      "duration_ms": 216,
       "detail": {
         "passages": 5,
         "claims": 5
@@ -94,7 +94,7 @@
     {
       "name": "Real rerank retrieval path answers locally",
       "passed": true,
-      "duration_ms": 217,
+      "duration_ms": 214,
       "detail": {
         "passages": 4,
         "claims": 4
@@ -103,7 +103,7 @@
     {
       "name": "Other jurisdiction abstains",
       "passed": true,
-      "duration_ms": 232,
+      "duration_ms": 200,
       "detail": {
         "claims": 0
       }
@@ -111,7 +111,15 @@
     {
       "name": "Foreign state named in the question abstains",
       "passed": true,
-      "duration_ms": 215,
+      "duration_ms": 232,
+      "detail": {
+        "claims": 0
+      }
+    },
+    {
+      "name": "Quoted foreign postal address cannot hide jurisdiction",
+      "passed": true,
+      "duration_ms": 217,
       "detail": {
         "claims": 0
       }
@@ -119,7 +127,7 @@
     {
       "name": "Unknown historical applicability abstains",
       "passed": true,
-      "duration_ms": 231,
+      "duration_ms": 217,
       "detail": {
         "claims": 0
       }
@@ -127,7 +135,7 @@
     {
       "name": "Relative historical applicability abstains",
       "passed": true,
-      "duration_ms": 214,
+      "duration_ms": 231,
       "detail": {
         "claims": 0
       }
@@ -135,7 +143,7 @@
     {
       "name": "Individual lawfulness verdict abstains",
       "passed": true,
-      "duration_ms": 214,
+      "duration_ms": 216,
       "detail": {
         "claims": 0
       }
@@ -143,7 +151,7 @@
     {
       "name": "Out-of-corpus question abstains",
       "passed": true,
-      "duration_ms": 232,
+      "duration_ms": 200,
       "detail": {
         "claims": 0
       }
@@ -151,27 +159,27 @@
     {
       "name": "Actual local transport failure is distinct from evidence gaps and retry recovers",
       "passed": true,
-      "duration_ms": 274
+      "duration_ms": 263
     },
     {
       "name": "Pending real request can be cancelled without a false error result",
       "passed": true,
-      "duration_ms": 245
+      "duration_ms": 247
     },
     {
       "name": "Keyboard skip link preserves Research and focuses main",
       "passed": true,
-      "duration_ms": 62
+      "duration_ms": 60
     },
     {
       "name": "Keyboard skip link preserves Documents and ignores non-view hashes",
       "passed": true,
-      "duration_ms": 197
+      "duration_ms": 176
     },
     {
       "name": "Real multipart upload parses sample lease into sections and private passages",
       "passed": true,
-      "duration_ms": 1125,
+      "duration_ms": 790,
       "detail": {
         "sections": 1
       }
@@ -179,7 +187,7 @@
     {
       "name": "Document analysis returns actual findings and public source comparison",
       "passed": true,
-      "duration_ms": 556,
+      "duration_ms": 536,
       "detail": {
         "findings": 6
       }
@@ -187,58 +195,63 @@
     {
       "name": "Document finding link focuses the matching extracted section",
       "passed": true,
-      "duration_ms": 241
+      "duration_ms": 238
     },
     {
       "name": "Private document Q&A returns private source passages, not a legal verdict",
       "passed": true,
-      "duration_ms": 759
+      "duration_ms": 728
     },
     {
       "name": "Document findings, private answer and comparisons reflow at every target width",
       "passed": true,
-      "duration_ms": 722
+      "duration_ms": 697
     },
     {
       "name": "Original download returns actual owned bytes through the browser session",
       "passed": true,
-      "duration_ms": 22
+      "duration_ms": 16
     },
     {
       "name": "Deletion modal traps Tab, Escape restores focus, and cancellation preserves document",
       "passed": true,
-      "duration_ms": 300
+      "duration_ms": 277
     },
     {
       "name": "Replacement uploads new content and removes the previous current document",
       "passed": true,
-      "duration_ms": 987
+      "duration_ms": 775
     },
     {
       "name": "Confirmed deletion reports API result and returns focus to document list",
       "passed": true,
-      "duration_ms": 197
+      "duration_ms": 334
+    },
+    {
+      "name": "Cross-passage literal is readable without a false validation label",
+      "passed": true,
+      "duration_ms": 960
     },
     {
       "name": "Invalid synthetic PDF exposes real parsing failure and retry remains honest",
       "passed": true,
-      "duration_ms": 2166,
+      "duration_ms": 1720,
       "detail": "Retry endpoint exercised on persistently invalid bytes; successful interrupted-worker recovery is covered separately by backend tests."
     },
     {
       "name": "Evaluation runs a real versioned dataset with all four local configurations",
       "passed": true,
-      "duration_ms": 5468
+      "duration_ms": 4363
     },
     {
       "name": "Evaluation preserves actual manifest, case results and list navigation",
       "passed": true,
-      "duration_ms": 234
+      "duration_ms": 235
     },
     {
       "name": "Reference uses the actual three-source, 122-passage corpus with unknown applicability dates",
       "passed": true,
-      "duration_ms": 176,
+      "duration_ms": 167,
       "detail": {
         "sources": 3,
         "passages": 122
@@ -247,12 +260,12 @@
     {
       "name": "Customer/developer control names and text field labels are present",
       "passed": true,
-      "duration_ms": 3
+      "duration_ms": 2
     },
     {
       "name": "All five views reflow at 360, 390, 768, 1024 and 1440 CSS pixels",
       "passed": true,
-      "duration_ms": 7191,
+      "duration_ms": 7099,
       "detail": {
         "layouts": 25,
         "zoom_equivalent_css_width": 720
@@ -261,7 +274,7 @@
     {
       "name": "Reduced motion removes animation and key text contrast meets WCAG AA",
       "passed": true,
-      "duration_ms": 231,
+      "duration_ms": 228,
       "detail": {
         "primary": 8.807797778901712,
         "body": 5.170854274948272,
@@ -271,7 +284,7 @@
     {
       "name": "Separate-session real HTTP authorization prevents document, source and trace leakage",
       "passed": true,
-      "duration_ms": 1093,
+      "duration_ms": 838,
       "detail": {
         "unauthorized_operations": 9,
         "private_diagnostics_purged": true
@@ -359,6 +372,10 @@
       "status": 200
     },
     {
+      "path": "/api/v1/research",
+      "status": 200
+    },
+    {
       "path": "/api/v1/documents",
       "status": 200
     },
@@ -368,10 +385,6 @@
     },
     {
       "path": "/api/v1/documents",
-      "status": 200
-    },
-    {
-      "path": "/api/v1/documents/{id}",
       "status": 200
     },
     {
@@ -407,6 +420,26 @@
       "status": 200
     },
     {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/documents/{id}/analysis",
+      "status": 200
+    },
+    {
       "path": "/api/v1/documents/{id}",
       "status": 200
     },
@@ -432,10 +465,6 @@
     },
     {
       "path": "/api/v1/documents",
-      "status": 200
-    },
-    {
-      "path": "/api/v1/documents/{id}",
       "status": 200
     },
     {
