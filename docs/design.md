@@ -6,9 +6,31 @@ Build an independent local full-stack product matching the November 2026 specifi
 
 ## Product and architecture
 
+Publication note: the initial implementation was delivered to a private GitHub repository. The source repository was observed as public during the later presentation handoff on November 3, 2026; application deployment remains unexecuted and project-source rights remain reserved. That handoff permits local documentation edits only, with separate authorization required for staging, commits, pushes, settings, or visibility changes. Original private-publication milestone wording below records the initial delivery scope.
+
 Next.js/React/TypeScript frontend, FastAPI/Pydantic API, SQLAlchemy metadata with SQLite for deterministic local use and PostgreSQL production configuration/migration, encrypted local object-store adapter, and a recoverable local ingestion worker. A modular monolith keeps ownership, source versions and run identities explicit. No queue/Redis/agent framework until justified.
 
 First visit: two tasks (research and document review). Customer navigation is separate from developer evaluation/reference. Unlike the proposal, real free-form research and file parsing call the local API. Every answer states its execution method. Source excerpts and support checks remain inspectable; provenance is progressive disclosure. Local developer comparisons use actual measurements, not proposal fixture numbers.
+
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+    Browser[Customer and developer workspace] --> Next[Next.js same-origin API proxy]
+    Next --> API[FastAPI: identity and ownership]
+    API --> Public[Versioned public authority snapshots]
+    API --> DB[(SQLAlchemy: SQLite local / PostgreSQL)]
+    API --> Store[Encrypted private objects and SQL payloads]
+    API --> Worker[Isolated capped parsing and durable ingestion]
+    Worker --> Retrieval[BM25 / local vectors / RRF / rerank]
+    Public --> Retrieval
+    Retrieval --> Grounding[Extractive claims and citation identity]
+    API --> Eval[Frozen benchmark and measured runs]
+    Retrieval -. disabled live adapter .-> Pinecone[Existing Pinecone dense index]
+    Grounding -. disabled live adapter .-> Provider[Embeddings / structured generation provider]
+```
+
+BM25 is keyword-based retrieval; local vectors are deterministic text-feature hashes. Reciprocal rank fusion (RRF) combines ranked lists, and the local reranker reorders a bounded candidate set. The dashed provider paths are prepared contracts, disabled in this release.
 
 ## Security domains and identity
 

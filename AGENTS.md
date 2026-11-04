@@ -2,7 +2,7 @@
 
 This is a fresh independent project. Do not copy implementation code, prompts, assets, credentials or databases from earlier legal.ai/Cal Hacks repositories. The approved local UX proposal is a design reference, not a backend implementation.
 
-User scope: implement the full local product and prepare provider/deployment integration, but **offline only for now**. No live Pinecone/LLM requests, paid calls, cloud provisioning or deployment. Creating a private ThePhysic/legal-ai GitHub repository and pushing the finished reviewed project is explicitly authorized.
+User scope remains **offline only**: no live Pinecone/LLM requests, paid calls, cloud provisioning or deployment. The initial implementation was delivered to a private GitHub repository; the owner has since made the source repository public. The current presentation handoff authorizes local documentation and hygiene edits only. Do not stage, commit, push, change GitHub settings, or modify visibility without separate owner authorization. Preserve all-rights-reserved project-source licensing and separate statutory corpus rights.
 
 Use parallel agents with disjoint file ownership. Root owns Git, shared contracts, corpus, documentation, infrastructure, integration checks and publication. Agents must not commit or push independently. Raise contract changes before altering them.
 
